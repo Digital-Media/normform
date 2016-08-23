@@ -1,0 +1,38 @@
+.InputCombo {
+    display: flex;
+    align-items: center;
+}
+
+.InputCombo-label {
+    background-color: rgb(233, 233, 233);
+    white-space: nowrap;
+}
+
+.InputCombo-field {
+    flex: 1;
+}
+
+.InputCombo-label,
+.InputCombo-field,
+.InputCombo-button {
+    border: 1px solid rgb(0, 102, 102);
+    padding: 0.5em 0.75em;
+}
+
+.InputCombo-field {
+    border-left: 0;
+}
+
+.InputCombo-unstyled {
+    margin-left: 1em;
+    flex: none;
+}
+
+/*.InputCombo-button {
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+}
+
+.InputCombo-button:hover {
+    color: rgb(233, 233, 233);
+}*/

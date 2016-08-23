@@ -1,0 +1,33 @@
+.Footer {
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+    font-weight: 300;
+    padding: 1.5em;
+    text-align: center;
+}
+
+.Footer a {
+    color: rgb(233, 233, 233);
+    border-bottom: 1px dashed rgb(233, 233, 233);
+}
+
+.Footer a:active,
+.Footer a:hover {
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.Footer-version i:after {
+    content: "\00a0";
+}
+
+.Footer-credits, .Footer-version {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+@media (min-width: 60em) {
+    .Footer--small {
+        display: flex;
+        justify-content: space-between;
+    }
+}

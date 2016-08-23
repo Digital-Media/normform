@@ -1,0 +1,37 @@
+.GalleryItem {
+    background-color: rgb(204, 204, 204);
+    padding: 1em;
+    text-align: center;
+}
+
+.GalleryItem-thumb img {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+    box-sizing: content-box;
+    width: 100px;
+    height: auto;
+}
+
+.GalleryItem-thumb img:hover {
+    border-color: rgb(0, 102, 102);
+}
+
+.GalleryItem-title {
+    font-weight: 600;
+}
+
+.GalleryItem-timestamp {
+    font-weight: 300;
+}
+
+.GalleryItem-date {
+    margin-right: 0.5em;
+}
+
+.GalleryItem-title i::after,
+.GalleryItem-author i::after,
+.GalleryItem-date i::after,
+.GalleryItem-time i::after {
+    content: "\00a0";
+}
