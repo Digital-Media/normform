@@ -1,9 +1,11 @@
 <?php
 require_once 'defines.inc.php';
+require_once 'Utilities.class.php';
 /**
  * siehe defines.inc.php für gültigen Pfad
  */
 require_once SMARTY_CLASS_PATH;
+
 
 /**
  * Das objektorientierte und templatebasierte PHP-Normformular dient zur Erfassung, Verarbeitung und Validierung von Formulardaten.
@@ -69,13 +71,13 @@ abstract class TNormForm {
      * erzeugt ein neues Smarty-Objekt
      * Legt die Pfade zu den gespeicherten Templates und compilierten Templates fest
      */
-    public function __construct()
+    public function __construct($template_dir=SMARTY_TEMPLATE_DIR, $compile_dir=SMARTY_COMPILE_DIR)
     {
         $this->errMsg = array();
         $this->statusMsg = "";
         $this->smarty = new Smarty();
-        $this->smarty->template_dir = SMARTY_TEMPLATE_DIR;
-        $this->smarty->compile_dir = SMARTY_COMPILE_DIR;
+        $this->smarty->template_dir = $template_dir;
+        $this->smarty->compile_dir = $compile_dir;
     }
 
     /**

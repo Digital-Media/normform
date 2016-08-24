@@ -13,7 +13,7 @@ define("DEBUG",FALSE); // Fehler mit error_log() schreiben
 /*
  * Smarty Constants
  * Hier werden die Pfade für Smarty festgelegt, damit man im Code installationsunabhängig wird.
- * @var string SMARTY_CLASS_PATH hängt von der Installation ab. Wenn Pfad in php.ini gilt Smarty.class.php allein. 
+ * @var string SMARTY_CLASS_PATH hängt von der Installation ab. Wenn Pfad in php.ini gilt Smarty.class.php allein.
  *                               Ansonsten gilt der auskommentierte Eintrag darüber, wenn man Smarty direkt im Document Root entpackt hat
  *
  * @var string SMARTY_CLASS_PATH Pfad zur Klasse Smarty.class.php
