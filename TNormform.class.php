@@ -1,5 +1,11 @@
 <?php
+/**
+ * Einbinden der define-Angaben für die TNormform-Klasse
+ */
 require_once 'defines.inc.php';
+/**
+ * Einbinden der Klasse mit den statischen Hilfsfunktionen
+ */
 require_once 'Utilities.class.php';
 /**
  * siehe defines.inc.php für gültigen Pfad
@@ -25,12 +31,10 @@ require_once SMARTY_CLASS_PATH;
  * @package hm2
  * @version 2016
  */
-
 abstract class TNormForm {
     /**
      * Abstrakte Methode zur Ausgabe des Formularfeldinhalts. Muss in der abgeleiteten Klasse implementiert werden.
      */
-
     abstract protected function prepareFormFields();
 
     /**
@@ -66,6 +70,7 @@ abstract class TNormForm {
 
     /**
      * Erzeugt ein neues Normform-Objekt
+     *
      * löscht bzw. initialisiert das Array mit den Fehlermeldungen
      * löscht bzw. initialisiert die Statusmeldung
      * erzeugt ein neues Smarty-Objekt
