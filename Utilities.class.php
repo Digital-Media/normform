@@ -184,7 +184,7 @@ class Utilities {
      * @param int $max Maximale Länge des Strings. Default = 50
      * @return bool
      */
-    public static function isSearchString($string, $min=0, $max=50) {
+    public static function isSingleWord($string, $min=0, $max=50) {
         $string_pattern = '/^[a-zäöüA-ZÄÖÜ-]{'. $min . ',' . $max .'}$/i';
         if (preg_match($string_pattern, $string)) {
             return true;
