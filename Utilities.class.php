@@ -103,6 +103,7 @@ class Utilities {
      * Validiert einen String, ob er dem gegebenen Email-Pattern entspricht
      * Mehr Information gibt es auf http://www.regular-expressions.info/email.html
      * Ähnliches kann mit filter_var($email, FILTER_VALIDATE_EMAIL) erreicht werden
+     * Testen kann man Reguläre Ausdrücke (engl. regular expressions kurz Regex) auf @link https://regex101.com/ speziell für php @link http://www.phpliveregex.com/
      * Usage: Utilities::isEmail($string);
      *
      * @param string $email
@@ -124,9 +125,16 @@ class Utilities {
      * Beispiel für Telefonnummer, die dem Pattern entspricht: +43 732 1234-1234
      * Usage: Utilities::isPhone($string);
      *
+     * $phone_pattern enthält einen möglichen regulären Ausdruck. Alternativen gibt es im Web viele zu finden.
+     * Wenn jemand einen besseren Vorschlag hat, verwende ich ihn gerne hier.
+     * Telefonnummern prüfen ist eine schwierige Sache, vor allem, wenn man internationale Standards einhalten will
+     * und trotzdem länderspezifische Eigenheiten berücksichtigen will.
+     * Es gibt von Google eine eigene Library: @link https://github.com/googlei18n/libphonenumber/blob/master/README.md
+     * Testen kann man Reguläre Ausdrücke (engl. regular expressions kurz Regex) auf @link https://regex101.com/ speziell für php @link http://www.phpliveregex.com/
+     *
      * @param string $string String, der eine Telefonnummer enthalten soll
      *
-     * @return bool TRUE falls der String dem gegebenen Pattern entspricht. Ansonsten FALSE
+     * @return bool true falls der String dem gegebenen Pattern entspricht. Ansonsten false
      */
     public static function isPhone($string) {
         $phone_pattern= "/^(?!(?:\d*-){5,})(?!(?:\d* ){5,})\+?[\d- ]+$/";
