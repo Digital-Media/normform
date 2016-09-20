@@ -86,55 +86,6 @@ abstract class TNormForm {
     }
 
     /**
-     * Überprüft, ob in $_POST bereits ein Wert für das angegebene Formularfeld existiert. Wenn ja, wird dieser Wert
-     * gefiltert zurückgegeben, ansonsten ein leerer String. Diese Methode übernimmt somit das Befüllen bereits
-     * ausfgefüllter Formularfelder nach einem erfolglosen Absenden. Mittels {@see sanitizeFilter()} werden schadhafte Eingaben
-     * bereinigt, trim() dient zum Entfernen ungewünschter Leerzeichen am Anfang und am Ende.
-     *
-     * @param string $name Der Name des Formularfelds, das überprüft werden soll.
-     * @return string Der vorausgefüllte Wert des Formularfelds oder ein leerer String (falls es zuvor noch leer war).
-     */
-    protected function autofillFormField($name)
-    {
-        return isset($_POST[$name]) ? Utilities::sanitizeFilter($_POST[$name]) : "";
-    }
-
-    /**
-     * Übernimmt die Ausgabe und Anzeige des Formularfeldes. Eventuell auftretende Fehlermeldungen werden an das
-     * Template übergeben, in der Methode (@link prepareFormFields()) wird der Formularfeldinhalt vorbereitet und an
-     * das Template übergeben. Das Template wird mit @see display() schließlich angezeigt.
-     */
-    protected function show()
-    {
-        $this->prepareFormFields();
-        $this->smarty->assign("errorMessages", $this->errMsg);
-        $this->smarty->assign("statusMessage", $this->statusMsg);
-        $this->display();
-    }
-
-    /**
-     * Überprüft, ob der Inhalt eines Formularfelds beim Absenden leer war, d.h. nichts außer evtl. Whitespaces enthalten
-     * hat. Existiert (aus welchem Grund auch immer) der Eintrag im $_POST-Array nicht, wird das Feld ebenfalls als leer angesehen.
-     * @param string $index Der Name des zu überprüfenden Formularfelds <input name='$index' ... >.
-     * @return bool Gibt <pre>true</pre> zurück, falls das Formularfeld leer war, sonst <pre>false</pre>.
-     */
-    protected function isEmptyPostField($index)
-    {
-        return (strlen(trim($_POST[$index])) === 0);
-    }
-
-    /**
-     * Überprüft, ob es sich beim aktuellen Aufruf der Seite um einen neuen, d.h. initialen Aufruf handelt, oder ob die
-     * Seite durch das Absenden des Formulars erneut aufgerufen wurde. Ein initialer Aufruf erfolgt immer über die GET-
-     * Übertragungsmethode, beim Absenden des Formulars wird POST verwendet.
-     * @return bool Gibt <pre>true</pre> zurück, wenn es sich um ein abgesendets Formular handelt, sonst <pre>false</pre>.
-     */
-    protected function isFormSubmission()
-    {
-        return ($_SERVER["REQUEST_METHOD"] === "POST");
-    }
-
-    /**
      * Die Hauptmethode des Normformulars. Hier befindet sich der Entscheidungsbaum, der überprüft, ob es sich um einen
      * initialen Aufruf oder um ein abgesendetes Formular handelt (mittels {@see isFormSubmission()}). Danach entweder das
      * Formular anzeigt (mittels {@see printForm()}) oder zunächst das Formular validiert ({@see isValidForm()}) und bei
@@ -153,4 +104,54 @@ abstract class TNormForm {
         }
         $this->show();
     }
+
+    /**
+     * Überprüft, ob es sich beim aktuellen Aufruf der Seite um einen neuen, d.h. initialen Aufruf handelt, oder ob die
+     * Seite durch das Absenden des Formulars erneut aufgerufen wurde. Ein initialer Aufruf erfolgt immer über die GET-
+     * Übertragungsmethode, beim Absenden des Formulars wird POST verwendet.
+     * @return bool Gibt <pre>true</pre> zurück, wenn es sich um ein abgesendets Formular handelt, sonst <pre>false</pre>.
+     */
+    protected function isFormSubmission()
+    {
+        return ($_SERVER["REQUEST_METHOD"] === "POST");
+    }
+
+    /**
+     * Überprüft, ob der Inhalt eines Formularfelds beim Absenden leer war, d.h. nichts außer evtl. Whitespaces enthalten
+     * hat. Existiert (aus welchem Grund auch immer) der Eintrag im $_POST-Array nicht, wird das Feld ebenfalls als leer angesehen.
+     * @param string $index Der Name des zu überprüfenden Formularfelds <input name='$index' ... >.
+     * @return bool Gibt <pre>true</pre> zurück, falls das Formularfeld leer war, sonst <pre>false</pre>.
+     */
+    protected function isEmptyPostField($index)
+    {
+        return (strlen(trim($_POST[$index])) === 0);
+    }
+
+    /**
+     * Übernimmt die Ausgabe und Anzeige des Formularfeldes. Eventuell auftretende Fehlermeldungen werden an das
+     * Template übergeben, in der Methode (@link prepareFormFields()) wird der Formularfeldinhalt vorbereitet und an
+     * das Template übergeben. Das Template wird mit @see display() schließlich angezeigt.
+     */
+    protected function show()
+    {
+        $this->prepareFormFields();
+        $this->smarty->assign("errorMessages", $this->errMsg);
+        $this->smarty->assign("statusMessage", $this->statusMsg);
+        $this->display();
+    }
+
+    /**
+     * Überprüft, ob in $_POST bereits ein Wert für das angegebene Formularfeld existiert. Wenn ja, wird dieser Wert
+     * gefiltert zurückgegeben, ansonsten ein leerer String. Diese Methode übernimmt somit das Befüllen bereits
+     * ausfgefüllter Formularfelder nach einem erfolglosen Absenden. Mittels {@see sanitizeFilter()} werden schadhafte Eingaben
+     * bereinigt, trim() dient zum Entfernen ungewünschter Leerzeichen am Anfang und am Ende.
+     *
+     * @param string $name Der Name des Formularfelds, das überprüft werden soll.
+     * @return string Der vorausgefüllte Wert des Formularfelds oder ein leerer String (falls es zuvor noch leer war).
+     */
+    protected function autofillFormField($name)
+    {
+        return isset($_POST[$name]) ? Utilities::sanitizeFilter($_POST[$name]) : "";
+    }
+
 }
