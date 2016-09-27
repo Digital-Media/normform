@@ -9,7 +9,7 @@ Besuchen sie uns unter https://www.fh-ooe.at/en/hagenberg-campus/studiengaenge/b
 
 Verwendete Technologien und Vorraussetzungen
 
-Für das Übungsscenario wurde mit XAMPP 7.0.2 entwickelt. TNormform lässt sich aber auch unter anderen Umgebungen
+Für das Übungsscenario wurde mit [XAMPP](https://www.apachefriends.org/de/index.html)  entwickelt. TNormform lässt sich aber auch unter anderen Umgebungen
 installieren.
 
 * [HTML5](https://www.w3.org/TR/html5/)
