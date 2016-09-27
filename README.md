@@ -12,6 +12,8 @@ Verwendete Technologien und Vorraussetzungen
 Für das Übungsscenario wurde mit XAMPP 7.0.2 entwickelt. TNormform lässt sich aber auch unter anderen Umgebungen
 installieren.
 
+* [HTML5](https://www.w3.org/TR/html5/)
+* [CSS3](https://www.w3.org/Style/CSS/specs)
 * [objectorientiertes PHP](http://php.net/)
 * [Smarty Templates](http://www.smarty.net/)
 * [jsOnlyLightbox](https://github.com/felixhagspiel/jsOnlyLightbox)
