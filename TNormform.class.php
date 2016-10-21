@@ -25,6 +25,13 @@ require_once SMARTY_CLASS_PATH;
  * Diese abstrakte Basisklasse enthält alle allgemeinen Methoden des Normformulars. Anwendungsspezifische Methoden (wie etwa für
  * Formularfelder oder die Generierung des Ergebnisses müssen in einer konkreten, abgeleiteten Klasse implementiert werden.
  * Diese Version des Normformulars verwendet Smarty-Templates, um HTML- von PHP-Code zu trennen.
+ *
+ * Der Hauptmethode @see normForm() legt einen Ablauf fest, der ein einfaches MVC-Pattern implementiert.
+ * MVC: Model-View-Controller
+ * M: @see process() verarbeitet die Daten und schreibt sie in die Datenbank oder ins Filesystem
+ * V: @see show() zeigt das Ergebnis an, bzw. liest die Daten, die schon beim ersten Anzeigen einer Seite vorhanden sein müssen
+ * C: @see isValidForm() Validiert die Daten und entscheidet, ob Daten verarbeitet werden könnnen, oder zur erneuten Bearbeitung dem Benutzer vorgelegt werden
+ *
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
