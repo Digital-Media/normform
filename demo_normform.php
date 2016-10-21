@@ -162,7 +162,7 @@ FORM;
 <head>
     <meta charset="utf-8">
     <title>Normformular</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/proceduralstyles.css">
 </head>
 <body>
 HEADER;
