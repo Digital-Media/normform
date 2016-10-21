@@ -1,0 +1,105 @@
+body {
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	font-size: small;
+	text-align: center;
+	min-width: 720px;
+	background-color: rgb(0, 102, 102);
+}
+
+#container {
+	width: 700px;
+	margin: 0px auto;
+	padding: 10px;
+	text-align: left;
+	background-color: rgb(204, 204, 204);
+	color: rgb(0, 102, 102);
+}
+
+fieldset {  
+	float: left;  
+	clear: both;  
+	width: 100%;  
+	margin: 0 0 1.5em 0;  
+	padding: 0;  
+	border: 1px solid rgb(0, 102, 102);
+	background-color: rgb(204, 204, 204);
+}
+legend {  
+	margin-left: 1em;  
+	padding: 0;  
+	color: rgb(0, 102, 102);
+	font-weight: bold; 
+}
+fieldset ol {  
+	padding: 1em 1em 0 1em;  
+	list-style: none;
+}
+fieldset li {
+	float: left;  
+	clear: left;  
+	width: 100%; 
+	padding-bottom: 1em;
+}
+fieldset.submit {  
+	float: none;  
+	width: auto;  
+	border-style: none;  
+	padding-left: 12em;  
+	background-color: transparent; 
+}
+
+label {  
+	float: left;  
+	width: 10em;  
+	margin-right: 1em;  
+	text-align: right;  
+}
+
+.total {
+	font-weight: bold;
+}
+
+table {
+    width: 700px;
+    border: none;
+}
+
+.col1 {
+    width: 500px;
+}
+
+.col2 {
+    width: 100px;
+}
+
+.suggestlink {
+	color: black;
+	background-color: #FFFFFF;
+	padding: 2px 6px 2px 6px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.suggestlink:first-child {
+	border-top: 1px solid black;
+}
+
+.suggestlinkover {
+	color: white;
+	background-color: #3366CC;
+	cursor: pointer;
+}
+
+#suggestions {
+	position: absolute;
+	left: 49px;
+	background-color: #FFFFFF;
+	text-align: left;
+}
+
+.letter {
+	width: 400px;
+    height: 517px;
+	background-image: url("../images/typewriter.jpg");
+}
