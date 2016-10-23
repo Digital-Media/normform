@@ -28,7 +28,7 @@ In den Webübungen und [Datenbankübungen](https://github.com/Digital-Media/MH_D
 
 Die TNormform liegt auch in einer prozeduralen Form vor, um die Unterschiede zur objectorientieren Programmierung herauszuarbeiten.
 
-Folgende Files deken die gleiche Funktionalität ab, einmal prozedural und einmal objektorientiert.
+Folgende Files decken die gleiche Funktionalität ab, einmal prozedural und einmal objektorientiert.
 
 procedural         oo                     Beschreibung
 demo_normform.php  demoTNormform.php      Beispielseiten, in der die TNormform-Abläufe genutzt wird
