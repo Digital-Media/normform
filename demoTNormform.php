@@ -1,18 +1,18 @@
 <?php
-
-require("TNormform.class.php");
-
 /*
- * Das objektorientierte und templatebasierte PHP-Normformular dient zur Erfassung, Verarbeitung und Validierung von Formulardaten.
+ * Das objektorientierte und templatebasierte PHP-Normformular dient zur Erfassung, Verarbeitung und Validierung von
+ * Formulardaten.
  *
- * Diese konkrete Klasse erweitert die abstrakte Basisklasse TNormform.
- * Weiters benötigt es die Klasse DBaccess für Datenbankzugriffe, die die Klasse FileAccess ersetzt
+ * Diese konkrete Klasse erweitert die abstrakte Basisklasse TNormform, die grundlegende Abläufe festlegt, die bei allen Webseiten, die darauf beruhen,
+ * gleich abgehandelt werden.
  *
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @package hm2
  * @version 2016
  */
+require("TNormform.class.php");
+
 class DemoTNormForm extends TNormForm {
     /**
      *  Konstanten für ein HTML Attribute <input name='vorname' id='vornamel' ...> --> <input name=EMAIL id=EMAIL ...> usw.
@@ -22,8 +22,9 @@ class DemoTNormForm extends TNormForm {
     const NACHRICHT = "nachricht";
 
     /**
-     * Übergibt die konkreten Inhalte an das Formularfeld. Dies sind einerseits die Bezeichnungen der Felder, die aus den
-     * Konstanten stammen, als auch eventuell vorauszufüllende Werte, die über die Funktion {@see param()} eingesetzt werden.
+     * Zeigt im Fehlerfall vom Nutzer bereits eingegebene Werte wieder an.
+     * Falls von einem vorigen Absenden noch Werte vorhanden sind, werden diese über die Funktion {@see autofillFormField()} wieder eingefügt,
+     * Die Namen der Input-Felder <input name=EMAIL> usw. werden zugewiesen.
      * Sie muss implementiert werden, weil sie in TNormform eine abstracte Klasse ist.
      */
     protected function prepareFormFields() {
@@ -36,7 +37,8 @@ class DemoTNormForm extends TNormForm {
     }
 
     /**
-     * Diese Methode gibt das Template aus. Sie muss implementiert werden, weil sie in TNormform eine abstracte Klasse ist.
+     * Diese Methode gibt das Template aus.
+     * Sie muss implementiert werden, weil sie in TNormform eine abstracte Klasse ist.
      */
     protected  function display()
     {
@@ -45,7 +47,10 @@ class DemoTNormForm extends TNormForm {
 
     /**
      * Überprüft, ob das Formularfeld korrekt ausgefüllt wurde. Die Kriterien werden in dieser Funktion anhand verschiedener
-     * if-Bedingungen selbst angegeben. Schlägt ein Kriterium fehl, erfolgt ein Eintrag in die Eigenschaft <pre>$errMsg</pre>.
+     * if-Bedingungen selbst angegeben. Schlägt ein Kriterium fehl, wird ein Eintrag in die Eigenschaft <pre>$errMsg</pre>
+     * geschrieben.
+     *
+     * Passende Funktionen für spezielle Eingabefelder finde sich in der Klasse Utilities.class.php.
      *
      * @return bool Gibt <pre>true</pre> zurück, wenn alle Kriterien erfüllt wurden, ansonsten <pre>false</pre>.
      */

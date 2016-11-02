@@ -1,8 +1,14 @@
 <?php
 /**
- * demo_nromform.php dient zur Demonstration der Abläufe in einem Webformular mit vorerst wenigen Eingabefeldern.
- * und nutzt dazu normform.inc.php, das grundlegende Abläufe festlegt, die bei allen Webseiten, die darauf beruhen,
+ * demo_normform.php dient zur Erfassung, Verarbeitung und Validierung von Formulardaten.
+ *
+ * Sie nutzt dazu normform.inc.php, das grundlegende Abläufe festlegt, die bei allen Webseiten, die darauf beruhen,
  * gleich abgehandelt werden.
+ *
+ * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
+ * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
+ * @package hm2
+ * @version 2016
  */
 require_once 'normform.inc.php';
 
@@ -18,10 +24,129 @@ define("NACHNAME", "nachname");
 define("NACHRICHT", "nachricht");
 
 /**
+ * Zeigt im Fehlerfall vom Nutzer bereits eingegebene Werte wieder an.
+ * Die Namen der Input-Felder <input name=EMAIL> usw. werden zugewiesen.
+ * Falls von einem vorigen Absenden noch Werte vorhanden sind, werden diese über die Funktion {@see autofill_formfield()} wieder eingefügt,
+ */
+function prepare_formfields() {
+// Als Objekteigenschaften in der OO-TNormform über $this->statusmsg von überall ansprechbar. Man benötigt in OO kein global.
+    global $errmsg;
+    global $script_name;
+    global $vorname_key;
+    global $nachname_key;
+    global $nachricht_key;
+    global $vorname_value;
+    global $nachname_value;
+    global $nachricht_value;
+    // Diese Anweisung verschwindet später im Smarty-Template
+    $script_name = $_SERVER["SCRIPT_NAME"];
+    // Die folgenden Werte werden später mit $smarty->assign() an das Template weitergegeben.
+    $vorname_key = VORNAME;
+    $nachname_key = NACHNAME;
+    $nachricht_key = NACHRICHT;
+// Falls das Formular im Gutfall erneut angezeigt werden soll, werden die zuvor eingegebenen Werte nicht mehr angezeigt und das Formular geleert
+    if (isset($errmsg) && count($errmsg !== 0)) {
+        $vorname_value = autofill_formfield(VORNAME);
+        $nachname_value = autofill_formfield(NACHNAME);
+        $nachricht_value = autofill_formfield(NACHRICHT);
+    } else {
+        $vorname_value = null;
+        $nachname_value = null;
+        $nachricht_value = null;
+    }
+}
+
+/**
+ * Erzeugt die HTML-Seite und zeigt sie an (Später werden hier Smarty-Templates eingesetzt)
+ */
+function display() {
+    global $statusmsg;
+    global $errlines;
+    global $script_name;
+    global $vorname_key;
+    global $nachname_key;
+    global $nachricht_key;
+    global $vorname_value;
+    global $nachname_value;
+    global $nachricht_value;
+
+    /**
+     *
+     * Hier wird HEREDOC-Syntax verwendet, um Strings zu bilden
+     *
+     * Soll das Formular im Gutfall wieder angezeigt werden?
+     * Wenn $statusmsg in process_form nicht befüllt wird, ist ein Fehler aufgetreten und das Formular wird angezeigt.
+     * Wenn die Verarbeitung fehlerfrei abgeschlossen werden konnte, wird das Formular nicht mehr angezeigt,
+     * sondern nur das Ergebnis, das in $statusmsg gespeichert ist.
+     * Falls das Formular auch im Gutfall angezeigt werden soll, diese if-Abfrage auskommentieren (else-Zweig weiter unten nicht vergessen)
+     * // durch /* ersetzen vor if- und else- Zeile
+     * und in @see process_form(), um die Seite erneut initial aufzurufen, die letzte Zeile der $statusmsg auskommentieren.
+
+     */
+
+//
+    if (strlen($statusmsg) === 0) {
+//*/
+        $form = <<<FORM
+<h1>Normformular</h1>
+<p>Bitte um Ihre Angaben, mit "*" markierte Felder müssen ausgefüllt werden.</p>
+$errlines
+<form action="$script_name" method="post">
+    <div>
+        <label for="$vorname_key"> * Vorname:</label>
+        <input type="text" name="$vorname_key" id="$vorname_key" value="$vorname_value">
+        <p></p>
+    </div>
+    <div>
+        <label for="$nachname_key"> * Nachname:</label>
+        <input type="text" name="$nachname_key" id="$nachname_key" value="$nachname_value"><br>
+        <p></p>
+    </div>
+    <div>
+        <label for="$nachricht_key">Nachricht:</label>
+        <textarea name="$nachricht_key" id="$nachricht_key" rows="5" cols="60">$nachricht_value</textarea>
+    </div>
+    <button type="submit">Absenden</button>
+</form>
+FORM;
+        //
+    } else {
+        $form = null;
+    }
+    //*/
+// Inhalt des templates header.tpl in OO-TNormform
+    $header = <<<HEADER
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>Normformular</title>
+    <link rel="stylesheet" href="css/proceduralstyles.css">
+</head>
+<body>
+HEADER;
+// Inhalt des templates indexMain.tpl in OO-TNormform
+    $main = <<<MAIN
+<main id="container">
+    $statusmsg
+    $form
+</main>
+MAIN;
+// Inhalt des templates footer.tpl in OO-TNormform
+    $footer = <<<FOOTER
+</body>
+</html>
+FOOTER;
+    echo $header;
+    echo $main;
+    echo $footer;
+}
+
+/**
  * Überprüft, ob das Formularfeld korrekt ausgefüllt wurde. Die Kriterien werden in dieser Funktion anhand verschiedener
  * if-Bedingungen selbst angegeben. Schlägt ein Kriterium fehl, wird ein Eintrag in das globale Array <pre>$errMsg</pre>
  * geschrieben.
- * Passende Funktionen für spezielle Eingabefelder finden sie in utilities.inc.php
+ * Passende Funktionen für spezielle Eingabefelder finden sich in utilities.inc.php
  *
  * @global array $errMsg Beinhaltet mögliche Fehlermeldungen, die bei der Validierung aufgetreten sind und später
  * mit @see print_errmsg() von normform.inc.php ausgegeben werden.
@@ -63,127 +188,6 @@ function process_form() {
      exit;
     //*/
 }
-
-/**
- * Übernimmt die Ausgabe im Fehlerfall vom Nutzer bereits eingegebene Werte wieder anzuzeigen.
- * Die Namen der Input-Felder <input name=EMAIL> werden zugewiesen.
- * Falls von einem vorigen Absenden noch Werte vorhanden sind, werden diese über die Funktion {@see autofill_formfield()} wieder eingefügt,
- */
-function prepare_formfields() {
-// Als Objekteigenschaften in der OO-TNormform über $this->statusmsg von überall ansprechbar. Man benötigt in OO kein global.
-    global $errmsg;
-    global $script_name;
-    global $vorname_key;
-    global $nachname_key;
-    global $nachricht_key;
-    global $vorname_value;
-    global $nachname_value;
-    global $nachricht_value;
-    // Diese Anweisung verschwindet später im Smarty-Template
-    $script_name = $_SERVER["SCRIPT_NAME"];
-    // Die folgenden Werte werden später mit $smarty->assign() an das Template weitergegeben.
-    $vorname_key = VORNAME;
-    $nachname_key = NACHNAME;
-    $nachricht_key = NACHRICHT;
-// Falls das Formular im Gutfall erneut angezeigt werden soll, werden die zuvor eingegebenen Werte nicht mehr angezeigt und das Formular geleert
-    if (isset($errmsg) && count($errmsg !== 0)) {
-        $vorname_value = autofill_formfield(VORNAME);
-        $nachname_value = autofill_formfield(NACHNAME);
-        $nachricht_value = autofill_formfield(NACHRICHT);
-    } else {
-        $vorname_value = null;
-        $nachname_value = null;
-        $nachricht_value = null;
-    }
-}
-
-/**
- * Erzeugt die HTML-Seite und zeigt sie an
- */
-function display() {
-    global $statusmsg;
-    global $errlines;
-    global $script_name;
-    global $vorname_key;
-    global $nachname_key;
-    global $nachricht_key;
-    global $vorname_value;
-    global $nachname_value;
-    global $nachricht_value;
-
-/**
- *
- * Hier wird HEREDOC-Syntax verwendet, um Strings zu bilden
- *
- * Soll das Formular im Gutfall wieder angezeigt werden?
- * Wenn $statusmsg in process_form nicht befüllt wird, ist ein Fehler aufgetreten und das Formular wird angezeigt.
- * Wenn die Verarbeitung fehlerfrei abgeschlossen werden konnte, wird das Formular nicht mehr angezeigt,
- * sondern nur das Ergebnis, das in $statusmsg gespeichert ist.
- * Falls das Formular auch im Gutfall angezeigt werden soll, diese if-Abfrage auskommentieren (else-Zweig weiter unten nicht vergessen)
- * // durch /* ersetzen vor if- und else- Zeile
- * und in @see process_form(), um die Seite erneut initial aufzurufen, die letzte Zeile der $statusmsg auskommentieren.
-
- */
-
-//
- if (strlen($statusmsg) === 0) {
-//*/
-        $form = <<<FORM
-<h1>Normformular</h1>
-<p>Bitte um Ihre Angaben, mit "*" markierte Felder müssen ausgefüllt werden.</p>
-$errlines
-<form action="$script_name" method="post">
-    <div>
-        <label for="$vorname_key"> * Vorname:</label>
-        <input type="text" name="$vorname_key" id="$vorname_key" value="$vorname_value">
-        <p></p>
-    </div>
-    <div>
-        <label for="$nachname_key"> * Nachname:</label>
-        <input type="text" name="$nachname_key" id="$nachname_key" value="$nachname_value"><br>
-        <p></p>
-    </div>
-    <div>
-        <label for="$nachricht_key">Nachricht:</label>
-        <textarea name="$nachricht_key" id="$nachricht_key" rows="5" cols="60">$nachricht_value</textarea>
-    </div>
-    <button type="submit">Absenden</button>
-</form>
-FORM;
-    //
-    } else {
-        $form = null;
-    }
-    //*/
-// Inhalt des templates header.tpl in OO-TNormform
-    $header = <<<HEADER
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <title>Normformular</title>
-    <link rel="stylesheet" href="css/proceduralstyles.css">
-</head>
-<body>
-HEADER;
-// Inhalt des templates indexMain.tpl in OO-TNormform
-    $main = <<<MAIN
-<main id="container">
-    $statusmsg
-    $form
-</main>
-MAIN;
-// Inhalt des templates footer.tpl in OO-TNormform
-    $footer = <<<FOOTER
-</body>
-</html>
-FOOTER;
-    echo $header;
-    echo $main;
-    echo $footer;
-}
-
-
 
 /**
 * Hauptaufruf - dies ist der Startpunkt des Normformular-Ablaufs.
