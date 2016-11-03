@@ -13,7 +13,7 @@
     <div class="Header Header--small">
         <div class="Header-titles">
             <h1 class="Header-title"><a href="index.php">{$smarty.const.ICON}{$smarty.const.TITLE}</a></h1>
-            <p class="Header-subtitle">for DAB/DBA Exercises</p>
+            <p class="Header-subtitle">{$smarty.const.SUBTITLE}</p>
         </div>
         <div class="Header-logout">
             {if isset($smarty.session.ISLOGGEDIN)}<span> Your are Logged In as {if isset($smarty.session.first_name)}{$smarty.session.first_name}{/if} {if isset($smarty.session.last_name)}{$smarty.session.last_name}{/if} : <a href="logout.php">Logout</a></span> {else}<span> <a href="login.php">Login</a></span> {/if}<span></span>
