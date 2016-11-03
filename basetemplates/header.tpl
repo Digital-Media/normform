@@ -12,7 +12,7 @@
 <header class="Site-header">
     <div class="Header Header--small">
         <div class="Header-titles">
-            <h1 class="Header-title"><a href="index.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i>{$smarty.const.TITLE}</a></h1>
+            <h1 class="Header-title"><a href="index.php">{$smarty.const.ICON}{$smarty.const.TITLE}</a></h1>
             <p class="Header-subtitle">for DAB/DBA Exercises</p>
         </div>
         <div class="Header-logout">
