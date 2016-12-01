@@ -158,7 +158,7 @@ abstract class TNormForm {
      */
     protected function autofillFormField($name)
     {
-        return isset($_POST[$name]) ? Utilities::sanitizeFilter($_POST[$name]) : "";
+        return isset($_POST[$name]) ? Utilities::sanitizeFilter(trim($_POST[$name])) : "";
     }
 
 }
