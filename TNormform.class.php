@@ -1,16 +1,19 @@
 <?php
 /**
- * Einbinden der define-Angaben für die TNormform-Klasse
- */
-require_once 'defines.inc.php';
-/**
  * Einbinden der Klasse mit den statischen Hilfsfunktionen
  */
 require_once 'Utilities.class.php';
 /**
- * siehe defines.inc.php für gültigen Pfad
+ * Einbinden von Smarty, das mit der TNormform mit ausgeliefert wird
+ * Wer seine eigene Smarty-Version woanders installieren möchte, muss den Pfad entsprechend anpassen, ansonsten Ordner smarty mit der eigenen Version überschreiben
  */
-require_once SMARTY_CLASS_PATH;
+require_once 'smarty/libs/Smarty.class.php';
+/**
+ * Einbinden des Error-Handlings. Für Testzwecke kann eine Division durch 0 einkommentiert werden.
+ */
+require_once 'error_handling.php';
+// Die folgende Zeile einkommentieren für das Testen von error_handling.php
+//$x=0/0;
 
 
 /**
@@ -83,7 +86,7 @@ abstract class TNormForm {
      * erzeugt ein neues Smarty-Objekt
      * Legt die Pfade zu den gespeicherten Templates und compilierten Templates fest
      */
-    public function __construct($template_dir=SMARTY_TEMPLATE_DIR, $compile_dir=SMARTY_COMPILE_DIR)
+    public function __construct($template_dir='templates', $compile_dir='templates_c')
     {
         $this->errMsg = array();
         $this->statusMsg = "";

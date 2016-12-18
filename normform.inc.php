@@ -36,6 +36,13 @@
 require_once 'utilities.inc.php';
 
 /**
+ * Einbinden des Error-Handlings. Für Testzwecke kann eine Division durch 0 einkommentiert werden.
+ */
+require_once 'error_handling.php';
+// Die folgende Zeile einkommentieren für das Testen von error_handling.php
+//$x=0/0;
+
+/**
  * Die Hauptfunktion des Normformulars. Hier befindet sich der Entscheidungsbaum, der überprüft, ob es sich um einen
  * initialen Aufruf oder um ein abgesendetes Formular handelt (mittels {@see is_form_submission()}) und entweder das
  * Formular anzeigt (@see show_form()}) oder zunächst das Formular validiert {@see is_valid_form()} und bei

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{$smarty.const.TITLE}</title>
+    <title>Demo TNormform</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -62,13 +62,9 @@
 <footer class="Site-footer">
     <div class="Footer Footer--small">
         <p class="Footer-credits">Created and maintained by <a href="mailto:martin.harrer@fh-hagenberg.at">Martin Harrer</a> and <a href="mailto:wolfgang.hochleitner@fh-hagenberg.at">Wolfgang Hochleitner</a>.</p>
-        <p class="Footer-version"><i class="fa fa-shopping-bag" aria-hidden="true"></i>TNormfrom Demo Version 2016</p>
+        <p class="Footer-version"><i class="fa fa-shopping-bag" aria-hidden="true"></i>TNormform Demo Version 2016</p>
+        <p class="Footer-version">Uses: <a href="http://www.smarty.net/">Smarty Templates</a></p>
     </div>
 </footer>
-<script src="../../js/lightbox.min.js" type="text/javascript"></script>
-<script>
-    var lightbox = new Lightbox();
-    lightbox.load();
-</script>
 </body>
 </html>
