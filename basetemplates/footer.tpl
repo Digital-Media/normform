@@ -5,6 +5,7 @@
         <p class="Footer-version">Uses: <a href="http://www.smarty.net/">Smarty Templates</a></p>
     </div>
 </footer>
+<script src="{$smarty.const.NORM_DIR}js/lightbox.min.js" type="text/javascript"></script>
 <script>
     var lightbox = new Lightbox();
     lightbox.load();
