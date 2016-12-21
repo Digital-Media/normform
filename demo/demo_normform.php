@@ -29,7 +29,7 @@ define("NACHRICHT", "nachricht");
  * Falls von einem vorigen Absenden noch Werte vorhanden sind, werden diese über die Funktion {@see autofill_formfield()} wieder eingefügt,
  */
 function prepare_formfields() {
-// Als Objekteigenschaften in der OO-TNormform über $this->statusmsg von überall ansprechbar. Man benötigt in OO kein global.
+// Als Objekteigenschaften in der OO-TNormform über $this->errmsg usw. von überall ansprechbar. Man benötigt in OO kein global.
     global $errmsg;
     global $script_name;
     global $vorname_key;
