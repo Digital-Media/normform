@@ -2,8 +2,8 @@
 /**
  * @var bool DEBUG gibt an, ob Fehlermeldungen im Browser ausgegeben werden sollen (TRUE) oder mit error_log() (FALSE).
  */
-//define("DEBUG",TRUE); // Fehler im Browser ausgeben
-define("DEBUG",FALSE); // Fehler mit error_log() schreiben und auf errorpage.html umlenken
+define("DEBUG",TRUE); // Fehler im Browser ausgeben
+//define("DEBUG",FALSE); // Fehler mit error_log() schreiben und auf errorpage.html umlenken
 /**
  * comment set_error_handler() to see only html_errors.
  * uncomment set_error_handler to see full debug_page.
