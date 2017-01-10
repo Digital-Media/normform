@@ -19,9 +19,11 @@
     padding: 0.5em 0.75em;
 }
 
+/* comment fixes problem with textarea-fields, that had no left border. need a different fix for double borders between labels and input-fields
 .InputCombo-field {
     border-left: 0;
 }
+*/
 
 .InputCombo-unstyled {
     margin-left: 1em;

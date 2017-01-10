@@ -5,7 +5,9 @@
 require_once 'Utilities.class.php';
 /**
  * Einbinden von Smarty, das mit der TNormform mit ausgeliefert wird
- * Wer seine eigene Smarty-Version woanders installieren möchte, muss den Pfad entsprechend anpassen, ansonsten Ordner smarty mit der eigenen Version überschreiben
+ * Wer seine eigene Smarty-Version woanders installieren möchte, ev sogar außerhalb von DocumentRoot, muss den Pfad entsprechend anpassen, ansonsten Ordner smarty mit der eigenen Version überschreiben
+ * $path = 'c:/xampp/php/smarty/libs/';
+ * set_include_path(get_include_path() . PATH_SEPARATOR . $path);
  */
 require_once 'smarty/libs/Smarty.class.php';
 /**

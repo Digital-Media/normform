@@ -11,7 +11,7 @@
 }
 
 .Grid-full {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 1em);
     margin: 1em 0 0 1em;
 }
 

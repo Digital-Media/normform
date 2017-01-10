@@ -185,7 +185,7 @@ class Utilities {
      * Führt ein Withelisting für die angegebenen Zeichen durch und prüft auf Mindest- und Maximallänge
      * Blank ist ausgeschlossen. Es wird also erzwunden, dass nur ein Suchbegriff eingegeben werden kann.
      * Das macht Sinn, weil LIKE im DAB-Übungsbeispiel eingesetzt wird und keine Volltextsuche.
-     * Übungsbeispiel für LIKE!!! In der Praxis würde man wohl auf Lucene setzen oder die eigene Seite von Google durchsuchen lassen
+     * Übungsbeispiel für LIKE!!! In der Praxis würde man wohl auf Lucene oder ElasticSearch setzen oder die eigene Seite von Google durchsuchen lassen
      *
      * @param string $string Zu prüfender String
      * @param int $min Minimale Länge des Strings. Default = 0
