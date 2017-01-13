@@ -2,13 +2,14 @@
 /**
  * @var bool DEBUG gibt an, ob Fehlermeldungen im Browser ausgegeben werden sollen (TRUE) oder mit error_log() (FALSE).
  */
-define("DEBUG",TRUE); // Fehler im Browser ausgeben
-//define("DEBUG",FALSE); // Fehler mit error_log() schreiben und auf errorpage.html umlenken
+define("DEBUG",TRUE); // Fehler im Browser ausgeben. Diese Zeile einkommentieren für eine Entwicklungsumgebung
+//define("DEBUG",FALSE); // Fehler mit error_log() schreiben und auf errorpage.html umlenken. Diese Zeile einkommentieren für eine Produktivumgebung
 /**
  * comment set_error_handler() to see only html_errors.
  * uncomment set_error_handler to see full debug_page.
  */
 set_error_handler('my_error_handler');
+// Alle ini_set() entfernen in einer Produktivumgebung
 ini_set('error_reporting', 32767);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
