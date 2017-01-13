@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{$smarty.const.CSS_DIR}/main.css">
-    <script src="/imar/normform/js/jquery-3.1.1.min.js"></script>
+    <script src="/hm2ue/imar/normform/js/jquery-3.1.1.min.js"></script>
 </head>
 <body class="Site">
 <header class="Site-header">
