@@ -26,21 +26,24 @@
                 <div class="Status">
                     <p class="Status-message"><i class="fa fa-check"></i>{$statusMessage}</p>
                 </div>
-            {/if}            <form action="{$smarty.server.SCRIPT_NAME}" method="post" enctype="multipart/form-data">
-                <div class="InputCombo Grid-full">
-                    <label for="{$vornameKey}" class="InputCombo-label">Vorname:</label>
-                    <input type="text" id="{$vornameKey}" name="{$vornameKey}" value="{if isset($vornameValue)}{$vornameValue}{/if}" class="InputCombo-field">
-                </div>
-                <div class="InputCombo Grid-full">
-                    <label for="{$nachnameKey}" class="InputCombo-label">Nachname:</label>
-                    <input type="text" id="{$nachnameKey}" name="{$nachnameKey}" value="{if isset($nachnameValue)}{$nachnameValue}{/if}" class="InputCombo-field">
-                </div>
-                <div class="InputCombo Grid-full">
-                    <label for="{$nachrichtKey}" class="InputCombo-label">Nachricht:</label>
-                    <textarea name="{$nachrichtKey}" id="{$nachrichtKey}" rows="5" cols="60">{if isset($nachrichtValue)}{$nachrichtValue}{/if}</textarea>
-                </div>
-                <div class="Grid-full">
-                    <button type="submit" class="Button">Send</button>
+            {/if}
+            <form action="{$smarty.server.SCRIPT_NAME}" method="post" enctype="multipart/form-data">
+                <div class="Grid Grid--gutters">
+                    <div class="InputCombo Grid-full">
+                        <label for="{$vornameKey}" class="InputCombo-label">Vorname:</label>
+                        <input type="text" id="{$vornameKey}" name="{$vornameKey}" value="{if isset($vornameValue)}{$vornameValue}{/if}" class="InputCombo-field">
+                    </div>
+                    <div class="InputCombo Grid-full">
+                        <label for="{$nachnameKey}" class="InputCombo-label">Nachname:</label>
+                        <input type="text" id="{$nachnameKey}" name="{$nachnameKey}" value="{if isset($nachnameValue)}{$nachnameValue}{/if}" class="InputCombo-field">
+                    </div>
+                    <div class="InputCombo Grid-full">
+                        <label for="{$nachrichtKey}" class="InputCombo-label">Nachricht:</label>
+                        <textarea name="{$nachrichtKey}" id="{$nachrichtKey}" rows="5" cols="60">{if isset($nachrichtValue)}{$nachrichtValue}{/if}</textarea>
+                    </div>
+                    <div class="Grid-full">
+                        <button type="submit" class="Button">Send</button>
+                    </div>
                 </div>
             </form>
         </div>
