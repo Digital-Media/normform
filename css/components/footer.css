@@ -16,7 +16,8 @@
     border-bottom: 1px solid rgb(233, 233, 233);
 }
 
-.Footer-version i:after {
+.Footer-version i:after,
+.Footer-credits i:after{
     content: "\00a0";
 }
 

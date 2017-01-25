@@ -5,7 +5,7 @@
     <title>Demo TNormform</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body class="Site">
@@ -65,8 +65,8 @@
 <footer class="Site-footer">
     <div class="Footer Footer--small">
         <p class="Footer-credits">Created and maintained by <a href="mailto:martin.harrer@fh-hagenberg.at">Martin Harrer</a> and <a href="mailto:wolfgang.hochleitner@fh-hagenberg.at">Wolfgang Hochleitner</a>.</p>
-        <p class="Footer-version"><i class="fa fa-shopping-bag" aria-hidden="true"></i>TNormform Demo Version 2016</p>
-        <p class="Footer-version">Uses: <a href="http://www.smarty.net/">Smarty Templates</a></p>
+        <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i>TNormform Demo Version 2017</p>
+        <p class="Footer-credits"><i class="fa fa-github" aria-hidden="true"></i><a href="https://github.com/Digital-Media/normform">GitHub</a></p>
     </div>
 </footer>
 </body>
