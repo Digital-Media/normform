@@ -39,7 +39,7 @@
                     </div>
                     <div class="InputCombo Grid-full">
                         <label for="{$nachrichtKey}" class="InputCombo-label">Nachricht:</label>
-                        <textarea name="{$nachrichtKey}" id="{$nachrichtKey}" rows="5" cols="60">{if isset($nachrichtValue)}{$nachrichtValue}{/if}</textarea>
+                        <textarea name="{$nachrichtKey}" id="{$nachrichtKey}" class="InputCombo-field">{if isset($nachrichtValue)}{$nachrichtValue}{/if}</textarea>
                     </div>
                     <div class="Grid-full">
                         <button type="submit" class="Button">Send</button>

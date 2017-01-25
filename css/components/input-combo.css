@@ -1,6 +1,6 @@
 .InputCombo {
     display: flex;
-    align-items: center;
+    align-items: stretch;
 }
 
 .InputCombo-label {
@@ -12,29 +12,22 @@
     flex: 1;
 }
 
+textarea.InputCombo-field {
+    resize: vertical;
+    min-height: 7.5em;
+}
+
 .InputCombo-label,
-.InputCombo-field,
-.InputCombo-button {
+.InputCombo-field {
     border: 1px solid rgb(0, 102, 102);
     padding: 0.5em 0.75em;
 }
 
-/* comment fixes problem with textarea-fields, that had no left border. need a different fix for double borders between labels and input-fields
 .InputCombo-field {
     border-left: 0;
 }
-*/
 
 .InputCombo-unstyled {
     margin-left: 1em;
     flex: none;
 }
-
-/*.InputCombo-button {
-    background-color: rgb(0, 102, 102);
-    color: rgb(245, 245, 245);
-}
-
-.InputCombo-button:hover {
-    color: rgb(233, 233, 233);
-}*/
