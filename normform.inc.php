@@ -22,7 +22,7 @@
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @package hm2
- * @version 2016
+ * @version 2017
  */
 
 /**
@@ -64,7 +64,7 @@ function normform() {
  * Übertragungsmethode, beim Absenden des Formulars wird POST verwendet.
  * @return bool Gibt <pre>true</pre> zurück, wenn es sich um ein abgesendets Formular handelt, sonst <pre>false</pre>.
  */
-function is_form_submission() {
+function is_form_submission(): bool {
     return ($_SERVER["REQUEST_METHOD"] === "POST");
 }
 
@@ -74,7 +74,7 @@ function is_form_submission() {
  * @param string $name Der Name des zu überprüfenden Formularfelds.
  * @return bool Gibt <pre>true</pre> zurück, falls das Formularfeld leer war, sonst <pre>false</pre>.
  */
-function is_empty_postfield($name) {
+function is_empty_postfield($name): bool {
     if (isset($_POST[$name])) {
         return (strlen(trim($_POST[$name])) === 0);
     }
@@ -103,7 +103,7 @@ function show_form() {
  * @param string $name Der Name des Formularfelds, das überprüft werden soll.
  * @return string Der vorausgefüllte Wert des Formularfelds oder ein leerer String (falls es zuvor noch leer war).
  */
-function autofill_formfield($name) {
+function autofill_formfield(string $name): string {
     return isset($_POST[$name]) ? trim(sanitize_filter($_POST[$name])) : "";
 }
 

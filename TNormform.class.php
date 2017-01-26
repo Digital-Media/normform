@@ -41,7 +41,7 @@ require_once 'error_handling.php';
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @package hm2
- * @version 2016
+ * @version 2017
  */
 abstract class TNormForm {
     /**
@@ -58,7 +58,7 @@ abstract class TNormForm {
      * Abstrakte Methode zur Validierung des Formulars. Muss in der abgeleiteten Klasse implementiert werden.
      * @return bool Gibt <pre>true</pre> zurück, wenn alle Kriterien erfüllt wurden, ansonsten <pre>false</pre>.
      */
-    abstract protected function isValid();
+    abstract protected function isValid(): bool;
 
     /**
      * Abstrakte Methode zur Verarbeitung der Eingaben. Muss in der abgeleiteten Klasse implementiert werden.
@@ -81,16 +81,14 @@ abstract class TNormForm {
     protected $smarty;
 
     /**
-     * Erzeugt ein neues Normform-Objekt
-     *
-     * löscht bzw. initialisiert das Array mit den Fehlermeldungen
-     * löscht bzw. initialisiert die Statusmeldung
-     * erzeugt ein neues Smarty-Objekt
-     * Legt die Pfade zu den gespeicherten Templates und compilierten Templates fest
+     * Erzeugt ein neues Normform-Objekt.
+     * Löscht bzw. initialisiert das Array mit den Fehlermeldungen, löscht bzw. initialisiert die Statusmeldung.
+     * Erzeugt weiters ein neues Smarty-Objekt und legt die Pfade zu den gespeicherten Templates und compilierten Templates fest.
+     * @param string $template_dir Der Pfad für das Template-Verzeichnis.
+     * @param string @compile_dir Der Pfad für die kompilierten Templates.
      */
-    public function __construct($template_dir='templates', $compile_dir='templates_c')
-    {
-        $this->errMsg = array();
+    public function __construct(string $template_dir = 'templates', string $compile_dir = 'templates_c') {
+        $this->errMsg = [];
         $this->statusMsg = "";
         $this->smarty = new Smarty();
         $this->smarty->template_dir = $template_dir;
@@ -107,8 +105,7 @@ abstract class TNormForm {
      * Wird in @see processForm() eine Weiterleitung header(Location: ... ) auf eine andere Seite eingeleitet wird das danach folgende
      * @see printForm() nicht erreicht. Umkehrschluss: Umleitungen haben in @see processForm() zu erfolgen.
      */
-    public function normForm()
-    {
+    public function normForm() {
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
                 $this->process();
@@ -123,8 +120,7 @@ abstract class TNormForm {
      * Übertragungsmethode, beim Absenden des Formulars wird POST verwendet.
      * @return bool Gibt <pre>true</pre> zurück, wenn es sich um ein abgesendets Formular handelt, sonst <pre>false</pre>.
      */
-    protected function isFormSubmission()
-    {
+    protected function isFormSubmission(): bool {
         return ($_SERVER["REQUEST_METHOD"] === "POST");
     }
 
@@ -134,8 +130,7 @@ abstract class TNormForm {
      * @param string $index Der Name des zu überprüfenden Formularfelds <input name='$index' ... >.
      * @return bool Gibt <pre>true</pre> zurück, falls das Formularfeld leer war, sonst <pre>false</pre>.
      */
-    protected function isEmptyPostField($index)
-    {
+    protected function isEmptyPostField(string $index): bool {
         return (strlen(trim($_POST[$index])) === 0);
     }
 
@@ -144,8 +139,7 @@ abstract class TNormForm {
      * Template übergeben, in der Methode (@link prepareFormFields()) wird der Formularfeldinhalt vorbereitet und an
      * das Template übergeben. Das Template wird mit @see display() schließlich angezeigt.
      */
-    protected function show()
-    {
+    protected function show() {
         $this->prepareFormFields();
         $this->smarty->assign("errorMessages", $this->errMsg);
         $this->smarty->assign("statusMessage", $this->statusMsg);
@@ -161,9 +155,7 @@ abstract class TNormForm {
      * @param string $name Der Name des Formularfelds, das überprüft werden soll.
      * @return string Der vorausgefüllte Wert des Formularfelds oder ein leerer String (falls es zuvor noch leer war).
      */
-    protected function autofillFormField($name)
-    {
+    protected function autofillFormField(string $name) {
         return isset($_POST[$name]) ? Utilities::sanitizeFilter(trim($_POST[$name])) : "";
     }
-
 }

@@ -2,7 +2,7 @@
 /**
  * @var bool DEBUG gibt an, ob Fehlermeldungen im Browser ausgegeben werden sollen (TRUE) oder mit error_log() (FALSE).
  */
-define("DEBUG",TRUE); // Fehler im Browser ausgeben. Diese Zeile einkommentieren für eine Entwicklungsumgebung
+define("DEBUG", TRUE); // Fehler im Browser ausgeben. Diese Zeile einkommentieren für eine Entwicklungsumgebung
 //define("DEBUG",FALSE); // Fehler mit error_log() schreiben und auf errorpage.html umlenken. Diese Zeile einkommentieren für eine Produktivumgebung
 /**
  * comment set_error_handler() to see only html_errors.
@@ -16,7 +16,7 @@ ini_set('display_startup_errors', '1');
 ini_set('track_errors', '1');
 ini_set('html_errors', '1');
 
-function my_error_handler ($errno, $error, $file, $line, $context) {
+function my_error_handler($errno, $error, $file, $line, $context) {
     ob_start();
     var_dump($context);
     $out1 = ob_get_contents();
@@ -35,7 +35,7 @@ function my_error_handler ($errno, $error, $file, $line, $context) {
     <meta charset="UTF-8">
     <title>DEBUG Error Page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div>
@@ -64,7 +64,8 @@ ERROR;
     if (DEBUG) {
         print $debugpage;
         exit;
-    } else {
+    }
+    else {
         error_log($debugpage . $out1);
         header("Location: errorpage.html");
         exit;

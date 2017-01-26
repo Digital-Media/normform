@@ -8,7 +8,7 @@
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @package hm2
- * @version 2016
+ * @version 2017
  */
 require_once '../normform.inc.php';
 
@@ -45,11 +45,12 @@ function prepare_formfields() {
     $nachname_key = NACHNAME;
     $nachricht_key = NACHRICHT;
 // Falls das Formular im Gutfall erneut angezeigt werden soll, werden die zuvor eingegebenen Werte nicht mehr angezeigt und das Formular geleert
-    if (isset($errmsg) && count($errmsg !== 0)) {
+    if (isset($errmsg) && count($errmsg) !== 0) {
         $vorname_value = autofill_formfield(VORNAME);
         $nachname_value = autofill_formfield(NACHNAME);
         $nachricht_value = autofill_formfield(NACHRICHT);
-    } else {
+    }
+    else {
         $vorname_value = null;
         $nachname_value = null;
         $nachricht_value = null;
@@ -81,7 +82,6 @@ function display() {
      * Falls das Formular auch im Gutfall angezeigt werden soll, diese if-Abfrage auskommentieren (else-Zweig weiter unten nicht vergessen)
      * // durch /* ersetzen vor if- und else- Zeile
      * und in @see process_form(), um die Seite erneut initial aufzurufen, die letzte Zeile der $statusmsg auskommentieren.
-
      */
 
 //
@@ -110,7 +110,8 @@ $errlines
 </form>
 FORM;
         //
-    } else {
+    }
+    else {
         $form = null;
     }
     //*/
@@ -152,7 +153,7 @@ FOOTER;
  * mit @see print_errmsg() von normform.inc.php ausgegeben werden.
  * @return bool Gibt <pre>true</pre> zurück, wenn alle Kriterien erfüllt wurden, ansonsten <pre>false</pre>.
  */
-function is_valid_form() {
+function is_valid_form(): bool {
     global $errmsg;
 
     if (is_empty_postfield(VORNAME)) {
@@ -172,7 +173,7 @@ function is_valid_form() {
 function process_form() {
     global $statusmsg;
     $script_name = $_SERVER["SCRIPT_NAME"];
-    $statusmsg ='<h1>Normformular Resultat</h1>';
+    $statusmsg = '<h1>Normformular Resultat</h1>';
     foreach ($_POST as $k => $v) {
         $statusmsg .= "<b>$k :</b><span>" . nl2br(sanitize_filter($v)) . "</span><br>" . PHP_EOL;
     }
@@ -190,6 +191,6 @@ function process_form() {
 }
 
 /**
-* Hauptaufruf - dies ist der Startpunkt des Normformular-Ablaufs.
-*/
+ * Hauptaufruf - dies ist der Startpunkt des Normformular-Ablaufs.
+ */
 normform();

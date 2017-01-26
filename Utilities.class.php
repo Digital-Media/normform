@@ -1,14 +1,15 @@
 <?php
+
 class Utilities {
-   /**
-    * Diese Klasse bietet nur statische (static) Hilfsfunktionen, die von überall (public) aufgerufen werden können
-    * Usage: Utilities::method($param, ...);
-    *
-    * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
-    * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
-    * @package hm2, dba
-    * @version 2016
-    */
+    /**
+     * Diese Klasse bietet nur statische (static) Hilfsfunktionen, die von überall (public) aufgerufen werden können
+     * Usage: Utilities::method($param, ...);
+     *
+     * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
+     * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
+     * @package hm2, dba
+     * @version 2017
+     */
 
     /**
      * Umleitung auf eine Seite, die im gleichen Verzeichnis gespeichert ist
@@ -19,8 +20,8 @@ class Utilities {
      * @var string $page ist optional und gibt die Seite an, auf die umgelenkt werden soll.
      *                   Für die Standardabläufe für die geschützen Seiten ist $page leer.
      */
-    public static function redirectTo($page = null) {
-        $redirect=FALSE;
+    public static function redirectTo(string $page = null) {
+        $redirect = FALSE;
         // Falls keine spezielle Seite in $page übergeben wurde, wird das aufrufende Script verwendet
         if (!isset($page)) {
             $page = basename($_SERVER['SCRIPT_NAME']);
@@ -30,54 +31,59 @@ class Utilities {
             case 'logout.php':
                 // Nach dem Ausloggen wird die Startseite angezeigt
                 $page = INDEX;
-                $redirect=true;
+                $redirect = true;
                 break;
             case 'login.php':
-                if (isset($_SESSION[ISLOGGEDIN]) && strcmp($_SESSION[ISLOGGEDIN], sha1( $_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"] . $_SESSION['iduser'])) === 0) {
+                if (isset($_SESSION[ISLOGGEDIN]) && strcmp($_SESSION[ISLOGGEDIN], sha1($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"] . $_SESSION['iduser'])) === 0) {
                     if (isset($_SESSION['redirect_url'])) {
                         // User wurde von einer geschützten Seite auf Login umgelenkt
                         $page = $_SESSION['redirect_url'];
                         //unset ($_SESSION['redirect_url']);
-                    } else {
+                    }
+                    else {
                         // User ist bereits eingeloggt und versucht das ein zweites Mal: Umlenkung auf Startseite.
                         $page = INDEX;
                     }
-                    $redirect=true;
-                } elseif (basename($_SERVER['SCRIPT_NAME']) === REGISTER) {
+                    $redirect = true;
+                }
+                elseif (basename($_SERVER['SCRIPT_NAME']) === REGISTER) {
                     $page = LOGIN;
                     $redirect = true;
                 }
                 break;
             // Seite ist unter den durch Login geschützten Seiten
-            case in_array($page, REDIRECT_PAGES ):
-                if (!isset($_SESSION[ISLOGGEDIN]) || strcmp($_SESSION[ISLOGGEDIN], sha1( $_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"] . $_SESSION['iduser'])) !== 0) {
+            case in_array($page, REDIRECT_PAGES):
+                if (!isset($_SESSION[ISLOGGEDIN]) || strcmp($_SESSION[ISLOGGEDIN], sha1($_SERVER["REMOTE_ADDR"] . $_SERVER["HTTP_USER_AGENT"] . $_SESSION['iduser'])) !== 0) {
                     // User ist noch nicht eingeloggt, daher zuerst zur Login-Seite und merken von welcher Seite man gekommen ist
                     $_SESSION['redirect_url'] = basename($_SERVER['SCRIPT_NAME']);
                     $page = LOGIN;
                     $redirect = true;
-                } else {
+                }
+                else {
                     if (!(strcmp(basename($_SERVER['SCRIPT_NAME']), $page) === 0)) {
                         // User ist eingeloggt und wird auf eine weitere geschützte Seite weitergeleitet (z.B. von mycart.php auf checkout.php)
                         $redirect = true;
-                    } else {
+                    }
+                    else {
                         // Jemand leitet ein Script auf sich selbst um, wir wollen aber keine Endlosschleife produzieren
                         $redirect = false;
                     }
                 }
-                    break;
+                break;
             default:
                 // Keine Umlenkung notwendig oder bereits eingeloggt
-                $redirect=FALSE;
+                $redirect = FALSE;
         }
         if ($redirect) {
             if (isset($_SERVER["HTTPS"]) && strcmp($_SERVER["HTTPS"], "on") === 0) {
-                $schema="https";
-            } else {
-                $schema="http";
+                $schema = "https";
             }
-            $host  = $_SERVER['SERVER_NAME'];
+            else {
+                $schema = "http";
+            }
+            $host = $_SERVER['SERVER_NAME'];
             $port = $_SERVER['SERVER_PORT'];
-            $uri   = trim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+            $uri = trim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
             $location = "Location: $schema://$host:$port/$uri/$page";
             // Umlenkung wird hier schon auf https durchgeführt, damit es nicht zu einer zweiten Umlenkung in session.inc.php kommt
             header("$location");
@@ -95,8 +101,8 @@ class Utilities {
      *
      * @return string Der gefilterte String, der gefahrlos weiterverwendet werden kann.
      */
-    public static function sanitizeFilter($str) {
-        return htmlspecialchars($str, ENT_QUOTES | ENT_HTML5 );
+    public static function sanitizeFilter(string $str): string {
+        return htmlspecialchars($str, ENT_QUOTES | ENT_HTML5);
     }
 
     /**
@@ -110,12 +116,13 @@ class Utilities {
      *
      * @return bool TRUE falls $email dem email-Pattern entspricht. FALSE falls es keine Entsprechung gibt
      */
-    public static function isEmail($string) {
+    public static function isEmail(string $string): bool {
         // $email_pattern = "/^[\w.-]+@[\w.-]+\.[A-Za-z]{2,6}$/"; // easy pattern
         $email_pattern = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/"; // more complicate pattern
         if (preg_match($email_pattern, $string)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -136,11 +143,12 @@ class Utilities {
      *
      * @return bool true falls der String dem gegebenen Pattern entspricht. Ansonsten false
      */
-    public static function isPhone($string) {
-        $phone_pattern= "/^(?!(?:\d*-){5,})(?!(?:\d* ){5,})\+?[\d- ]+$/";
+    public static function isPhone(string $string): bool {
+        $phone_pattern = "/^(?!(?:\d*-){5,})(?!(?:\d* ){5,})\+?[\d- ]+$/";
         if (preg_match($phone_pattern, $string)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -151,14 +159,15 @@ class Utilities {
      * Für das Speichern in einer Datenbank ist der Beistrich durch einen Punkt zu ersetzen.
      * Datenbanken speichern im Format, das im angloamerikanischen Sprachraum gültig ist. Dort ist der Punkt das Trennzeichen für die Nachkommastellen.
      *
-     * @param $string Der String, der geprüft wird, ob er ein gültiger Preis ist
+     * @param string $string Der String, der geprüft wird, ob er ein gültiger Preis ist
      * @return bool TRUE, wenn der Preis ein gültiges Format hat, ansonsten FALSE
      */
-    public static function isPrice($string) {
-        $price_pattern="/(^[1-9])([0-9]*)(,[[:digit:]]{2})/";
+    public static function isPrice(string $string): bool {
+        $price_pattern = "/(^[1-9])([0-9]*)(,[[:digit:]]{2})/";
         if (preg_match($price_pattern, $string)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -172,12 +181,13 @@ class Utilities {
      * @param $string
      * @return bool
      */
-    public static function isInt($string) {
+    public static function isInt(string $string): bool {
         $int_pattern = "/(^[1-9]\d*$|0)/";
         if (!preg_match($int_pattern, $string)) {
             return false;
-        } else {
-             return true;
+        }
+        else {
+            return true;
         }
     }
 
@@ -192,11 +202,12 @@ class Utilities {
      * @param int $max Maximale Länge des Strings. Default = 50
      * @return bool
      */
-    public static function isSingleWord($string, $min=0, $max=50) {
-        $string_pattern = '/^[a-zäöüA-ZÄÖÜ-]{'. $min . ',' . $max .'}$/i';
+    public static function isSingleWord(string $string, int $min = 0, int $max = 50): bool {
+        $string_pattern = '/^[a-zäöüA-ZÄÖÜ-]{' . $min . ',' . $max . '}$/i';
         if (preg_match($string_pattern, $string)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -210,13 +221,14 @@ class Utilities {
      *
      * @return bool TRUE wenn der String dem Pattern entspricht, FALSE, wenn das nicht der Fall ist.
      */
-    public static function isPassword($string, $min, $max) {
+    public static function isPassword(string $string, int $min, int $max): bool {
         // return true if regular expression is matched
         // Check password and match against the confirmed password:
-        $regex='/^[a-zA-Z0-9_]{' . $min . ',' . $max . '}$/';
+        $regex = '/^[a-zA-Z0-9_]{' . $min . ',' . $max . '}$/';
         if (preg_match($regex, $string)) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -229,15 +241,17 @@ class Utilities {
      *
      * @return bool TRUE, falls der String nach Entfernung von Leerzeichen/Whitespaces nichts mehr enthält. Ansonsten FALSE
      */
-    public static function isEmptyString($string) {
+    public static function isEmptyString(string $string): bool {
         if (strlen(trim($string)) === 0) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
 
     // TODO Brauchen wir diese Funktion? Zeichensätze richtig stellen und Entities reichen auch!?
+
     /**
      * Entfernt Umlaute aus einem Text
      * Usage: Utilities::replaceUmlauts($string);
@@ -245,7 +259,7 @@ class Utilities {
      * @param string $string Beliebieger Text
      * @return string Übergebener Text ohne Umlaute
      */
-    public static function replaceUmlauts($string) {
+    public static function replaceUmlauts(string $string): string {
         // Windows actually delivers e.g. an "ä", whereas MacOS does a diaeresis of a and two dots, which is seen as e.g. \x61\xcc\x88
         $charReplace = array('ä' => 'ae', "\x61\xcc\x88" => 'ae', 'Ä' => 'Ae', "\x41\xcc\x88" => 'Ae', 'ö' => 'oe', "\x6f\xcc\x88" => 'oe', 'Ö' => 'Oe', "\x4f\xcc\x88" => 'Oe', 'ü' => 'ue', "\x75\xcc\x88" => 'ue', 'Ü' => 'Ue', "\x55\xcc\x88" => 'Ue', 'ß' => 'ss', ' ' => '_');
         return strtr($string, $charReplace);
@@ -260,7 +274,7 @@ class Utilities {
      *
      * @return bool|string Das verschlüsselte Passwort
      */
-    public static function encryptPWD($string) {
+    public static function encryptPWD(string $string)  {
         return password_hash($string, PASSWORD_BCRYPT);
     }
 
@@ -274,7 +288,7 @@ class Utilities {
      *
      * @return bool TRUE, wenn das Passwort dem Hash entspricht. Andernfalls FALSE
      */
-    public static function proofPWD($string, $hash) {
+    public static function proofPWD(string $string, string $hash): bool {
         return password_verify($string, $hash);
     }
 }

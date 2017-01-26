@@ -9,7 +9,7 @@
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @package hm2
- * @version 2016
+ * @version 2017
  */
 require("../TNormform.class.php");
 
@@ -40,8 +40,7 @@ class DemoTNormForm extends TNormForm {
      * Diese Methode gibt das Template aus.
      * Sie muss implementiert werden, weil sie in TNormform eine abstracte Klasse ist.
      */
-    protected  function display()
-    {
+    protected function display() {
         $this->smarty->display('demoMain.tpl');
     }
 
@@ -54,7 +53,7 @@ class DemoTNormForm extends TNormForm {
      *
      * @return bool Gibt <pre>true</pre> zurück, wenn alle Kriterien erfüllt wurden, ansonsten <pre>false</pre>.
      */
-    protected function isValid() {
+    protected function isValid(): bool {
         if ($this->isEmptyPostField(self::VORNAME)) {
             $this->errMsg[self::VORNAME] = "Vorname fehlt.";
         }

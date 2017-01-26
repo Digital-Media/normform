@@ -5,7 +5,7 @@
  * @param string $str Der Eingabestring mit möglichen, zu filternden HTML-Inhalten.
  * @return string Der gefilterte String, der gefahrlos weiterverwendet werden kann.
  */
-function sanitize_filter($str) {
+function sanitize_filter(string $str): string {
     return htmlspecialchars($str, ENT_QUOTES | ENT_HTML5);
 }
 
@@ -18,12 +18,12 @@ function sanitize_filter($str) {
  * @param $string
  * @return bool true if regular expression is matched
  */
-function is_email($string) {
-
+function is_email(string $string): bool {
     $email_pattern = "/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$/i";
     if (preg_match($email_pattern, $string)) {
         return true;
-    } else {
+    }
+    else {
         return false;
     }
 }
