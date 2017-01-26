@@ -74,5 +74,5 @@ class DemoTNormForm extends TNormForm {
 /**
  * Hauptaufruf - dies ist der Startpunkt des Normformular-Ablaufs.
  */
-$form = new DemoTNormForm('../basetemplates', '../basetemplates');
+$form = new DemoTNormForm('../basetemplates', '../basetemplates_c');
 $form->normForm();
