@@ -21,6 +21,8 @@ class DemoTNormForm extends TNormForm {
     const NACHNAME = "nachname";
     const NACHRICHT = "nachricht";
 
+    private $result;
+
     /**
      * Zeigt im Fehlerfall vom Nutzer bereits eingegebene Werte wieder an.
      * Falls von einem vorigen Absenden noch Werte vorhanden sind, werden diese über die Funktion {@see autofillFormField()} wieder eingefügt,
@@ -64,10 +66,12 @@ class DemoTNormForm extends TNormForm {
     }
 
     /**
-     * Da keine Verarbeitung der Daten stattfindet, passiert hier nichts
+     * War die Formularverarbeitung erfolgreich, wird - um eine Verarbeitung zu simulieren - der Inhalt von $_POST der Variable $result zugewiesen,
+     * um diesen dann in weiterer Folge im Template anzuzeigen.
      */
     protected function process() {
-        return true;
+        $this->result = $_POST;
+        $this->smarty->assign("result", $this->result);
     }
 }
 

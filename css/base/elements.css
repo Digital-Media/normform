@@ -4,7 +4,6 @@
 
 html {
     font: 400 1em "Source Sans Pro", sans-serif;
-    text-rendering: optimizeLegibility;
     background-color: rgb(245, 245, 245);
     color: rgb(0, 102, 102);
 }

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Demo TNormform</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="Site">
 <main class="Site-content">
@@ -50,14 +49,25 @@
     </section>
     <section class="Section">
         <div class="Container">
-            {if isset($smarty.post)}
-                <h2 class="Section-heading">Result</h2>
-                {foreach $smarty.post as $k => $v}
-                    <em>{$k} :</em>
-                    <br/>
-                    {$v|escape|nl2br}
-                    <br/>
-                {/foreach}
+            <h2 class="Section-heading">Result in $_POST</h2>
+            {if isset($result)}
+                <table class="Table u-tableW100">
+                    <colgroup span="2" class="u-tableW50"></colgroup>
+                    <thead>
+                    <tr class="Table-row">
+                        <th class="Table-header">Key</th>
+                        <th class="Table-header">Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $result as $key => $value}
+                        <tr class="Table-row">
+                            <td class="Table-data">{$key}</td>
+                            <td class="Table-data">{$value|escape|nl2br}</td>
+                        </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
             {/if}
         </div>
     </section>
