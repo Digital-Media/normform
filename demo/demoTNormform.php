@@ -72,6 +72,7 @@ class DemoTNormForm extends TNormForm {
     protected function process() {
         $this->result = $_POST;
         $this->smarty->assign("result", $this->result);
+        $this->statusMsg = "Verarbeitung erfolgreich!";
     }
 }
 
