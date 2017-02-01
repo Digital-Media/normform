@@ -26,7 +26,7 @@
                     <p class="Status-message"><i class="fa fa-check"></i>{$statusMessage}</p>
                 </div>
             {/if}
-            <form action="{$smarty.server.SCRIPT_NAME}" method="post" enctype="multipart/form-data">
+            <form action="{$smarty.server.SCRIPT_NAME}" method="post">
                 <div class="Grid Grid--gutters">
                     <div class="InputCombo Grid-full">
                         <label for="{$vornameKey}" class="InputCombo-label">Vorname:</label>
