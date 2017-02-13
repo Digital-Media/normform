@@ -12,7 +12,7 @@
     <section class="Section">
         <div class="Container">
             <h2 class="Section-heading">TNormform Demo</h2>
-            {if count($errorMessages) > 0}
+            {if isset($errorMessages) && count($errorMessages) > 0}
                 <div class="Error">
                     <ul class="Error-list">
                         {foreach $errorMessages as $error}
@@ -21,7 +21,7 @@
                     </ul>
                 </div>
             {/if}
-            {if strlen($statusMessage) !== 0}
+            {if isset($statusMessage) && strlen($statusMessage) !== 0}
                 <div class="Status">
                     <p class="Status-message"><i class="fa fa-check"></i>{$statusMessage}</p>
                 </div>
