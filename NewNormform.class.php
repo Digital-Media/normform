@@ -8,11 +8,14 @@
  */
 
 require_once("Utilities.class.php");
+require_once("FormView.class.php");
 require_once("vendor/smarty/smarty/libs/Smarty.class.php");
 
 abstract class NewNormform {
 
-    protected $defaultTemplate;
+    //protected $defaultTemplate;
+
+    protected $defaultView;
 
     protected $errorMessages;
 
@@ -24,7 +27,8 @@ abstract class NewNormform {
         $this->smarty = new Smarty();
         $this->smarty->template_dir = $templateDir;
         $this->smarty->compile_dir = $compileDir;
-        $this->defaultTemplate = $defaultTemplate;
+        //$this->defaultTemplate = $defaultTemplate;
+        $this->defaultView = new FormView("form", $defaultTemplate, []);
         $this->errorMessages = [];
         $this->statusMessage = "";
     }
@@ -36,11 +40,13 @@ abstract class NewNormform {
                 $this->show($view);
             }
             else {
-                $this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields", "values", "errorStatus"])]);
+                //$this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields", "values", "errorStatus"])]);
+                $this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields", "values", "errorStatus"])));
             }
         }
         else {
-            $this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields"])]);
+            //$this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields"])]);
+            $this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields"])));
         }
     }
 
@@ -52,9 +58,9 @@ abstract class NewNormform {
 
     abstract protected function business();
 
-    abstract protected function prepareFormFields(array $parts, array $args = []):array ;
+    abstract protected function prepareFormFields(array $parts, array $args = []): array;
 
-    protected function show(array $view = ["type" => "form", "name" => "form.tpl", "args" => null]) {
+    /*protected function show(array $view = ["type" => "form", "name" => "form.tpl", "args" => null]) {
         switch ($view["type"]) {
             case "form":
                 foreach ($view["args"] as $key => $value) {
@@ -68,6 +74,29 @@ abstract class NewNormform {
                 break;
             case "url":
                 header("Location: " . $view["name"] . "?" . http_build_query($view["args"], "", "&amp;"));
+                break;
+            default:
+                break;
+        }
+    }*/
+
+    protected function show(FormView $view = null) {
+        if (is_null($view)) {
+            $view = $this->defaultView;
+        }
+        switch ($view->type) {
+            case "form":
+                foreach ($view->args as $key => $value) {
+                    $this->smarty->assign($key, $value);
+                }
+                $this->smarty->display($view->name);
+                break;
+            case "template":
+                $this->smarty->display($view->name);
+                // check args
+                break;
+            case "url":
+                header("Location: " . $view->name . "?" . http_build_query($view->args, "", "&amp;"));
                 break;
             default:
                 break;

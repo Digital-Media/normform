@@ -31,36 +31,40 @@ class DemoNewNormform extends NewNormform {
         $this->result = $_POST;
         $this->statusMessage = "Processing successful!";
 
-        return ["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields", "errorStatus"], ["result" => $this->result])];
+        //return ["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields", "errorStatus"], ["result" => $this->result])];
+        return new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields", "errorSTatus"], ["result" => $this->result]));
     }
 
 
     protected function prepareFormFields(array $parts, array $args = []): array {
         $result = [];
 
-        $fields = [
-            "vornameKey" => self::VORNAME,
-            "nachnameKey" => self::NACHNAME,
-            "nachrichtKey" => self::NACHRICHT
-        ];
         if (in_array("fields", $parts)) {
+            $fields = [
+                "vornameKey" => self::VORNAME,
+                "nachnameKey" => self::NACHNAME,
+                "nachrichtKey" => self::NACHRICHT
+            ];
+
             $result = array_merge($result, $fields);
         }
 
-        $values = [
-            "vornameValue" => $this->autofillFormField(self::VORNAME),
-            "nachnameValue" => $this->autofillFormField(self::NACHNAME),
-            "nachrichtValue" => $this->autofillFormField(self::NACHRICHT)
-        ];
         if (in_array("values", $parts)) {
+            $values = [
+                "vornameValue" => $this->autofillFormField(self::VORNAME),
+                "nachnameValue" => $this->autofillFormField(self::NACHNAME),
+                "nachrichtValue" => $this->autofillFormField(self::NACHRICHT)
+            ];
+
             $result = array_merge($result, $values);
         }
 
-        $errorStatus = [
-            "errorMessages" => $this->errorMessages,
-            "statusMessage" => $this->statusMessage
-        ];
         if (in_array("errorStatus", $parts)) {
+            $errorStatus = [
+                "errorMessages" => $this->errorMessages,
+                "statusMessage" => $this->statusMessage
+            ];
+
             $result = array_merge($result, $errorStatus);
         }
 
