@@ -23,12 +23,12 @@ abstract class NewNormform {
 
     protected $smarty;
 
-    public function __construct(string $defaultTemplate = "form.tpl", string $templateDir = "templates", string $compileDir = "templates_c") {
+    public function __construct(FormView $defaultView, string $templateDir = "templates", string $compileDir = "templates_c") {
         $this->smarty = new Smarty();
         $this->smarty->template_dir = $templateDir;
         $this->smarty->compile_dir = $compileDir;
         //$this->defaultTemplate = $defaultTemplate;
-        $this->defaultView = new FormView("form", $defaultTemplate, []);
+        $this->defaultView = $defaultView;
         $this->errorMessages = [];
         $this->statusMessage = "";
     }
@@ -36,17 +36,20 @@ abstract class NewNormform {
     public function normForm() {
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
+                $view = null;
                 $view = $this->business();
                 $this->show($view);
             }
             else {
                 //$this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields", "values", "errorStatus"])]);
-                $this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields", "values", "errorStatus"])));
+                //$this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields", "values", "errorStatus"])));
+                $this->show();
             }
         }
         else {
             //$this->show(["type" => "form", "name" => $this->defaultTemplate, "args" => $this->prepareFormFields(["fields"])]);
-            $this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields"])));
+            //$this->show(new FormView("form", "demoMain.tpl", $this->prepareFormFields(["fields"])));
+            $this->show();
         }
     }
 
@@ -86,8 +89,13 @@ abstract class NewNormform {
         }
         switch ($view->type) {
             case "form":
-                foreach ($view->args as $key => $value) {
+                /*foreach ($view->args as $key => $value) {
                     $this->smarty->assign($key, $value);
+                }*/
+                foreach ($view->args as $param) {
+                    if($param instanceof FormParam) {
+                        $this->smarty->assign("$param->name", $param);
+                    }
                 }
                 $this->smarty->display($view->name);
                 break;

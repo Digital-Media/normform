@@ -74,5 +74,11 @@ class DemoNewNormform extends NewNormform {
     }
 }
 
-$form = new DemoNewNormform("demoMain.tpl", "../basetemplates", "../basetemplates_c");
+$view = new FormView("form", "newDemoMain.tpl", [
+    new FormParam(DemoNewNormform::VORNAME),
+    new FormParam(DemoNewNormform::NACHNAME),
+    new FormParam(DemoNewNormform::NACHRICHT)
+]);
+
+$form = new DemoNewNormform($view, "../basetemplates", "../basetemplates_c");
 $form->normForm();

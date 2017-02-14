@@ -6,6 +6,8 @@
  * Date: 13.02.2017
  * Time: 16:56
  */
+require_once("Utilities.class.php");
+
 class FormView {
     private $type;
     private $name;
@@ -28,5 +30,26 @@ class FormView {
         if (property_exists($this, $property)) {
             $this->$property = $value;
         }
+    }
+}
+
+class FormParam {
+    private $name;
+    private $value;
+
+    function __construct(string $postName) {
+        $this->name = $postName;
+        $this->setValue($postName);
+    }
+
+    public function setValue(string $postName) {
+        $this->value = isset($_POST[$postName]) ? Utilities::sanitizeFilter($_POST[$postName]) : "";
+    }
+
+    function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+        return null;
     }
 }
