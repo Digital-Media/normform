@@ -10,7 +10,7 @@
  * @package hm2
  * @version 2017
  */
-require_once '../normform.inc.php';
+require_once 'normform.inc.php';
 
 /**
  * Konstanten für ein HTML Attribute <input name='vorname' id='vornamel' ...> --> <input name=EMAIL id=EMAIL ...> usw.
@@ -156,7 +156,7 @@ HEADER;*/
     <meta charset="UTF-8">
     <title>Demo Normform</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="Site">
@@ -213,7 +213,7 @@ FOOTER;
  * Überprüft, ob das Formularfeld korrekt ausgefüllt wurde. Die Kriterien werden in dieser Funktion anhand verschiedener
  * if-Bedingungen selbst angegeben. Schlägt ein Kriterium fehl, wird ein Eintrag in das globale Array <pre>$errMsg</pre>
  * geschrieben.
- * Passende Funktionen für spezielle Eingabefelder finden sich in utilities.inc.php
+ * Passende Funktionen/Methoden für spezielle Eingabefelder finden sich in Utilities.class.php
  *
  * @global array $errMsg Beinhaltet mögliche Fehlermeldungen, die bei der Validierung aufgetreten sind und später
  * mit @see print_errmsg() von normform.inc.php ausgegeben werden.

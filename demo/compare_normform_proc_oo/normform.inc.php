@@ -12,12 +12,6 @@
  * Die Namensgebung bei Funktionen entspricht den Konventionen beim prozeduralen Programmieren mit PHP
  * In der OO-TNormform werden die gleichwertigen Methoden daher anders heißen, weil sie sich an OO-Konventionen orientieren
  *
- * Der Hauptaufruf @see normform() legt einen Ablauf fest, der ein einfaches MVC-Pattern implementiert.
- * MVC: Model-View-Controller
- * M: @see process_form() verarbeitet die Daten und schreibt sie in die Datenbank oder ins Filesystem
- * V: @see show_form() zeigt das Ergebnis an, bzw. liest die Daten, die schon beim ersten Anzeigen einer Seite vorhanden sein müssen
- * C: @see is_valid_form() validiert die Daten und entscheidet, ob Daten verarbeitet werden könnnen, oder zur erneuten Bearbeitung dem Benutzer vorgelegt werden
- *
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
@@ -30,15 +24,11 @@
  * und Smarty-Templates ebenfalls erst später eingeführt werden und daher auch keine Pfadangaben dafür notwendig sind
  */
 
-/**
- * Einbinden von Hilfsfunktionen
- */
-require_once 'utilities.inc.php';
 
 /**
  * Einbinden des Error-Handlings. Für Testzwecke kann eine Division durch 0 einkommentiert werden.
  */
-require_once 'error_handling.php';
+require_once '../../error_handling.php';
 // Die folgende Zeile einkommentieren für das Testen von error_handling.php
 //$x=0/0;
 
@@ -110,6 +100,15 @@ function autofill_formfield(string $name): string {
 }
 
 /**
+ * Diese Funktion filtert ungewünschte HTML-Tags aus einem String und gibt den gefilterten Text zurück.
+ * @param string $str Der Eingabestring mit möglichen, zu filternden HTML-Inhalten.
+ * @return string Der gefilterte String, der gefahrlos weiterverwendet werden kann.
+ */
+function sanitize_filter(string $str): string {
+    return htmlspecialchars($str, ENT_QUOTES | ENT_HTML5);
+}
+
+/**
  * Gibt alle Fehlermeldungen aus, die beim Validieren des Formulars aufgetreten sind. Die Abarbeitung des Arrays übernimmt in der OO-TNormform Smarty im Template
  * PHP_EOL fügt immer die plattformspezifischen EndOfLine-Zeichen ein. Es wird auf Linux/Unix ein Linux/Unix-Zeilenumbruch erzeugt. Unter Windows ein Windows-Zeilenumbruch
  * Damit ist der erzeugte HTML-Seitenquelltext leichter lesbar, weil auch dort meherere Zeilen erzeugt werden.
@@ -119,12 +118,6 @@ function print_errmsg() {
     global $errmsg;
     global $errlines;
     if (isset($errmsg)) {
-        /*$errlines = "<p>Bitte folgende Fehler korrigieren:</p>" . PHP_EOL;
-        $errlines .= "<ul>" . PHP_EOL;
-        foreach ($errmsg as $e) {
-            $errlines .= "<li>$e</li>" . PHP_EOL;
-        }
-        $errlines .= "</ul>" . PHP_EOL;*/
         $errlines = "<div class=\"Error\">" . PHP_EOL;
         $errlines .= "<ul class=\"Error-list\">" . PHP_EOL;
         foreach ($errmsg as $e) {
@@ -135,6 +128,9 @@ function print_errmsg() {
     }
 }
 
+/**
+ * Formatiert die Statusmeldung, die in @see process_form() bei erfolgreicher Verarbeitung des Formlars geschrieben wird.
+ */
 function print_statusmsg() {
     global $statusmsg;
     global $statuslines;
