@@ -11,7 +11,7 @@
 <main class="Site-content">
     <section class="Section">
         <div class="Container">
-            <h2 class="Section-heading">TNormform Demo</h2>
+            <h2 class="Section-heading">Normform Demo</h2>
             {if isset($errorMessages) && count($errorMessages) > 0}
                 <div class="Error">
                     <ul class="Error-list">
@@ -29,16 +29,16 @@
             <form action="{$smarty.server.SCRIPT_NAME}" method="post">
                 <div class="Grid Grid--gutters">
                     <div class="InputCombo Grid-full">
-                        <label for="{$vorname->name}" class="InputCombo-label">Vorname:</label>
-                        <input type="text" id="{$vorname->name}" name="{$vorname->name}" value="{$vorname->value}" class="InputCombo-field">
+                        <label for="{$firstname->getName()}" class="InputCombo-label">First Name*:</label>
+                        <input type="text" id="{$firstname->getName()}" name="{$firstname->getName()}" value="{$firstname->getValue()}" class="InputCombo-field">
                     </div>
                     <div class="InputCombo Grid-full">
-                        <label for="{$nachname->name}" class="InputCombo-label">Nachname:</label>
-                        <input type="text" id="{$nachname->name}" name="{$nachname->name}" value="{$nachname->value}" class="InputCombo-field">
+                        <label for="{$lastname->getName()}" class="InputCombo-label">Last Name*:</label>
+                        <input type="text" id="{$lastname->getName()}" name="{$lastname->getName()}" value="{$lastname->getValue()}" class="InputCombo-field">
                     </div>
                     <div class="InputCombo Grid-full">
-                        <label for="{$nachricht->name}" class="InputCombo-label">Nachricht:</label>
-                        <textarea name="{$nachricht->name}" id="{$nachricht->name}" class="InputCombo-field">{$nachricht->value}</textarea>
+                        <label for="{$message->getName()}" class="InputCombo-label">Message:</label>
+                        <textarea name="{$message->getName()}" id="{$message->getName()}" class="InputCombo-field">{$message->getValue()}</textarea>
                     </div>
                     <div class="Grid-full">
                         <button type="submit" class="Button">Send</button>
