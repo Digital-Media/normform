@@ -88,8 +88,10 @@ function is_empty_postfield($name): bool {
 function show_form() {
     // Diesen Aufruf gibt es in der OO-Normform nicht mehr, weil diese Funktionalität von den Smarty-Templates umgesetzt wird
     print_errmsg();
+    print_statusmsg();
     // wie OO-TNormform
     prepare_formfields();
+    print_result();
     // Eine Übergabe von Variablen an Smarty ist noch nicht notwendig, weil wir Smarty-Templates erst später einführen
     // display wird später durch die gleichnamige Smarty-Methode $smarty->dislplay(irgendeinTemplate.tpl) ersetzt
     display();
@@ -117,11 +119,28 @@ function print_errmsg() {
     global $errmsg;
     global $errlines;
     if (isset($errmsg)) {
-        $errlines = "<p>Bitte folgende Fehler korrigieren:</p>" . PHP_EOL;
+        /*$errlines = "<p>Bitte folgende Fehler korrigieren:</p>" . PHP_EOL;
         $errlines .= "<ul>" . PHP_EOL;
         foreach ($errmsg as $e) {
             $errlines .= "<li>$e</li>" . PHP_EOL;
         }
+        $errlines .= "</ul>" . PHP_EOL;*/
+        $errlines = "<div class=\"Error\">" . PHP_EOL;
+        $errlines .= "<ul class=\"Error-list\">" . PHP_EOL;
+        foreach ($errmsg as $e) {
+            $errlines .= "<li class=\"Error-listItem\">$e</li>" . PHP_EOL;
+        }
         $errlines .= "</ul>" . PHP_EOL;
+        $errlines .= "</div>" . PHP_EOL;
+    }
+}
+
+function print_statusmsg() {
+    global $statusmsg;
+    global $statuslines;
+    if (isset($statusmsg)) {
+        $statuslines = "<div class=\"Status\">" . PHP_EOL;
+        $statuslines .= "<p class=\"Status-message\"><i class=\"fa fa-check\"></i>$statusmsg</p>" . PHP_EOL;
+        $statuslines .= "</div>" . PHP_EOL;
     }
 }
