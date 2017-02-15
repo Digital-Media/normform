@@ -8,7 +8,7 @@ require_once("vendor/smarty/smarty/libs/Smarty.class.php");
 
 abstract class AbstractNormform {
 
-    protected $defaultView;
+    protected $currentView;
 
     protected $errorMessages;
 
@@ -24,7 +24,7 @@ abstract class AbstractNormform {
         $this->smarty = new Smarty();
         $this->smarty->template_dir = $templateDir;
         $this->smarty->compile_dir = $compileDir;
-        $this->defaultView = $defaultView;
+        $this->currentView = $defaultView;
         $this->errorMessages = [];
         $this->statusMessage = "";
     }
@@ -32,7 +32,6 @@ abstract class AbstractNormform {
     public function normForm() {
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
-                $view = null;
                 $view = $this->business();
                 $this->show($view);
             }
@@ -51,11 +50,11 @@ abstract class AbstractNormform {
 
     protected function show(View $view = null) {
         if (is_null($view)) {
-            $view = $this->defaultView;
+            $view = $this->currentView;
         }
-        switch ($view->type) {
+        switch ($view->getType()) {
             case View::FORM:
-                foreach ($view->args as $param) {
+                foreach ($view->getParameters() as $param) {
                     if ($param instanceof PostParameter) {
                         $this->smarty->assign($param->getName(), $param);
                     }
@@ -63,18 +62,18 @@ abstract class AbstractNormform {
                         $this->smarty->assign($param->getName(), $param->getValue());
                     }
                 }
-                $this->smarty->display($view->name);
+                $this->smarty->display($view->getName());
                 break;
             case View::TEMPLATE:
-                foreach ($view->args as $param) {
+                foreach ($view->getParameters() as $param) {
                     if ($param instanceof GenericParameter) {
                         $this->smarty->assign($param->getName(), $param->getValue());
                     }
                 }
-                $this->smarty->display($view->name);
+                $this->smarty->display($view->getName());
                 break;
             case View::URL:
-                header("Location: " . $view->name . "?" . http_build_query($view->args));
+                header("Location: " . $view->getName() . "?" . http_build_query($view->getParameters()));
                 break;
             default:
                 // Throw an exception or show an error page
@@ -84,9 +83,5 @@ abstract class AbstractNormform {
 
     protected function isEmptyPostField(string $index): bool {
         return (!isset($_POST[$index]) || strlen(trim($_POST[$index])) === 0);
-    }
-
-    protected function autofillFormField(string $name) {
-        return isset($_POST[$name]) ? Utilities::sanitizeFilter(trim($_POST[$name])) : "";
     }
 }

@@ -9,28 +9,36 @@ class View {
 
     private $type;
     private $name;
-    private $args;
+    private $params;
 
-    function __construct(int $type = 1, string $name = "form.tpl", array $args = []) {
+    function __construct(int $type = 1, string $name = "form.tpl", array $params = []) {
         $this->type = $type;
         $this->name = $name;
-        $this->args = $args;
+        $this->params = $params;
     }
 
-    function __get($property) {
-        if (property_exists($this, $property)) {
-            return $this->$property;
+    public function getType(): int {
+        return $this->type;
+    }
+
+    public function getName(): string {
+        return $this->name;
+    }
+
+    public function getParameters() : array {
+        return $this->params;
+    }
+
+    public function addParameter(ParameterInterface $param) {
+        $this->params[] = $param;
+    }
+
+    public function updateParameter(ParameterInterface $param) {
+        foreach ($this->params as &$arg) {
+            if (strcmp($arg->getName(), $param->getName()) === 0) {
+                $arg = $param;
+                break;
+            }
         }
-        return null;
-    }
-
-    function __set($property, $value) {
-        if (property_exists($this, $property)) {
-            $this->$property = $value;
-        }
-    }
-
-    public function addArg($arg) {
-        $this->args[] = $arg;
     }
 }

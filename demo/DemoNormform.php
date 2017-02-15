@@ -6,8 +6,8 @@ require_once("../PostParameter.php");
 
 class DemoNormform extends AbstractNormform {
 
-    const FIRSTNAME = "lastname";
-    const LASTNAME = "firstname";
+    const FIRSTNAME = "firstname";
+    const LASTNAME = "lastname";
     const MESSAGE = "message";
 
     private $result;
@@ -20,19 +20,30 @@ class DemoNormform extends AbstractNormform {
             $this->errorMessages[self::LASTNAME] = "Last name is required.";
         }
 
-        $this->defaultView->addArg(new GenericParameter("errorMessages", $this->errorMessages));
+        $this->currentView->addParameter(new GenericParameter("errorMessages", $this->errorMessages));
 
         return (count($this->errorMessages) === 0);
     }
 
     protected function business() {
         $this->result = $_POST;
-        $this->defaultView->addArg(new GenericParameter("result", $this->result));
+        $this->currentView->addParameter(new GenericParameter("result", $this->result));
 
         $this->statusMessage = "Processing successful!";
-        $this->defaultView->addArg(new GenericParameter("statusMessage", $this->statusMessage));
+        $this->currentView->addParameter(new GenericParameter("statusMessage", $this->statusMessage));
 
-        return (new View(View::TEMPLATE, "noFormOutput.tpl", [new GenericParameter("result", $this->result)]));
+        $this->currentView->updateParameter(new PostParameter(self::FIRSTNAME, true));
+        $this->currentView->updateParameter(new PostParameter(self::LASTNAME, true));
+        $this->currentView->updateParameter(new PostParameter(self::MESSAGE, true));
+
+        /*return (new View(View::FORM, "mainForm.tpl", [
+            new PostParameter(self::FIRSTNAME, true),
+            new PostParameter(self::LASTNAME, true),
+            new PostParameter(self::MESSAGE, true),
+            new GenericParameter("statusMessage", $this->statusMessage),
+            new GenericParameter("result", $this->result)
+        ]));*/
+        //return (new View(View::TEMPLATE, "noFormOutput.tpl", [new GenericParameter("result", $this->result)]));
         //return (new View(View::URL, "externalresult.php", $this->result));
     }
 }
