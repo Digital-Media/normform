@@ -3,9 +3,9 @@
 require_once("Utilities.class.php");
 
 class View {
-    const FORM = 1;
-    const TEMPLATE = 2;
-    const URL = 3;
+    const FORM = 0;
+    const TEMPLATE = 1;
+    const URL = 2;
 
     private $type;
     private $name;
@@ -29,16 +29,14 @@ class View {
         return $this->params;
     }
 
-    public function addParameter(ParameterInterface $param) {
-        $this->params[] = $param;
-    }
-
-    public function updateParameter(ParameterInterface $param) {
+    public function setParameter(ParameterInterface $param) {
+        $paramName = $param->getName();
         foreach ($this->params as &$arg) {
-            if (strcmp($arg->getName(), $param->getName()) === 0) {
+            if ($arg->getName() === $paramName) {
                 $arg = $param;
-                break;
+                return;
             }
         }
+        $this->params[] = $param;
     }
 }

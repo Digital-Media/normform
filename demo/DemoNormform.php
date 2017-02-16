@@ -20,21 +20,21 @@ class DemoNormform extends AbstractNormform {
             $this->errorMessages[self::LASTNAME] = "Last name is required.";
         }
 
-        $this->currentView->addParameter(new GenericParameter("errorMessages", $this->errorMessages));
+        $this->currentView->setParameter(new GenericParameter("errorMessages", $this->errorMessages));
 
         return (count($this->errorMessages) === 0);
     }
 
     protected function business() {
         $this->result = $_POST;
-        $this->currentView->addParameter(new GenericParameter("result", $this->result));
+        $this->currentView->setParameter(new GenericParameter("result", $this->result));
 
         $this->statusMessage = "Processing successful!";
-        $this->currentView->addParameter(new GenericParameter("statusMessage", $this->statusMessage));
+        $this->currentView->setParameter(new GenericParameter("statusMessage", $this->statusMessage));
 
-        $this->currentView->updateParameter(new PostParameter(self::FIRSTNAME, true));
-        $this->currentView->updateParameter(new PostParameter(self::LASTNAME, true));
-        $this->currentView->updateParameter(new PostParameter(self::MESSAGE, true));
+        $this->currentView->setParameter(new PostParameter(self::FIRSTNAME, true));
+        $this->currentView->setParameter(new PostParameter(self::LASTNAME, true));
+        $this->currentView->setParameter(new PostParameter(self::MESSAGE, true));
 
         /*return (new View(View::FORM, "mainForm.tpl", [
             new PostParameter(self::FIRSTNAME, true),
@@ -43,8 +43,9 @@ class DemoNormform extends AbstractNormform {
             new GenericParameter("statusMessage", $this->statusMessage),
             new GenericParameter("result", $this->result)
         ]));*/
+
         //return (new View(View::TEMPLATE, "noFormOutput.tpl", [new GenericParameter("result", $this->result)]));
-        //return (new View(View::URL, "externalresult.php", $this->result));
+        //return (new View(View::URL, "externalresult.php", [new GenericParameter("result", $this->result)]));
     }
 }
 
