@@ -31,11 +31,17 @@ class DemoTNormForm extends TNormForm {
      */
     protected function prepareFormFields() {
         $this->smarty->assign("vornameKey", self::VORNAME);
-        $this->smarty->assign("vornameValue", $this->autofillFormField(self::VORNAME));
         $this->smarty->assign("nachnameKey", self::NACHNAME);
-        $this->smarty->assign("nachnameValue", $this->autofillFormField(self::NACHNAME));
         $this->smarty->assign("nachrichtKey", self::NACHRICHT);
-        $this->smarty->assign("nachrichtValue", $this->autofillFormField(self::NACHRICHT));
+        if ( count($this->errMsg) !== 0 ) {
+            $this->smarty->assign("vornameValue", $this->autofillFormField(self::VORNAME));
+            $this->smarty->assign("nachnameValue", $this->autofillFormField(self::NACHNAME));
+            $this->smarty->assign("nachrichtValue", $this->autofillFormField(self::NACHRICHT));
+        } else {
+            $this->smarty->assign("vornameValue", null);
+            $this->smarty->assign("nachnameValue", null);
+            $this->smarty->assign("nachrichtValue", null);
+        }
     }
 
     /**

@@ -19,6 +19,7 @@ Für das Übungsszenario wurde mit [XAMPP](https://www.apachefriends.org/de/inde
 * [jsOnlyLightbox](https://github.com/felixhagspiel/jsOnlyLightbox)
 * [CSS3 Flexbox](https://www.w3.org/TR/css-flexbox-1/)
 * [jquery](https://jquery.com/), als Teil der Übung, aber nicht als Teil des Grundgerüstes 
+* [PHP-FIG Namenskonventionen](http://www.php-fig.org/bylaws/psr-naming-conventions/)
 
 In der Methode `TNormform::normForm()` wird ein einfaches Pattern vorgegeben, das den Aufruf, die Eingabe von Daten und deren Verarbeitung über ein Webformular steuert.
 Über die Klasse `Utilities` werden Hilfsfunktionen zur Eingabeüberprüfung und zur Seitenweiterleitung zur Verfügung gestellt.

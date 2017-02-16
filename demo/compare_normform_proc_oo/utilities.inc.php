@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Diese Funktion filtert ungewünschte HTML-Tags aus einem String und gibt den gefilterten Text zurück.
- * @param string $str Der Eingabestring mit möglichen, zu filternden HTML-Inhalten.
- * @return string Der gefilterte String, der gefahrlos weiterverwendet werden kann.
- */
-function sanitize_filter(string $str): string {
-    return htmlspecialchars($str, ENT_QUOTES | ENT_HTML5);
-}
+
 
 /**
  * Check email address:
