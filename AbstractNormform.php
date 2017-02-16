@@ -73,7 +73,25 @@ abstract class AbstractNormform {
                 $this->smarty->display($view->getName());
                 break;
             case View::URL:
-                header("Location: " . $view->getName() . "?" . http_build_query($view->getParameters()));
+                $queryParameters = [];
+                foreach ($view->getParameters() as $key => $param) {
+                    if ($param instanceof GenericParameter) {
+                        $value = $param->getValue();
+                        if (is_array($value)) {
+                            $queryParameters = array_merge($queryParameters, $value);
+                        }
+                        else {
+                            $queryParameters[$param->getName()] = $value;
+                        }
+                    }
+                    else if (is_array($param)) {
+                        $queryParameters = array_merge($queryParameters, $param);
+                    }
+                    else {
+                        $queryParameters[$key] = $param;
+                    }
+                }
+                header("Location: " . $view->getName() . "?" . http_build_query($queryParameters));
                 break;
             default:
                 // Throw an exception or show an error page
