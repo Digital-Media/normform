@@ -17,7 +17,7 @@ require_once("../PostParameter.php");
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @version 2017
  */
-class DemoNormForm extends AbstractNormForm {
+class NormFormExample extends AbstractNormForm {
 
     /** @var string FIRST_NAME Form field constant that defines how the form field for holding a first name is called (id/name). */
     const FIRST_NAME = "firstname";
@@ -99,13 +99,13 @@ class DemoNormForm extends AbstractNormForm {
  * its value (see PostParameter class for details).
  */
 $view = new View(View::FORM, "mainForm.tpl", [
-    new PostParameter(DemoNormForm::FIRST_NAME),
-    new PostParameter(DemoNormForm::LAST_NAME),
-    new PostParameter(DemoNormForm::MESSAGE),
+    new PostParameter(NormFormExample::FIRST_NAME),
+    new PostParameter(NormFormExample::LAST_NAME),
+    new PostParameter(NormFormExample::MESSAGE),
 ]);
 
 /* Create a new instance of your class, supply the view object and (optionally) the paths for the template engine.
  * Then call normForm() to get the party started!
  */
-$form = new DemoNormForm($view, "../basetemplates", "../basetemplates_c");
+$form = new NormFormExample($view, "../basetemplates", "../basetemplates_c");
 $form->normForm();
