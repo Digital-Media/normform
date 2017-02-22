@@ -12,7 +12,7 @@
 <header class="Site-header">
     <div class="Header Header--small">
         <div class="Header-titles">
-            <h1 class="Header-title"><i class="fa fa-file-text-o" aria-hidden="true"></i>Normform</h1>
+            <h1 class="Header-title"><i class="fa fa-file-text-o" aria-hidden="true"></i>NormForm</h1>
             <p class="Header-subtitle">Example Implementation</p>
         </div>
     </div>
@@ -20,7 +20,7 @@
 <main class="Site-content">
     <section class="Section">
         <div class="Container">
-            <h2 class="Section-heading">Normform Demo</h2>
+            <h2 class="Section-heading">Enter Your Name and Message</h2>
             {if isset($errorMessages) && count($errorMessages) > 0}
                 <div class="Error">
                     <ul class="Error-list">
@@ -84,7 +84,7 @@
 <footer class="Site-footer">
     <div class="Footer Footer--small">
         <p class="Footer-credits">Created and maintained by <a href="mailto:martin.harrer@fh-hagenberg.at">Martin Harrer</a> and <a href="mailto:wolfgang.hochleitner@fh-hagenberg.at">Wolfgang Hochleitner</a>.</p>
-        <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i><a href="https://github.com/Digital-Media/normform">Normform Example Version 2017</a></p>
+        <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i><a href="https://github.com/Digital-Media/normform">NormForm Example Version 2017</a></p>
     </div>
 </footer>
 </body>
