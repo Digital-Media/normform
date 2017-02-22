@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Demo TNormform</title>
+    <title>NormForm Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body class="Site">
+<header class="Site-header">
+    <div class="Header Header--small">
+        <div class="Header-titles">
+            <h1 class="Header-title"><i class="fa fa-file-text-o" aria-hidden="true"></i>Normform</h1>
+            <p class="Header-subtitle">Example Implementation</p>
+        </div>
+    </div>
+</header>
 <main class="Site-content">
     <section class="Section">
         <div class="Container">
@@ -75,8 +84,7 @@
 <footer class="Site-footer">
     <div class="Footer Footer--small">
         <p class="Footer-credits">Created and maintained by <a href="mailto:martin.harrer@fh-hagenberg.at">Martin Harrer</a> and <a href="mailto:wolfgang.hochleitner@fh-hagenberg.at">Wolfgang Hochleitner</a>.</p>
-        <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i>TNormform Demo Version 2017</p>
-        <p class="Footer-credits"><i class="fa fa-github" aria-hidden="true"></i><a href="https://github.com/Digital-Media/normform">GitHub</a></p>
+        <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i><a href="https://github.com/Digital-Media/normform">Normform Example Version 2017</a></p>
     </div>
 </footer>
 </body>
