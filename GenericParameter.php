@@ -5,15 +5,15 @@ require_once("ParameterInterface.php");
 /**
  * A generic name/value parameter.
  *
- * This parameter consists of name and value. The name is always a string whereas the value
- * can be any data type.
+ * This parameter consists of name and value. The name is always a string whereas the value can be any data type.
  *
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @version 2017
  */
-class GenericParameter implements ParameterInterface {
+class GenericParameter implements ParameterInterface
+{
     /** @var string $name The name of the parameter. Always a string. */
     private $name;
 
@@ -25,7 +25,8 @@ class GenericParameter implements ParameterInterface {
      * @param string $name The name of the parameter.
      * @param mixed $value The value of the parameter.
      */
-    function __construct(string $name, $value) {
+    public function __construct(string $name, $value)
+    {
         $this->name = $name;
         $this->value = $value;
     }
@@ -34,7 +35,8 @@ class GenericParameter implements ParameterInterface {
      * Returns the parameter's name. Always a string.
      * @return string The name.
      */
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
@@ -42,7 +44,8 @@ class GenericParameter implements ParameterInterface {
      * Returns the parameter's value. Can be any data type.
      * @return mixed The value.
      */
-    public function getValue() {
+    public function getValue()
+    {
         return $this->value;
     }
 }

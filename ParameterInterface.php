@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Defines an interface for parameters that are passed on to a @View object.
+ * Defines an interface for parameters that are passed on to a View object.
  *
  * Parameters always consist of name and value. This interface defines that there are
  * methods to return these properties.
@@ -11,7 +11,8 @@
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @version 2017
  */
-interface ParameterInterface {
+interface ParameterInterface
+{
     /**
      * Returns the name of the parameter. This is always a string.
      * @return string The name of the parameter.
