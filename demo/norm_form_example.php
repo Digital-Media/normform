@@ -20,13 +20,13 @@
  * @var string FIRST_NAME Form field constant that defines how the form field for holding a first name is called
  * (id/name).
  */
-define("FIRST_NAME", "firstname");
+define("FIRST_NAME", "first_name");
 
 /**
  * @var string LAST_NAME Form field constant that defines how the form field for holding a last name is called
  * (id/name).
  */
-define("LAST_NAME", "lastname");
+define("LAST_NAME", "last_name");
 
 /**
  * @var string MESSAGE Form field constant that defines how the form field for holding a message is called (id/name).
@@ -200,9 +200,9 @@ function display()
 
     // Upon successful processing the values from the form fields are being emptied.
     if (isset($error_fragment)) {
-        $first_name_value = autofill_formfield(FIRST_NAME);
-        $last_name_value = autofill_formfield(LAST_NAME);
-        $message_value = autofill_formfield(MESSAGE);
+        $first_name_value = autofill_form_field(FIRST_NAME);
+        $last_name_value = autofill_form_field(LAST_NAME);
+        $message_value = autofill_form_field(MESSAGE);
     } else {
         $first_name_value = null;
         $last_name_value = null;
@@ -293,7 +293,7 @@ PAGE;
  * @param string $name The name of the form field that should be processed.
  * @return string Returns the sanitized value in $_POST or an empty string.
  */
-function autofill_formfield(string $name): string
+function autofill_form_field(string $name): string
 {
     return isset($_POST[$name]) ? trim(sanitize_filter($_POST[$name])) : "";
 }
