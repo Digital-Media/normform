@@ -12,9 +12,14 @@
     flex: 1;
 }
 
-textarea.InputCombo-field {
+textarea.InputCombo-field,
+select.InputCombo-field {
     resize: vertical;
     min-height: 7.5em;
+}
+
+select.InputCombo-field {
+    overflow: auto;
 }
 
 .InputCombo-label,
@@ -30,4 +35,5 @@ textarea.InputCombo-field {
 .InputCombo-unstyled {
     margin-left: 1em;
     flex: none;
+    align-self: center;
 }
