@@ -105,5 +105,5 @@ $view = new View(View::FORM, "mainForm.tpl", [
 /* Create a new instance of your class, supply the view object and (optionally) the paths for the template engine.
  * Then call normForm() to get the party started!
  */
-$form = new NormFormExample($view, "../basetemplates", "../basetemplates_c");
+$form = new NormFormExample($view, "../templates", "../templates_c");
 $form->normForm();
