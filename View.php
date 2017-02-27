@@ -1,7 +1,5 @@
 <?php
 
-require_once("Utilities.class.php");
-
 /**
  * Encapsulates data for displaying a form or result of a form submission.
  *

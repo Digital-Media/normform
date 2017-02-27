@@ -54,7 +54,9 @@ class PostParameter implements ParameterInterface
         if ($this->forceEmpty) {
             $this->value = "";
         } else {
-            $this->value = isset($_POST[$this->name]) ? Utilities::sanitizeFilter($_POST[$this->name]) : "";
+            $this->value = isset($_POST[$this->name]) ? htmlspecialchars($_POST[$this->name],
+                ENT_QUOTES | ENT_HTML5) : "";
+
         }
     }
 

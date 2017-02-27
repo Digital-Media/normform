@@ -1,6 +1,5 @@
 <?php
 
-require_once("Utilities.class.php");
 require_once("View.php");
 require_once("GenericParameter.php");
 require_once("PostParameter.php");
