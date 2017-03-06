@@ -171,6 +171,7 @@ abstract class AbstractNormForm
                     }
                 }
                 header("Location: " . $view->getName() . "?" . http_build_query($queryParameters));
+                exit();
                 break;
             default:
                 // Throw an exception or show an error page
