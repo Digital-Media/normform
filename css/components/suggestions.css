@@ -1,4 +1,3 @@
-/* Neu in Übung 09 */
 .Suggestions {
     position: absolute;
     top: calc(38px + 1em);
@@ -22,4 +21,3 @@
 .Suggestions-reference {
     position: relative;
 }
-/* Bis hier her */
