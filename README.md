@@ -8,7 +8,7 @@ A set of CSS files, designed as CSS classes in spirit of the [BEM methodology](h
 
 ## Basic Usage
 
-To use *NormForm* create a class that inherits from `AbstractNormForm` and implement the required abstract methods `isValdi()` (used for form validation) and `business()` (for business logic, once the form has been successfully submitted). Then create an instance of your new class and call the `normForm()` method to initiate the process.
+To use *NormForm* create a class that inherits from `AbstractNormForm` and implement the required abstract methods `isValid()` (used for form validation) and `business()` (for business logic, once the form has been successfully submitted). Then create an instance of your new class and call the `normForm()` method to initiate the process.
 
 To see *NormForm* in action, run ``/examples/NormFormExample.php``. It is a fully implemented example with a very simple form.
 
