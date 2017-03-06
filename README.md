@@ -1,45 +1,41 @@
-# TNormform
+# NormForm
 
-`TNormform` stellt ein Grundgerüst für Übungen im Web-Entwicklungsbereich zur Verfügung.
+*NormFom* is a simple template application for PHP form processing developed for PHP classes in the program [Media Technology and Design](https://www.fh-ooe.at/en/hagenberg-campus/studiengaenge/bachelor/media-technology-and-design/) at the University of Applied Sciences Upper Austria.
 
-Templates und CSS werden vollständig zur Verfügung gestellt, weil dies in anderen Vorlesungs- und Übungsblöcken
-vermittelt wird. Dadurch soll es möglich sein, sich auf den eigentlichen Lerninhalt, das Erlernen von PHP und Datenbankzugriff,
-zu konzentrieren.
+*NormForm* is designed as a single-page form validation and processing system, meaning that once the form is submitted, the page calls itself again and the process starts anew. It provides an Abstract class (`AbstractNormForm`) which implements a standard form display-validate-business logic process.
 
-Besuchen sie uns unter https://www.fh-ooe.at/en/hagenberg-campus/studiengaenge/bachelor/media-technology-and-design/
+A set of CSS files, designed as CSS classes in spirit of the [BEM methodology](http://getbem.com/introduction/) is provided as well. It is being used in the examples and can be employed for projects that make use of *NormForm*.
 
-## Verwendete Technologien und Vorraussetzungen
+## Basic Usage
 
-Für das Übungsszenario wurde mit [XAMPP](https://www.apachefriends.org/de/index.html) entwickelt. TNormform lässt sich aber auch unter anderen Umgebungen verwenden.
+To use *NormForm* create a class that inherits from `AbstractNormForm` and implement the required abstract methods `isValdi()` (used for form validation) and `business()` (for business logic, once the form has been successfully submitted). Then create an instance of your new class and call the `normForm()` method to initiate the process.
 
-* [HTML5](https://www.w3.org/TR/html5/)
-* [CSS3](https://www.w3.org/Style/CSS/specs)
-* [prozedurales und objectorientiertes PHP](http://php.net/)
-* [Smarty Templates](http://www.smarty.net/)
-* [jsOnlyLightbox](https://github.com/felixhagspiel/jsOnlyLightbox)
-* [CSS3 Flexbox](https://www.w3.org/TR/css-flexbox-1/)
-* [jquery](https://jquery.com/), als Teil der Übung, aber nicht als Teil des Grundgerüstes 
-* [PHP-FIG Namenskonventionen](http://www.php-fig.org/bylaws/psr-naming-conventions/)
+To see *NormForm* in action, run ``/examples/NormFormExample.php``. It is a fully implemented example with a very simple form.
 
-In der Methode `TNormform::normForm()` wird ein einfaches Pattern vorgegeben, das den Aufruf, die Eingabe von Daten und deren Verarbeitung über ein Webformular steuert.
-Über die Klasse `Utilities` werden Hilfsfunktionen zur Eingabeüberprüfung und zur Seitenweiterleitung zur Verfügung gestellt.
-Die Klasse `DemoTNormForm` dient zur Demonstration der Abläufe. 
-In den Webübungen und [Datenbankübungen](https://github.com/Digital-Media/MH_DBA-DAB_OnlineShop) wird auf diesem Repository aufbauend die Verarbeitung der Daten (Speichern im Filesystem oder Datenbank, ...) ergänzt.
+If you need a procedural (non object-oriented) version of *NormForm* you can use `/examples/norm_form_example.php` and modify it to your needs. This file has no other dependencies but is not as flexible as the object-oriented version.
 
-## Involvierte Dateien
+## Technologies and Requirements
 
-`TNormform` liegt auch in einer prozeduralen Form vor, um die Unterschiede zur objektorientieren Programmierung herauszuarbeiten.
+This code has been developed with the [XAMPP](https://www.apachefriends.org/) package in mind. Other development environments (MAMP, Vagrant images, Docker containers, etc.) will most likely as well but haven't been tested.
 
-Folgende Files decken die gleiche Funktionalität ab, einmal prozedural und einmal objektorientiert.
+*You will need at least PHP 7.0 to use NormForm since it makes use of features such as type hinting.*
 
-| prozedural          | oo                    | Beschreibung
-|---------------------|-----------------------|--------------------
-| *demo_normform.php* | *demoTNormform.php*   | Beispielseiten, in der die TNormform-Abläufe genutzt werden |
-| *normform.inc.php*  | *TNormform.class.php* | Implementierung der Abläufe bei der Verbeitung von HTML-Formulardaten |
-| *utilities.inc.php* | *Utilities.class.php* | Hilfsfunktionen/methoden, die an mehreren Stellen in auf TNormform aufbauenden Projekten genutzt werden können |
+The following standards, conventions and technologies were used in the development of *NormForm*:
 
-Die Ordner *css* und *js* werden sowohl für die prozedurale als auch die objektorientierte Variante genutzt.
-Der Ordner *basetemplates* wird nur in der objektorientierten Variante basierend auf Smarty-Templates eingesetzt
+* [PHP 7.0](http://php.net/manual/en/migration70.new-features.php)
+* [HTML 5.1](https://www.w3.org/TR/html51/)
+* [CSS3](https://www.w3.org/Style/CSS/)
+* [PSR-1: Basic Coding Standard](http://www.php-fig.org/psr/psr-1/)
+* [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
+* [PSR Naming Conventions](http://www.php-fig.org/bylaws/psr-naming-conventions/)
+* [Smarty Template Engine](http://www.smarty.net/)
 
-*resultpage.html* wird in der prozeduralen Variante *demo_normform.php* genutzt, um bei erfolgreicher Validierung und Verarbeitung der eingegebenen Daten die Weiterleitung auf eine Ergebnisseite zu demonstrieren.
-*session.inc.php* kann sowohl procedural als auch objektorientiert verwendet werden.
+## Structure of this Repository
+
+Folder | Description
+--- | ---
+``/css`` | A set of predefined styles to be used with *NormForm*. Include ``main.css`` to use it. See the examples how to apply the classes.
+``/examples`` | Examples for employing *NormForm*. See ``NormFormExample.php`` for the object-oriented version or ``norm_form_example.php`` for the less flexible procedural version.
+``/templates`` | HTML templates for the Smarty template engine used in ``NormFormExample.php``.
+``/templates_c`` | Output folder for Smarty's compiled templates.
+``/vendor`` | Third party libraries installed with composer: [Smarty Template Engine](http://www.smarty.net/).
