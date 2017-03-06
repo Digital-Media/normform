@@ -22,13 +22,23 @@ select.InputCombo-field {
     overflow: auto;
 }
 
+.InputCombo-error {
+    background-color: rgb(166, 50, 50);
+    color: rgb(245, 245, 245);
+    white-space: nowrap;
+    border-left: 0;
+}
+
 .InputCombo-label,
-.InputCombo-field {
+.InputCombo-field,
+.InputCombo-error,
+.InputCombo-button {
     border: 1px solid rgb(0, 102, 102);
     padding: 0.5em 0.75em;
 }
 
-.InputCombo-field {
+.InputCombo-field,
+.InputCombo-error {
     border-left: 0;
 }
 
