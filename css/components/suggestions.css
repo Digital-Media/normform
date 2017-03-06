@@ -1,7 +1,7 @@
 .Suggestions {
     position: absolute;
     top: calc(38px + 1em);
-    left: 0;
+    left: 1em;
     width: calc(100% - 1em);
     background-color: rgb(204, 204, 204);
     color: rgb(0, 102, 102);
