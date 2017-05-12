@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * The PHP norm form is used to gather, validate and process form data in a flexible way.
  *
