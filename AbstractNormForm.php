@@ -1,5 +1,4 @@
 <?php
-require_once("error_handling.php");
 require_once("View.php");
 require_once("GenericParameter.php");
 require_once("PostParameter.php");
