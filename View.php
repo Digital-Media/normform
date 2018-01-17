@@ -92,4 +92,20 @@ class View
         }
         $this->params[] = $param;
     }
+
+    /**
+     * Performs a generic redirect using header().
+     * @param string $location The target location for the redirect.
+     * @param array $queryParameters GET-Parameters for HTTP-Request.
+     */
+    public static function redirectTo(string $location, $queryParameters=null)
+    {
+        if (isset($queryParameters)) {
+            header("Location: $location" . "?" . http_build_query($queryParameters));
+        } else {
+            header("Location: $location");
+        }
+        exit();
+    }
+
 }
