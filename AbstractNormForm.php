@@ -94,8 +94,8 @@ abstract class AbstractNormForm
     {
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
-                $view = $this->business();
-                $this->show($view);
+                $this->business();
+                $this->show();
             } else {
                 $this->show();
             }
@@ -125,57 +125,18 @@ abstract class AbstractNormForm
      * @param View|null $view An optional View object used to display output or null to use the initially supplied
      * view.
      */
-    protected function show(View $view = null)
+    protected function show()
     {
-        if (is_null($view)) {
-            $view = $this->currentView;
+        foreach ($this->currentView->getParameters() as $param) {
+            if ($param instanceof PostParameter) {
+                $this->smarty->assign($param->getName(), $param);
+            } else {
+                if ($param instanceof GenericParameter) {
+                    $this->smarty->assign($param->getName(), $param->getValue());
+                }
+            }
         }
-        switch ($view->getType()) {
-            case View::FORM:
-                foreach ($view->getParameters() as $param) {
-                    if ($param instanceof PostParameter) {
-                        $this->smarty->assign($param->getName(), $param);
-                    } else {
-                        if ($param instanceof GenericParameter) {
-                            $this->smarty->assign($param->getName(), $param->getValue());
-                        }
-                    }
-                }
-                $this->smarty->display($view->getName());
-                break;
-            case View::TEMPLATE:
-                foreach ($view->getParameters() as $param) {
-                    if ($param instanceof GenericParameter) {
-                        $this->smarty->assign($param->getName(), $param->getValue());
-                    }
-                }
-                $this->smarty->display($view->getName());
-                break;
-            case View::URL:
-                $queryParameters = [];
-                foreach ($view->getParameters() as $key => $param) {
-                    if ($param instanceof GenericParameter) {
-                        $value = $param->getValue();
-                        if (is_array($value)) {
-                            $queryParameters = array_merge($queryParameters, $value);
-                        } else {
-                            $queryParameters[$param->getName()] = $value;
-                        }
-                    } else {
-                        if (is_array($param)) {
-                            $queryParameters = array_merge($queryParameters, $param);
-                        } else {
-                            $queryParameters[$key] = $param;
-                        }
-                    }
-                }
-                header("Location: " . $view->getName() . "?" . http_build_query($queryParameters));
-                exit();
-                break;
-            default:
-                // Throw an exception or show an error page
-                break;
-        }
+        $this->smarty->display($this->currentView->getName());
     }
 
     /**

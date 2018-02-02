@@ -16,18 +16,6 @@
  */
 class View
 {
-    /** @var int FORM Constant for specifying a view using a template containing a form. */
-    const FORM = 0;
-
-    /** @var int TEMPLATE Constant for specifying a view using a template without a form. */
-    const TEMPLATE = 1;
-
-    /** @var int URL Constant for specifying a view using an external PHP file. */
-    const URL = 2;
-
-    /** @var int $type The current type of the view (either FORM, TEMPLATE or URL). */
-    private $type;
-
     /** @var string $name name of the view (a .tpl file name or a PHP file name). */
     private $name;
 
@@ -40,20 +28,10 @@ class View
      * @param string $name The name of the file involved.
      * @param array $params The parameters used when displaying the view.
      */
-    public function __construct(int $type = 1, string $name = "form.tpl", array $params = [])
+    public function __construct(string $name, array $params = [])
     {
-        $this->type = $type;
         $this->name = $name;
         $this->params = $params;
-    }
-
-    /**
-     * Returns the view's type.
-     * @return int The current type.
-     */
-    public function getType(): int
-    {
-        return $this->type;
     }
 
     /**
@@ -76,7 +54,7 @@ class View
 
     /**
      * Allows to add or redefine parameters when the view object already exists. This avoids having to create a
-     * completely new view object just because on parameter has changed or needs to be added. This method first checks
+     * completely new view object just because one parameter has changed or needs to be added. This method first checks
      * if a parameter with the given name is already stored within the view. If so, it updates its value with the one
      * supplied in $param. If the parameter is not present in the view, it is being added.
      * @param ParameterInterface $param The parameter to be added or updated.
