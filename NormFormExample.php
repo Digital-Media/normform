@@ -1,6 +1,6 @@
 <?php
 
-require_once("../AbstractNormForm.php");
+require_once("AbstractNormForm.php");
 
 /**
  * Example implementation of the norm form class that validates a simple form with two required and one optional parameter.
@@ -70,23 +70,8 @@ class NormFormExample extends AbstractNormForm {
         $this->currentView->setParameter(new PostParameter(self::LAST_NAME, true));
         $this->currentView->setParameter(new PostParameter(self::MESSAGE, true));
 
-        // You could also create a new View object for the same template again but you need to specify all parameters.
-        /*return (new View(View::FORM, "mainForm.tpl", [
-            new PostParameter(self::FIRST_NAME, true),
-            new PostParameter(self::LAST_NAME, true),
-            new PostParameter(self::MESSAGE, true),
-            new GenericParameter("statusMessage", $this->statusMessage),
-            new GenericParameter("result", $this->result)
-        ]));*/
-
-        // If you want to show your output on a template without a form...
-        //return (new View(View::TEMPLATE, "noFormOutput.tpl", [new GenericParameter("result", $this->result)]));
-
-        // If you want to display your results on a separate PHP page...
-        //return (new View(View::URL, "externalresult.php", [new GenericParameter("result", $this->result)]));
-
         // null can also be explicitly returned to keep the same view.
-        return null;
+        // return null;
     }
 }
 
@@ -96,7 +81,7 @@ class NormFormExample extends AbstractNormForm {
  * These parameters are used for setting name and id parameters (and "for" in the label) in the input element as well as
  * its value (see PostParameter class for details).
  */
-$view = new View(View::FORM, "mainForm.tpl", [
+$view = new View("normFormExample.tpl", [
     new PostParameter(NormFormExample::FIRST_NAME),
     new PostParameter(NormFormExample::LAST_NAME),
     new PostParameter(NormFormExample::MESSAGE),
@@ -105,5 +90,5 @@ $view = new View(View::FORM, "mainForm.tpl", [
 /* Create a new instance of your class, supply the view object and (optionally) the paths for the template engine.
  * Then call normForm() to get the party started!
  */
-$form = new NormFormExample($view, "../templates", "../templates_c");
+$form = new NormFormExample($view);
 $form->normForm();
