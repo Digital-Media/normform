@@ -1,0 +1,17 @@
+.Button {
+    transition: color 0.2s;
+    display: inline-block;
+    border: 1px solid rgb(0, 102, 102);
+    padding: 0.5em 0.75em;
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.Button:active,
+.Button:focus,
+.Button:hover {
+    color: rgb(233, 233, 233);
+}

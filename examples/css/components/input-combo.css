@@ -1,0 +1,65 @@
+.InputCombo {
+    display: flex;
+    align-items: stretch;
+}
+
+.InputCombo-label {
+    background-color: rgb(233, 233, 233);
+    white-space: nowrap;
+}
+
+.InputCombo-field {
+    flex: 1;
+}
+
+textarea.InputCombo-field,
+select.InputCombo-field {
+    resize: vertical;
+    min-height: 7.5em;
+}
+
+select.InputCombo-field {
+    overflow: auto;
+}
+
+.InputCombo-button {
+    transition: color 0.2s;
+    display: inline-block;
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.InputCombo-button:active,
+.InputCombo-button:focus,
+.InputCombo-button:hover {
+    color: rgb(233, 233, 233);
+}
+
+.InputCombo-error {
+    background-color: rgb(166, 50, 50);
+    color: rgb(245, 245, 245);
+    white-space: nowrap;
+    border-left: 0;
+}
+
+.InputCombo-label,
+.InputCombo-field,
+.InputCombo-error,
+.InputCombo-button {
+    border: 1px solid rgb(0, 102, 102);
+    padding: 0.5em 0.75em;
+}
+
+.InputCombo-field,
+.InputCombo-error {
+    border-left: 0;
+}
+
+.InputCombo-unstyled {
+    margin-left: 1em;
+    flex: none;
+    align-self: center;
+}

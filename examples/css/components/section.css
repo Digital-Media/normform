@@ -1,0 +1,11 @@
+.Section {
+    padding: 1em 0;
+}
+
+.Section:nth-child(2n+1) {
+    background-color: rgb(204, 204, 204);
+}
+
+.Section-heading {
+    margin-top: 0;
+}

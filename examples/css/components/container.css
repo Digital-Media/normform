@@ -1,0 +1,11 @@
+.Container {
+    margin: 0 auto;
+    max-width: 60em;
+    padding: 0 1em;
+}
+
+@media (min-width: 60em) {
+    .Container {
+        padding: 0;
+    }
+}

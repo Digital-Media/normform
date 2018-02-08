@@ -1,0 +1,39 @@
+.Header {
+    background-color: rgb(233, 233, 233);
+    padding: 1.5em;
+    text-align: center;
+}
+
+.Header-logout {
+    margin-top: 2em;
+}
+
+.Header-title {
+    margin: 0;
+}
+
+.Header-title i:after {
+    content: "\00a0";
+}
+
+.Header-subtitle {
+    margin: 0 0 0 1em;
+    font-weight: 300;
+}
+
+@media (min-width: 60em) {
+    .Header--small {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .Header--small .Header-titles {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .Header--small .Header-logout {
+        margin-top: 0;
+    }
+}

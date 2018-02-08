@@ -1,6 +1,6 @@
 <?php
 
-require_once("AbstractNormForm.php");
+require_once("../src/AbstractNormForm.php");
 
 /**
  * Example implementation of the norm form class that validates a simple form with two required and one optional parameter.

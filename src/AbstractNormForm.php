@@ -2,7 +2,7 @@
 require_once("View.php");
 require_once("GenericParameter.php");
 require_once("PostParameter.php");
-require_once("vendor/smarty/smarty/libs/Smarty.class.php");
+require_once("../vendor/smarty/smarty/libs/Smarty.class.php");
 
 /**
  * The object oriented and template based norm form is used to gather, validate and process form data in a flexible way.
