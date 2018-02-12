@@ -29,13 +29,3 @@ The following standards, conventions and technologies were used in the developme
 * [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
 * [PSR Naming Conventions](http://www.php-fig.org/bylaws/psr-naming-conventions/)
 * [Smarty Template Engine](http://www.smarty.net/)
-
-## Structure of this Repository
-
-Folder | Description
---- | ---
-``/css`` | A set of predefined styles to be used with *NormForm*. Include ``main.css`` to use it. See the examples how to apply the classes.
-``/examples`` | Examples for employing *NormForm*. See ``NormFormExample.php`` for the object-oriented version or ``norm_form_example.php`` for the less flexible procedural version.
-``/templates`` | HTML templates for the Smarty template engine used in ``NormFormExample.php``.
-``/templates_c`` | Output folder for Smarty's compiled templates.
-``/vendor`` | Third party libraries installed with composer: [Smarty Template Engine](http://www.smarty.net/).

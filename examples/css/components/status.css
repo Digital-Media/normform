@@ -1,7 +1,0 @@
-.Status {
-    color: rgb(61, 179, 6);
-}
-
-.Status-message i::after {
-    content: "\00a0";
-}
