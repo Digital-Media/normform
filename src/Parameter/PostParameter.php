@@ -1,6 +1,6 @@
 <?php
 
-require_once("ParameterInterface.php");
+namespace Fhooe\NormForm\Parameter;
 
 /**
  * A special parameter that represents an entry in the $_POST superglobal.

@@ -1,5 +1,31 @@
 {
-  "require": {
-    "smarty/smarty": "3.1.27"
-  }
+    "name": "fhooe/normform",
+    "description": "NormForm is a simple template application for PHP form processing.",
+    "type": "library",
+    "require": {
+        "smarty/smarty": "^3.1",
+        "twig/twig": "^2.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wolfgang Hochleitner",
+            "email": "wolfgang.hochleitner@fh-hagenberg.at",
+            "role": "Developer"
+        },
+        {
+            "name": "Martin Harrer",
+            "email": "martin.harrer@fh-hagenberg.at",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Fhooe\\NormForm\\": "src/"
+        }
+    }
 }

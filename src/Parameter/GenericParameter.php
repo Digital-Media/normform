@@ -1,6 +1,6 @@
 <?php
 
-require_once("ParameterInterface.php");
+namespace Fhooe\NormForm\Parameter;
 
 /**
  * A generic name/value parameter.

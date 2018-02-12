@@ -1,5 +1,7 @@
 <?php
 
+namespace Fhooe\NormForm\Parameter;
+
 /**
  * Defines an interface for parameters that are passed on to a View object.
  *

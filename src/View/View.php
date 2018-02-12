@@ -1,5 +1,9 @@
 <?php
 
+namespace Fhooe\NormForm\View;
+
+use Fhooe\NormForm\Parameter\ParameterInterface;
+
 /**
  * Encapsulates data for displaying a form or result of a form submission.
  *
