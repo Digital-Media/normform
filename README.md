@@ -10,13 +10,13 @@ A set of CSS files, designed as CSS classes in spirit of the [BEM methodology](h
 
 To use *NormForm* create a class that inherits from `AbstractNormForm` and implement the required abstract methods `isValid()` (used for form validation) and `business()` (for business logic, once the form has been successfully submitted). Then create an instance of your new class and call the `normForm()` method to initiate the process.
 
-To see *NormForm* in action, run ``/examples/NormFormExample.php``. It is a fully implemented example with a very simple form.
+To see *NormForm* in action, see  [phpintro](https://github.com/Digital-Media/phpintro/blob/master/src/NormFormDemo.php). It is a fully implemented example with a very simple form.
 
-If you need a procedural (non object-oriented) version of *NormForm* you can use `/examples/norm_form_example.php` and modify it to your needs. This file has no other dependencies but is not as flexible as the object-oriented version.
 
 ## Technologies and Requirements
 
-This code has been developed with the [XAMPP](https://www.apachefriends.org/) package in mind. Other development environments (MAMP, Vagrant images, Docker containers, etc.) will most likely as well but haven't been tested.
+This code has been developed with [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) in mind. 
+Other development environments (MAMP, XAMPP, Docker containers, etc.) will most likely work as well but haven't been tested.
 
 *You will need at least PHP 7.0 to use NormForm since it makes use of features such as type hinting.*
 
@@ -30,12 +30,4 @@ The following standards, conventions and technologies were used in the developme
 * [PSR Naming Conventions](http://www.php-fig.org/bylaws/psr-naming-conventions/)
 * [Smarty Template Engine](http://www.smarty.net/)
 
-## Structure of this Repository
 
-Folder | Description
---- | ---
-``/css`` | A set of predefined styles to be used with *NormForm*. Include ``main.css`` to use it. See the examples how to apply the classes.
-``/examples`` | Examples for employing *NormForm*. See ``NormFormExample.php`` for the object-oriented version or ``norm_form_example.php`` for the less flexible procedural version.
-``/templates`` | HTML templates for the Smarty template engine used in ``NormFormExample.php``.
-``/templates_c`` | Output folder for Smarty's compiled templates.
-``/vendor`` | Third party libraries installed with composer: [Smarty Template Engine](http://www.smarty.net/).
