@@ -29,5 +29,3 @@ The following standards, conventions and technologies were used in the developme
 * [PSR-2: Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
 * [PSR Naming Conventions](http://www.php-fig.org/bylaws/psr-naming-conventions/)
 * [Smarty Template Engine](http://www.smarty.net/)
-
-
