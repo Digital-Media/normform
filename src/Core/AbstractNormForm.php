@@ -4,8 +4,7 @@ namespace Fhooe\NormForm\Core;
 
 use Fhooe\NormForm\Parameter\GenericParameter;
 use Fhooe\NormForm\Parameter\PostParameter;
-use Fhooe\NormForm\View\View;
-use Smarty;
+use Fhooe\NormForm\View\AbstractView;
 
 /**
  * The object oriented and template based norm form is used to gather, validate and process form data in a flexible way.
@@ -27,14 +26,8 @@ use Smarty;
  */
 abstract class AbstractNormForm
 {
-
     /**
-     * @var Smarty $smarty Hold the reference to the Smarty template engine.
-     */
-    protected $smarty;
-
-    /**
-     * @var View $currentView Holds the currently supplied View object that will be used in the template to render
+     * @var AbstractView $currentView Holds the currently supplied View object that will be used in the template to render
      * output.
      */
     protected $currentView;
@@ -59,7 +52,7 @@ abstract class AbstractNormForm
     /**
      * Abstract method for processing the validated form input (a.k.a. business logic). Must be implemented in the
      * subclass.
-     * @return View|null Can return a View object to determine a new target for output or null to keep the same view.
+     * @return AbstractView|null Can return a View object to determine a new target for output or null to keep the same view.
      */
     abstract protected function business();
 
@@ -67,18 +60,12 @@ abstract class AbstractNormForm
      * Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
      * initially define how and where output is displayed via the template engine and supply parameters to the template.
      * The template engine itself is also set up, two optional parameters allow setting the template paths.
-     * @param View $defaultView Holds the initial @View object used for displaying the form.
+     * @param AbstractView $defaultView Holds the initial @View object used for displaying the form.
      * @param string $templateDir Optional parameter for setting the path to the template files.
      * @param string $compileDir Optional parameter for setting the path for compiled templates.
      */
-    public function __construct(
-        View $defaultView,
-        string $templateDir = "templates",
-        string $compileDir = "templates_c"
-    ) {
-        $this->smarty = new Smarty();
-        $this->smarty->template_dir = $templateDir;
-        $this->smarty->compile_dir = $compileDir;
+    public function __construct(AbstractView $defaultView)
+    {
         $this->currentView = $defaultView;
         $this->errorMessages = [];
         $this->statusMessage = "";
@@ -125,21 +112,12 @@ abstract class AbstractNormForm
      * external PHP file (type URL), the parameters supplied in the View object are converted to a valid query
      * parameter string which is then appended to the defined file name and a HTTP redirect to the assembled URL is
      * initiated.
-     * @param View|null $view An optional View object used to display output or null to use the initially supplied
+     * @param AbstractView|null $view An optional View object used to display output or null to use the initially supplied
      * view.
      */
     protected function show()
     {
-        foreach ($this->currentView->getParameters() as $param) {
-            if ($param instanceof PostParameter) {
-                $this->smarty->assign($param->getName(), $param);
-            } else {
-                if ($param instanceof GenericParameter) {
-                    $this->smarty->assign($param->getName(), $param->getValue());
-                }
-            }
-        }
-        $this->smarty->display($this->currentView->getName());
+        $this->currentView->display();
     }
 
     /**

@@ -25,7 +25,8 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Fhooe\\NormForm\\": "src/"
+            "Fhooe\\NormForm\\": "src/",
+            "Example\\": "example/"
         }
     }
 }

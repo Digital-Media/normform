@@ -18,13 +18,13 @@ use Fhooe\NormForm\Parameter\ParameterInterface;
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @version 2017
  */
-class View
+abstract class AbstractView
 {
     /** @var string $name name of the view (a .tpl file name or a PHP file name). */
-    private $name;
+    protected $name;
 
     /** @var array $params An array of parameters used for display. */
-    private $params;
+    protected $params;
 
     /**
      * Creates a new view with the specified type, name and parameters.
@@ -80,7 +80,7 @@ class View
      * @param string $location The target location for the redirect.
      * @param array $queryParameters GET-Parameters for HTTP-Request.
      */
-    public static function redirectTo(string $location, $queryParameters=null)
+    public static function redirectTo(string $location, $queryParameters = null)
     {
         if (isset($queryParameters)) {
             header("Location: $location" . "?" . http_build_query($queryParameters));
@@ -90,4 +90,5 @@ class View
         exit();
     }
 
+    abstract public function display();
 }
