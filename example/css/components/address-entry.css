@@ -1,0 +1,19 @@
+.AddressEntry {
+    background-color: rgb(204, 204, 204);
+    padding: 1em;
+    text-align: center;
+}
+
+.AddressEntry-name {
+    font-weight: 600;
+    display: inline-block;
+}
+
+.AddressEntry-address {
+    margin-top: 1em;
+}
+
+.AddressEntry-name i::after,
+.AddressEntry-address i::after {
+    content: "\00a0";
+}

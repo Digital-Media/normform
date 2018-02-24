@@ -1,0 +1,13 @@
+.u-focused {
+    background-color: rgb(255,251,148);
+    outline: 0;
+}
+
+.u-pointer {
+    cursor: pointer;
+}
+
+.u-hover {
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+}

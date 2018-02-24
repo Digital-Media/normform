@@ -1,0 +1,23 @@
+.Suggestions {
+    position: absolute;
+    top: calc(38px + 1em);
+    left: 1em;
+    width: calc(100% - 1em);
+    background-color: rgb(204, 204, 204);
+    color: rgb(0, 102, 102);
+}
+
+.Suggestions-entry {
+    padding: 0.25em;
+    border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.Suggestions-over {
+    background-color: rgb(0, 102, 102);
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+.Suggestions-reference {
+    position: relative;
+}

@@ -1,0 +1,20 @@
+.Error {
+    color: rgb(166, 50, 50);
+}
+
+.Error-list {
+    list-style: none;
+    padding: 0;
+}
+
+.Error-listItem {
+    padding-left: 1.3em;
+}
+
+.Error-listItem::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f071";
+    display: inline-block;
+    margin-left: -1.3em;
+    width: 1.3em;
+}

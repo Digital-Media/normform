@@ -1,0 +1,8 @@
+# We want templates_c to be empty since compiled files are not meant to be added to version control
+# Yet, Git does not track empty directories, so this file serves the purpose that something is in it
+
+# Exclude all the files in this directory
+*
+
+# But of course, keep .gitignore
+!.gitignore
