@@ -9,16 +9,17 @@ namespace Fhooe\NormForm\Parameter;
  * should be tracked then "foo" needs to be supplied as $postName parameter. The class will set this index as its
  * name and will automatically set its value by doing a lookup in $_POST. If there is an entry present at the
  * supplied index, it will be set as the value, otherwise an empty string will be used.
- * When the value of this parameter is query via getValue() it will perform the update again before returning the
+ * When the value of this parameter is queried via getValue() it will perform the update again before returning the
  * value. If the parameter's value was empty at creation but the $_POST superglobal has been filled through a
  * form submission in the meantime, this class will consider it when returning the value.
  * To disable this mechanism and create a parameter with an always empty value (e.g. when you want an empty form
  * field in your view), set the optional second parameter $forceEmpty to true.
  *
+ * @package Fhooe\NormForm\Parameter
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 2017
+ * @version 1.0.0
  */
 class PostParameter implements ParameterInterface
 {
@@ -54,9 +55,10 @@ class PostParameter implements ParameterInterface
         if ($this->forceEmpty) {
             $this->value = "";
         } else {
-            $this->value = isset($_POST[$this->name]) ? htmlspecialchars($_POST[$this->name],
-                ENT_QUOTES | ENT_HTML5) : "";
-
+            $this->value = isset($_POST[$this->name]) ? htmlspecialchars(
+                $_POST[$this->name],
+                ENT_QUOTES | ENT_HTML5
+            ) : "";
         }
     }
 

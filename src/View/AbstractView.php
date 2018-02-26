@@ -7,34 +7,50 @@ use Fhooe\NormForm\Parameter\ParameterInterface;
 /**
  * Encapsulates data for displaying a form or result of a form submission.
  *
- * Defines a type of view which can be either FORM (a template containing a form), TEMPLATE (a template without a form)
- * or URL (an external PHP file). Also holds the name of the view (a Smarty .tpl file for FORM and TEMPLATE or a PHP
- * filename for URL) and allows to specify Parameters that should be used for displaying. Parameters should be classes
- * implementing ParameterInterface (e.g. GenericParameter or PostParameter). When using an external PHP file (type URL)
- * a simple array can also be used for simplicity's sake.
+ * This abstract class contains the common code for all views. It managages the parameters that are involved in the form
+ * (which should implement ParameterInterface) and allows for a general PHP redirect. Displaying the form or the results
+ * itself is handled in special subclasses. These usually make use of a sepcific templating engine, which is why
+ * display() has to be implemented in the subclass. This method will pass on the parameters stored in the view to the
+ * template engine and render/display the form.
  *
+ * @package Fhooe\NormForm\View
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 2017
+ * @version 1.0.0
  */
 abstract class AbstractView
 {
-    /** @var string $name name of the view (a .tpl file name or a PHP file name). */
-    protected $name;
+    /** @var string $templateName The name of the view (the template file that is to be rendered). */
+    protected $templateName;
+
+    /** @var string $templateDirectory The relative path to the directory where the template files are stored.*/
+    protected $templateDirectory;
+
+    /** @var string $templateCacheDirectory The relative path where cached/compiled templates are to be stored. */
+    protected $templateCacheDirectory;
 
     /** @var array $params An array of parameters used for display. */
     protected $params;
 
     /**
-     * Creates a new view with the specified type, name and parameters.
-     * @param int $type The type of view.
-     * @param string $name The name of the file involved.
+     * Creates a new view with the main template to be displayed, the path to the template and compiled templates
+     * directory as well as parameters of the form.
+     * @param string $templateName The name of the template to be displayed.
+     * @param string $templateDirectory The path where the template file is located (default is "templates").
+     * @param string $templateCacheDirectory The path where cached template files are to be stored (default is
+     * "templates_c").
      * @param array $params The parameters used when displaying the view.
      */
-    public function __construct(string $name, array $params = [])
-    {
-        $this->name = $name;
+    public function __construct(
+        string $templateName,
+        string $templateDirectory = "templates",
+        string $templateCacheDirectory = "templates_c",
+        array $params = []
+    ) {
+        $this->templateName = $templateName;
+        $this->templateDirectory = $templateDirectory;
+        $this->templateCacheDirectory = $templateCacheDirectory;
         $this->params = $params;
     }
 
@@ -42,9 +58,9 @@ abstract class AbstractView
      * Returns the view's name.
      * @return string The name.
      */
-    public function getName(): string
+    public function getTemplateName(): string
     {
-        return $this->name;
+        return $this->templateName;
     }
 
     /**

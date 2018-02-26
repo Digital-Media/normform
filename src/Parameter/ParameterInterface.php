@@ -8,10 +8,11 @@ namespace Fhooe\NormForm\Parameter;
  * Parameters always consist of name and value. This interface defines that there are
  * methods to return these properties.
  *
+ * @package Fhooe\NormForm\Parameter
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 2017
+ * @version 1.0.0
  */
 interface ParameterInterface
 {
