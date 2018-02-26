@@ -10,20 +10,20 @@ class NormFormDemo extends AbstractNormForm
 {
 
     /**
-     * @var string FIRST_NAME Form field constant that defines
-     *                        how the form field for holding a first name is called (id/name).
+     * @var string FIRST_NAME Form field constant that defines how the form field for holding a first name is called
+     * (id/name).
      */
     const FIRST_NAME = "firstname";
 
     /**
-     * @var string LAST_NAME Form field constant that defines
-     *                       how the form field for holding a last name is called (id/name).
+     * @var string LAST_NAME Form field constant that defines how the form field for holding a last name is called
+     * (id/name).
      */
     const LAST_NAME = "lastname";
 
     /**
-     * @var string MESSAGE Form field constant that defines
-     *                     how the form field for holding a message is called (id/name).
+     * @var string MESSAGE Form field constant that defines how the form field for holding a message is called
+     * (id/name).
      */
     const MESSAGE = "message";
 
@@ -56,11 +56,7 @@ class NormFormDemo extends AbstractNormForm
     /**
      * Business logic method used to process the data that was used after a successful validation. In this example the
      * received data is stored in @result and passed on to the view. In more complex scenarios this would be the place
-     * to add things to a database or perform other tasks before displaying the data. This method can optionally return
-     * a @View object. This is then used by the subsequently called @show method and allows for a flexible display of
-     * the processed data in a new template or even a new, separate PHP file. If nothing is returned, the current view
-     * is kept (useful if the initial template containing the form should directly display the output underneath).
-     * @return AbstractView|null A new @View object for display output or null to keep the current view.
+     * to add things to a database or perform other tasks before displaying the data.
      */
     protected function business()
     {
@@ -74,8 +70,5 @@ class NormFormDemo extends AbstractNormForm
         $this->currentView->setParameter(new PostParameter(self::FIRST_NAME, true));
         $this->currentView->setParameter(new PostParameter(self::LAST_NAME, true));
         $this->currentView->setParameter(new PostParameter(self::MESSAGE, true));
-
-        // null can also be explicitly returned to keep the same view.
-        return null;
     }
 }

@@ -6,13 +6,11 @@ use Example\NormFormDemo;
 use Fhooe\NormForm\Parameter\PostParameter;
 use Fhooe\NormForm\View\SmartyView;
 use Fhooe\NormForm\View\TwigView;
-use Fhooe\NormForm\View\View;
-
 
 /*
  * define a global constant
  */
-define('DEBUG', true);
+define('DEBUG', false);
 /*
  * activate debugging with HTML errors to display in Browser
  */
@@ -26,17 +24,31 @@ if (DEBUG) {
     ini_set('display_startup_errors', '1');
 }
 
-/*$view = new SmartyView("normFormDemo.tpl", [
-    new PostParameter(NormFormDemo::FIRST_NAME),
-    new PostParameter(NormFormDemo::LAST_NAME),
-    new PostParameter(NormFormDemo::MESSAGE),
-]);*/
+// If true, use Smarty, otherwise use Twig
+$useSmarty = false;
 
-$view = new TwigView("normFormDemo.html.twig", [
-    new PostParameter(NormFormDemo::FIRST_NAME),
-    new PostParameter(NormFormDemo::LAST_NAME),
-    new PostParameter(NormFormDemo::MESSAGE),
-]);
-
+if ($useSmarty) {
+    $view = new SmartyView(
+        "normFormDemo.tpl",
+        "smarty_templates",
+        "smarty_templates_c",
+        [
+            new PostParameter(NormFormDemo::FIRST_NAME),
+            new PostParameter(NormFormDemo::LAST_NAME),
+            new PostParameter(NormFormDemo::MESSAGE),
+        ]
+    );
+} else {
+    $view = new TwigView(
+        "normFormDemo.html.twig",
+        "twig_templates",
+        "twig_templates_c",
+        [
+            new PostParameter(NormFormDemo::FIRST_NAME),
+            new PostParameter(NormFormDemo::LAST_NAME),
+            new PostParameter(NormFormDemo::MESSAGE),
+        ]
+    );
+}
 $form = new NormFormDemo($view);
 $form->normForm();

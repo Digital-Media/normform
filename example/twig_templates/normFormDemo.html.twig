@@ -21,32 +21,23 @@
     <section class="Section">
         <div class="Container">
             <h2 class="Section-heading">Enter Your Name and Message</h2>
-            {#{if isset($errorMessages) && count($errorMessages) > 0}#}
             {% if errorMessages is defined and errorMessages|length > 0 %}
                 <div class="Error">
                     <ul class="Error-list">
-                        {#{foreach $errorMessages as $error}#}
                         {% for error in errorMessages %}
                         <li class="Error-listItem">{{ error }}</li>
                         {% endfor %}
-                        {#{/foreach}#}
                     </ul>
                 </div>
             {% endif %}
-            {#{/if}#}
-            {#{if isset($statusMessage) && strlen($statusMessage) !== 0}#}
             {% if statusMessage is defined and statusMessage|length != 0 %}
                 <div class="Status">
                     <p class="Status-message"><i class="fa fa-check"></i>{{ statusMessage }}</p>
                 </div>
             {% endif %}
-            {#{/if}#}
-            {#<form action="{$smarty.server.SCRIPT_NAME}" method="post">#}
             <form action="{{ _server.SCRIPT_NAME }}" method="post">
                 <div class="Grid Grid--gutters">
                     <div class="InputCombo Grid-full">
-                        {#<label for="{$firstname->getName()}" class="InputCombo-label">First Name*:</label>
-                        <input type="text" id="{$firstname->getName()}" name="{$firstname->getName()}" value="{$firstname->getValue()}" class="InputCombo-field">#}
                         <label for="{{ firstname.getName() }}" class="InputCombo-label">First Name*:</label>
                         <input type="text" id="{{ firstname.getName() }}" name="{{ firstname.getName() }}" value="{{ firstname.getValue() }}" class="InputCombo-field">
                     </div>
@@ -68,7 +59,6 @@
     <section class="Section">
         <div class="Container">
             <h2 class="Section-heading">Result in $_POST</h2>
-            {#{if isset($result)}#}
             {% if result is defined %}
             <table class="Table u-tableW100">
                 <colgroup span="2" class="u-tableW50"></colgroup>
@@ -79,18 +69,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                {#{foreach $result as $key => $value}#}
                 {% for key, value in result %}
                 <tr class="Table-row">
                     <td class="Table-data">{{ key }}</td>
                     <td class="Table-data">{{ value |escape | nl2br }}</td>
                 </tr>
                 {% endfor %}
-                {#{/foreach}#}
                 </tbody>
             </table>
             {% endif %}
-            {#{/if}#}
         </div>
     </section>
 </main>
@@ -99,7 +86,7 @@
         <p class="Footer-credits">Created and maintained by <a href="mailto:martin.harrer@fh-hagenberg.at">Martin
                 Harrer</a> and <a href="mailto:wolfgang.hochleitner@fh-hagenberg.at">Wolfgang Hochleitner</a>.</p>
         <p class="Footer-version"><i class="fa fa-file-text-o" aria-hidden="true"></i><a
-                    href="https://github.com/Digital-Media/normform">NormForm Example Version 2017</a></p>
+                    href="https://github.com/Digital-Media/normform">NormForm Example (Twig) Version 1.0.0</a></p>
     </div>
 </footer>
 </body>
