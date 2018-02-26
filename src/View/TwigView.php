@@ -4,11 +4,11 @@ namespace Fhooe\NormForm\View;
 
 use Fhooe\NormForm\Parameter\GenericParameter;
 use Fhooe\NormForm\Parameter\PostParameter;
-use Twig_Environment;
-use Twig_Error_Loader;
-use Twig_Error_Runtime;
-use Twig_Error_Syntax;
-use Twig_Loader_Filesystem;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+use Twig\Loader\FilesystemLoader;
 
 /**
  * A view object that uses the Twig template engine to render its output.
@@ -26,10 +26,10 @@ use Twig_Loader_Filesystem;
  */
 class TwigView extends AbstractView
 {
-    /** @var Twig_Loader_Filesystem $loader The Twig loader instance. */
+    /** @var FilesystemLoader $loader The Twig loader instance. */
     private $loader;
 
-    /** @var Twig_Environment $twig The main instance of the Twig template engine (environment). */
+    /** @var Environment $twig The main instance of the Twig template engine (environment). */
     private $twig;
 
     /**
@@ -48,8 +48,8 @@ class TwigView extends AbstractView
     ) {
         parent::__construct($templateName, $templateDirectory, $templateCacheDirectory, $params);
 
-        $this->loader = new Twig_Loader_Filesystem($this->templateDirectory);
-        $this->twig = new Twig_Environment($this->loader, [
+        $this->loader = new FilesystemLoader($this->templateDirectory);
+        $this->twig = new Environment($this->loader, [
             "cache" => $this->templateCacheDirectory,
             "auto_reload" => true
         ]);
@@ -75,13 +75,13 @@ class TwigView extends AbstractView
         }
         try {
             $this->twig->display($this->templateName, $templateParameters);
-        } catch (Twig_Error_Loader $e) {
+        } catch (LoaderError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
             error_log($e->getMessage());
-        } catch (Twig_Error_Runtime $e) {
+        } catch (RuntimeError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
             error_log($e->getMessage());
-        } catch (Twig_Error_Syntax $e) {
+        } catch (SyntaxError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
             error_log($e->getMessage());
         }
