@@ -50,10 +50,8 @@ abstract class AbstractNormForm
     /**
      * Abstract method for processing the validated form input (a.k.a. business logic). Must be implemented in the
      * subclass.
-     * @return AbstractView|null Can return an AbstractView object to determine a new target for output or null to keep
-     * the same view.
      */
-    abstract protected function business();
+    abstract protected function business(): void;
 
     /**
      * Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
@@ -75,7 +73,7 @@ abstract class AbstractNormForm
      * called again. Possible error messages provided as parameters to the View object in isValid() can now be
      * displayed. Once the submission was correct, business() is called where the data can be processed as needed.
      */
-    public function normForm()
+    public function normForm(): void
     {
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
@@ -104,7 +102,7 @@ abstract class AbstractNormForm
      * the display() method. Depending on the type of AbstractView object, a certain template engine will be used to
      * render the output. The view object will handle passing on the parameters to the template engine.
      */
-    protected function show()
+    protected function show(): void
     {
         $this->currentView->display();
     }
