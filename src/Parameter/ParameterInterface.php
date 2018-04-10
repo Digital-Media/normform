@@ -5,8 +5,8 @@ namespace Fhooe\NormForm\Parameter;
 /**
  * Defines an interface for parameters that are passed on to a View object.
  *
- * Parameters always consist of name and value. This interface defines that there are
- * methods to return these properties.
+ * Parameters always consist of name and value. This interface defines that there are methods to return these
+ * properties.
  *
  * @package Fhooe\NormForm\Parameter
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
