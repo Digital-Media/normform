@@ -47,18 +47,17 @@ class PostParameter implements ParameterInterface
 
     /**
      * Private method for updating the parameter's value. Checks if there is an entry in the $_POST superglobal.
-     * If present, the entry is sanitized to avoid cross-site-scripting and then set as a value. Otherwise an
-     * empty string is set. If $forceEmpty is set to true the value is always set as an empty string.
+     * If present, the entry is set as a value. Otherwise an empty string is used. If $forceEmpty is set to true the
+     * value is always set as an empty string.
+     * Be aware that no sanitation (htmlspecialchars, etc.) is performed on the values at this point. This is (expected
+     * to be) done by the template engine in the View class.
      */
-    private function updateValue()
+    private function updateValue(): void
     {
         if ($this->forceEmpty) {
             $this->value = "";
         } else {
-            $this->value = isset($_POST[$this->name]) ? htmlspecialchars(
-                $_POST[$this->name],
-                ENT_QUOTES | ENT_HTML5
-            ) : "";
+            $this->value = $_POST[$this->name] ?? "";
         }
     }
 
