@@ -13,7 +13,7 @@ namespace Fhooe\NormForm\Parameter;
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
  * @version 1.0.0
  */
-class GenericParameter implements ParameterInterface
+final class GenericParameter implements ParameterInterface
 {
     /** @var string $name The name of the parameter. Always a string. */
     private $name;
