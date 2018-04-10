@@ -1,10 +1,10 @@
 {
     "name": "fhooe/normform",
     "description": "NormForm is a simple template application for PHP form processing.",
+    "keywords": ["form processing", "twig", "education"],
     "type": "library",
     "require": {
         "php": "^7.1",
-        "smarty/smarty": "^3.1",
         "twig/twig": "^2.4"
     },
     "require-dev": {
@@ -26,8 +26,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Fhooe\\NormForm\\": "src/",
-            "Example\\": "example/"
+            "Fhooe\\NormForm\\": "src/"
         }
     }
 }
