@@ -99,6 +99,35 @@ field in your view), set the optional second parameter $forceEmpty to true.</p> 
     
     
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_name">
+                                                            private                    string
+                </td>
+                <td>$name</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_value">
+                                                            private                    mixed
+                </td>
+                <td>$value</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_forceEmpty">
+                                                            private                    bool
+                </td>
+                <td>$forceEmpty</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -111,6 +140,16 @@ field in your view), set the optional second parameter $forceEmpty to true.</p> 
                     <a href="#method___construct">__construct</a>(string $postName, bool $forceEmpty = false)
         
                                             <p>Creates a new parameter for the form field/$_POST entry with the name specified in $postName.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateValue">updateValue</a>()
+        
+                                            <p>Private method for updating the parameter's value. Checks if there is an entry in the $_POST superglobal.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -177,8 +216,32 @@ used.</td>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_updateValue">
+        <div class="location">at         line 55</div>
+        <code>                private    
+    <strong>updateValue</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Private method for updating the parameter's value. Checks if there is an entry in the $_POST superglobal.</p>                    <p>If present, the entry is set as a value. Otherwise an empty string is used. If $forceEmpty is set to true the
+value is always set as an empty string.
+Be aware that no sanitation (htmlspecialchars, etc.) is performed on the values at this point. This is (expected
+to be) done by the template engine in the View class.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">at         line 69</div>
+        <div class="location">at         line 68</div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -208,7 +271,7 @@ used.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 77</div>
         <code>                    mixed
     <strong>getValue</strong>()
         </code>

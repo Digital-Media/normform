@@ -88,10 +88,10 @@
             <div class="description">
             <p>NormFom is a simple template application to gather, validate and process form data in a flexible way.</p>            <p>This abstract class represents a well known process of gathering, validating and processing form data within a single
 PHP structure. To use it, simple extend this class and implement the abstract methods isValid() (for validation) and
-business() for processing/business logic. Then create an object of your subclass, supply an AbstractView object and
+business() for processing/business logic. Then create an object of your subclass, supply an View object and
 start the process by calling normForm.
-The initial call will show the form supplied by the AbstractView object. Submitted form data will then be validated
-by your implementation of isValid(). Occurring error messages can be passed on to the AbstractView object and
+The initial call will show the form supplied by the View object. Submitted form data will then be validated
+by your implementation of isValid(). Occurring error messages can be passed on to the View object and
 displayed in the template output. Once validation is passed, the data entered in the form can be processed in
 business() in any suitable way.</p>                    </div>
     
@@ -102,7 +102,7 @@ business() in any suitable way.</p>                    </div>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_currentView">
-                                        protected                                        <a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a>
+                                        protected                                        <a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a>
                 </td>
                 <td>$currentView</td>
                 <td class="last"></td>
@@ -142,7 +142,7 @@ business() in any suitable way.</p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a>|null
+                    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_business">business</a>()
@@ -156,7 +156,7 @@ subclass.</p>                </div>
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a> $defaultView)
+                    <a href="#method___construct">__construct</a>(<a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a> $defaultView)
         
                                             <p>Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
 initially define how and where output is displayed via the template engine and supply parameters to the template.</p>                </div>
@@ -194,8 +194,8 @@ displayed. Once the submission was correct, business() is called where the data 
                 <div class="col-md-8 type">
                     <a href="#method_show">show</a>()
         
-                                            <p>Used to display output. The currently used object of type AbstractView is used to display the content by calling
-the display() method. Depending on the type of AbstractView object, a certain template engine will be used to
+                                            <p>Used to display output. The currently used object of type View is used to display the content by calling
+the display() method. Depending on the type of View object, a certain template engine will be used to
 render the output. The view object will handle passing on the parameters to the template engine.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -248,8 +248,8 @@ PHP's own empty() method which also defines inputs such as "0" as empty.</p>    
             </div>
                     <div class="method-item">
                     <h3 id="method_business">
-        <div class="location">at         line 56</div>
-        <code>    abstract        protected        <a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a>|null
+        <div class="location">at         line 54</div>
+        <code>    abstract        protected        
     <strong>business</strong>()
         </code>
     </h3>
@@ -262,16 +262,6 @@ PHP's own empty() method which also defines inputs such as "0" as empty.</p>    
 subclass.</p>                                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a>|null</td>
-            <td>Can return an AbstractView object to determine a new target for output or null to keep
-the same view.</td>
-        </tr>
-    </table>
-
             
             
                     </div>
@@ -280,9 +270,9 @@ the same view.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 64</div>
+        <div class="location">at         line 62</div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a> $defaultView)
+    <strong>__construct</strong>(<a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a> $defaultView)
         </code>
     </h3>
     <div class="details">
@@ -297,9 +287,9 @@ initially define how and where output is displayed via the template engine and s
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Fhooe/NormForm/View/AbstractView.html"><abbr title="Fhooe\NormForm\View\AbstractView">AbstractView</abbr></a></td>
+                <td><a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a></td>
                 <td>$defaultView</td>
-                <td>Holds the initial @AbstractView object used for displaying the form.</td>
+                <td>Holds the initial @View object used for displaying the form.</td>
             </tr>
             </table>
 
@@ -312,7 +302,7 @@ initially define how and where output is displayed via the template engine and s
             </div>
                     <div class="method-item">
                     <h3 id="method_normForm">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 76</div>
         <code>                    
     <strong>normForm</strong>()
         </code>
@@ -337,7 +327,7 @@ displayed. Once the submission was correct, business() is called where the data 
             </div>
                     <div class="method-item">
                     <h3 id="method_isFormSubmission">
-        <div class="location">at         line 97</div>
+        <div class="location">at         line 95</div>
         <code>            protected        bool
     <strong>isFormSubmission</strong>()
         </code>
@@ -368,7 +358,7 @@ displayed. Once the submission was correct, business() is called where the data 
             </div>
                     <div class="method-item">
                     <h3 id="method_show">
-        <div class="location">at         line 107</div>
+        <div class="location">at         line 105</div>
         <code>            protected        
     <strong>show</strong>()
         </code>
@@ -378,8 +368,8 @@ displayed. Once the submission was correct, business() is called where the data 
     
 
                     <div class="method-description">
-                                    <p>Used to display output. The currently used object of type AbstractView is used to display the content by calling
-the display() method. Depending on the type of AbstractView object, a certain template engine will be used to
+                                    <p>Used to display output. The currently used object of type View is used to display the content by calling
+the display() method. Depending on the type of View object, a certain template engine will be used to
 render the output. The view object will handle passing on the parameters to the template engine.</p>                                                </div>
                 <div class="tags">
             
@@ -391,7 +381,7 @@ render the output. The view object will handle passing on the parameters to the 
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmptyPostField">
-        <div class="location">at         line 118</div>
+        <div class="location">at         line 116</div>
         <code>            protected        bool
     <strong>isEmptyPostField</strong>(string $index)
         </code>
