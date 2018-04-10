@@ -2,17 +2,17 @@
 
 namespace Fhooe\NormForm\Core;
 
-use Fhooe\NormForm\View\AbstractView;
+use Fhooe\NormForm\View\View;
 
 /**
  * NormFom is a simple template application to gather, validate and process form data in a flexible way.
  *
  * This abstract class represents a well known process of gathering, validating and processing form data within a single
  * PHP structure. To use it, simple extend this class and implement the abstract methods isValid() (for validation) and
- * business() for processing/business logic. Then create an object of your subclass, supply an AbstractView object and
+ * business() for processing/business logic. Then create an object of your subclass, supply an View object and
  * start the process by calling normForm.
- * The initial call will show the form supplied by the AbstractView object. Submitted form data will then be validated
- * by your implementation of isValid(). Occurring error messages can be passed on to the AbstractView object and
+ * The initial call will show the form supplied by the View object. Submitted form data will then be validated
+ * by your implementation of isValid(). Occurring error messages can be passed on to the View object and
  * displayed in the template output. Once validation is passed, the data entered in the form can be processed in
  * business() in any suitable way.
  *
@@ -25,7 +25,7 @@ use Fhooe\NormForm\View\AbstractView;
 abstract class AbstractNormForm
 {
     /**
-     * @var AbstractView $currentView Holds the currently supplied view object that will be used in the template to
+     * @var View $currentView Holds the currently supplied view object that will be used in the template to
      * render output.
      */
     protected $currentView;
@@ -57,9 +57,9 @@ abstract class AbstractNormForm
      * Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
      * initially define how and where output is displayed via the template engine and supply parameters to the template.
      * The template engine itself is also set up, two optional parameters allow setting the template paths.
-     * @param AbstractView $defaultView Holds the initial @AbstractView object used for displaying the form.
+     * @param View $defaultView Holds the initial @View object used for displaying the form.
      */
-    public function __construct(AbstractView $defaultView)
+    public function __construct(View $defaultView)
     {
         $this->currentView = $defaultView;
         $this->errorMessages = [];
@@ -98,8 +98,8 @@ abstract class AbstractNormForm
     }
 
     /**
-     * Used to display output. The currently used object of type AbstractView is used to display the content by calling
-     * the display() method. Depending on the type of AbstractView object, a certain template engine will be used to
+     * Used to display output. The currently used object of type View is used to display the content by calling
+     * the display() method. Depending on the type of View object, a certain template engine will be used to
      * render the output. The view object will handle passing on the parameters to the template engine.
      */
     protected function show(): void
