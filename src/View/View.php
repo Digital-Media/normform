@@ -30,16 +30,16 @@ use Twig\Loader\FilesystemLoader;
 class View
 {
     /** @var string $templateName The name of the view (the template file that is to be rendered). */
-    protected $templateName;
+    private $templateName;
 
     /** @var string $templateDirectory The relative path to the directory where the template files are stored. */
-    protected $templateDirectory;
+    private $templateDirectory;
 
     /** @var string $templateCacheDirectory The relative path where cached/compiled templates are to be stored. */
-    protected $templateCacheDirectory;
+    private $templateCacheDirectory;
 
     /** @var array $params An array of parameters used for display. */
-    protected $params;
+    private $params;
 
     /** @var FilesystemLoader $loader The Twig loader instance. */
     private $loader;
