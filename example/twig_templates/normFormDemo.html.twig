@@ -72,7 +72,7 @@
                 {% for key, value in result %}
                 <tr class="Table-row">
                     <td class="Table-data">{{ key }}</td>
-                    <td class="Table-data">{{ value |escape | nl2br }}</td>
+                    <td class="Table-data">{{ value | escape | nl2br }}</td>
                 </tr>
                 {% endfor %}
                 </tbody>
