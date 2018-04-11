@@ -23,13 +23,25 @@ namespace Fhooe\NormForm\Parameter;
  */
 final class PostParameter implements ParameterInterface
 {
-    /** @var string $name The name of the parameter. Always a string. */
+    /**
+     * The name of the parameter. Always a string.
+     *
+     * @var string
+     */
     private $name;
 
-    /** @var mixed $value The value of the parameter. Can hold any data type. */
+    /**
+     * The value of the parameter. Can hold any data type.
+     *
+     * @var mixed
+     */
     private $value;
 
-    /** @var bool $forceEmpty A switch for forcing an always empty parameter object. */
+    /**
+     * A switch for forcing an always empty parameter object.
+     *
+     * @var bool
+     */
     private $forceEmpty;
 
     /**

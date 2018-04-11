@@ -25,19 +25,23 @@ use Fhooe\NormForm\View\View;
 abstract class AbstractNormForm
 {
     /**
-     * @var View $currentView Holds the currently supplied view object that will be used in the template to
-     * render output.
+     * Holds the currently supplied view object that will be used in the template to render output.
+     *
+     * @var View
      */
     protected $currentView;
 
     /**
-     * @var array $errorMessages An array containing all error messages being set by isValid().
+     * An array containing all error messages being set by isValid().
+     *
+     * @var array
      */
     protected $errorMessages;
 
     /**
-     * @var string $statusMessage An optional status message that can be set in business() when processing data was
-     * successful.
+     * An optional status message that can be set in business() when processing data was successful.
+     *
+     * @var string
      */
     protected $statusMessage;
 
