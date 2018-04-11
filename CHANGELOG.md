@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 - Unit tests with [PHPUnit](https://phpunit.de/).
 
-## [1.0.0] - 2018-04-10
+## [1.0.0] - 2018-04-11
 ### Added
 - Project now follows [Semantic Versioning](http://semver.org/spec/v2.0.0.html). Old version (2017) will not be part of the versioning structure, but will live on in Git history.
 - New directory structure (src, docs), ready for [Composer](https://getcomposer.org/).
