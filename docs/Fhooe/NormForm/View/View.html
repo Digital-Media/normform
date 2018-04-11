@@ -103,7 +103,7 @@ logged accordingly.</p>                    </div>
                                                             private                    string
                 </td>
                 <td>$templateName</td>
-                <td class="last"></td>
+                <td class="last">The name of the view (the template file that is to be rendered).</td>
                 <td></td>
             </tr>
                     <tr>
@@ -111,7 +111,7 @@ logged accordingly.</p>                    </div>
                                                             private                    string
                 </td>
                 <td>$templateDirectory</td>
-                <td class="last"></td>
+                <td class="last">The relative path to the directory where the template files are stored.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -119,7 +119,7 @@ logged accordingly.</p>                    </div>
                                                             private                    string
                 </td>
                 <td>$templateCacheDirectory</td>
-                <td class="last"></td>
+                <td class="last">The relative path where cached/compiled templates are to be stored.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -127,7 +127,7 @@ logged accordingly.</p>                    </div>
                                                             private                    array
                 </td>
                 <td>$params</td>
-                <td class="last"></td>
+                <td class="last">An array of parameters used for display.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -135,7 +135,7 @@ logged accordingly.</p>                    </div>
                                                             private                    <abbr title="Twig\Loader\FilesystemLoader">FilesystemLoader</abbr>
                 </td>
                 <td>$loader</td>
-                <td class="last"></td>
+                <td class="last">The Twig loader instance.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -143,7 +143,7 @@ logged accordingly.</p>                    </div>
                                                             private                    <abbr title="Twig\Environment">Environment</abbr>
                 </td>
                 <td>$twig</td>
-                <td class="last"></td>
+                <td class="last">The main instance of the Twig template engine (environment).</td>
                 <td></td>
             </tr>
             </table>
@@ -225,7 +225,7 @@ supplied in $param. If the parameter is not present in the view, it is being add
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 60</div>
+        <div class="location">at         line 84</div>
         <code>                    
     <strong>__construct</strong>(string $templateName, string $templateDirectory = &quot;templates&quot;, string $templateCacheDirectory = &quot;templates_c&quot;, array $params = [])
         </code>
@@ -274,7 +274,7 @@ reload enabled.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTemplateName">
-        <div class="location">at         line 83</div>
+        <div class="location">at         line 107</div>
         <code>                    string
     <strong>getTemplateName</strong>()
         </code>
@@ -304,7 +304,7 @@ reload enabled.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getParameters">
-        <div class="location">at         line 92</div>
+        <div class="location">at         line 116</div>
         <code>                    array
     <strong>getParameters</strong>()
         </code>
@@ -334,7 +334,7 @@ reload enabled.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setParameter">
-        <div class="location">at         line 104</div>
+        <div class="location">at         line 128</div>
         <code>                    
     <strong>setParameter</strong>(<a href="../../../Fhooe/NormForm/Parameter/ParameterInterface.html"><abbr title="Fhooe\NormForm\Parameter\ParameterInterface">ParameterInterface</abbr></a> $param)
         </code>
@@ -368,7 +368,7 @@ supplied in $param. If the parameter is not present in the view, it is being add
             </div>
                     <div class="method-item">
                     <h3 id="method_display">
-        <div class="location">at         line 121</div>
+        <div class="location">at         line 145</div>
         <code>                    
     <strong>display</strong>()
         </code>
@@ -390,7 +390,7 @@ Exceptions generated by Twig are shown as errors and logged accordingly for simp
             </div>
                     <div class="method-item">
                     <h3 id="method_redirectTo">
-        <div class="location">at         line 152</div>
+        <div class="location">at         line 176</div>
         <code>        static            
     <strong>redirectTo</strong>(string $location, array $queryParameters = null)
         </code>

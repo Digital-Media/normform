@@ -105,7 +105,7 @@ business() in any suitable way.</p>                    </div>
                                         protected                                        <a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a>
                 </td>
                 <td>$currentView</td>
-                <td class="last"></td>
+                <td class="last">Holds the currently supplied view object that will be used in the template to render output.</td>
                 <td></td>
             </tr>
                     <tr>
@@ -113,7 +113,7 @@ business() in any suitable way.</p>                    </div>
                                         protected                                        array
                 </td>
                 <td>$errorMessages</td>
-                <td class="last"></td>
+                <td class="last">An array containing all error messages being set by isValid().</td>
                 <td></td>
             </tr>
                     <tr>
@@ -121,7 +121,7 @@ business() in any suitable way.</p>                    </div>
                                         protected                                        string
                 </td>
                 <td>$statusMessage</td>
-                <td class="last"></td>
+                <td class="last">An optional status message that can be set in business() when processing data was successful.</td>
                 <td></td>
             </tr>
             </table>
@@ -218,7 +218,7 @@ PHP's own empty() method which also defines inputs such as "0" as empty.</p>    
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_isValid">
-        <div class="location">at         line 48</div>
+        <div class="location">at         line 52</div>
         <code>    abstract        protected        bool
     <strong>isValid</strong>()
         </code>
@@ -248,7 +248,7 @@ PHP's own empty() method which also defines inputs such as "0" as empty.</p>    
             </div>
                     <div class="method-item">
                     <h3 id="method_business">
-        <div class="location">at         line 54</div>
+        <div class="location">at         line 58</div>
         <code>    abstract        protected        
     <strong>business</strong>()
         </code>
@@ -270,7 +270,7 @@ subclass.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         line 62</div>
+        <div class="location">at         line 66</div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a> $defaultView)
         </code>
@@ -302,7 +302,7 @@ initially define how and where output is displayed via the template engine and s
             </div>
                     <div class="method-item">
                     <h3 id="method_normForm">
-        <div class="location">at         line 76</div>
+        <div class="location">at         line 80</div>
         <code>                    
     <strong>normForm</strong>()
         </code>
@@ -327,7 +327,7 @@ displayed. Once the submission was correct, business() is called where the data 
             </div>
                     <div class="method-item">
                     <h3 id="method_isFormSubmission">
-        <div class="location">at         line 95</div>
+        <div class="location">at         line 99</div>
         <code>            protected        bool
     <strong>isFormSubmission</strong>()
         </code>
@@ -358,7 +358,7 @@ displayed. Once the submission was correct, business() is called where the data 
             </div>
                     <div class="method-item">
                     <h3 id="method_show">
-        <div class="location">at         line 105</div>
+        <div class="location">at         line 109</div>
         <code>            protected        
     <strong>show</strong>()
         </code>
@@ -381,7 +381,7 @@ render the output. The view object will handle passing on the parameters to the 
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmptyPostField">
-        <div class="location">at         line 116</div>
+        <div class="location">at         line 120</div>
         <code>            protected        bool
     <strong>isEmptyPostField</strong>(string $index)
         </code>
