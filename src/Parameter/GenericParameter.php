@@ -1,18 +1,19 @@
 <?php
 
-require_once("ParameterInterface.php");
+namespace Fhooe\NormForm\Parameter;
 
 /**
  * A generic name/value parameter.
  *
  * This parameter consists of name and value. The name is always a string whereas the value can be any data type.
  *
+ * @package Fhooe\NormForm\Parameter
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 2017
+ * @version 1.0.0
  */
-class GenericParameter implements ParameterInterface
+final class GenericParameter implements ParameterInterface
 {
     /** @var string $name The name of the parameter. Always a string. */
     private $name;

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Fhooe\NormForm\Parameter\PostParameter | NormForm API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Fhooe_NormForm_Parameter_PostParameter" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">NormForm API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Fhooe.html">Fhooe</a></li><li class="backslash">\</li><li><a href="../../../Fhooe/NormForm.html">NormForm</a></li><li class="backslash">\</li><li><a href="../../../Fhooe/NormForm/Parameter.html">Parameter</a></li><li class="backslash">\</li><li>PostParameter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            PostParameter
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>PostParameter</strong>        implements
+        <a href="../../../Fhooe/NormForm/Parameter/ParameterInterface.html"><abbr title="Fhooe\NormForm\Parameter\ParameterInterface">ParameterInterface</abbr></a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>A special parameter that represents an entry in the $_POST superglobal.</p>            <p>This parameter is specified by the index in the $_POST superglobal. If a form field called "foo" (name attribute)
+should be tracked then "foo" needs to be supplied as $postName parameter. The class will set this index as its
+name and will automatically set its value by doing a lookup in $_POST. If there is an entry present at the
+supplied index, it will be set as the value, otherwise an empty string will be used.
+When the value of this parameter is queried via getValue() it will perform the update again before returning the
+value. If the parameter's value was empty at creation but the $_POST superglobal has been filled through a
+form submission in the meantime, this class will consider it when returning the value.
+To disable this mechanism and create a parameter with an always empty value (e.g. when you want an empty form
+field in your view), set the optional second parameter $forceEmpty to true.</p>                    </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_name">
+                                                            private                    string
+                </td>
+                <td>$name</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_value">
+                                                            private                    mixed
+                </td>
+                <td>$value</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_forceEmpty">
+                                                            private                    bool
+                </td>
+                <td>$forceEmpty</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $postName, bool $forceEmpty = false)
+        
+                                            <p>Creates a new parameter for the form field/$_POST entry with the name specified in $postName.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateValue">updateValue</a>()
+        
+                                            <p>Private method for updating the parameter's value. Checks if there is an entry in the $_POST superglobal.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getName">getName</a>()
+        
+                                            <p>Returns the parameter's name. Always a string.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getValue">getValue</a>()
+        
+                                            <p>Updates the parameters value and then returns it. Always a string since it's form field data.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 41</div>
+        <code>                    
+    <strong>__construct</strong>(string $postName, bool $forceEmpty = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a new parameter for the form field/$_POST entry with the name specified in $postName.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$postName</td>
+                <td>The index value in the $_POST superglobal this parameter should encapsulate.</td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forceEmpty</td>
+                <td>Forces the parameter to be always empty when true, otherwise the contents of $_POST are
+used.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateValue">
+        <div class="location">at         line 55</div>
+        <code>                private    
+    <strong>updateValue</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Private method for updating the parameter's value. Checks if there is an entry in the $_POST superglobal.</p>                    <p>If present, the entry is set as a value. Otherwise an empty string is used. If $forceEmpty is set to true the
+value is always set as an empty string.
+Be aware that no sanitation (htmlspecialchars, etc.) is performed on the values at this point. This is (expected
+to be) done by the template engine in the View class.</p>                            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getName">
+        <div class="location">at         line 68</div>
+        <code>                    string
+    <strong>getName</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns the parameter's name. Always a string.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>The name of the parameter.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getValue">
+        <div class="location">at         line 77</div>
+        <code>                    mixed
+    <strong>getValue</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Updates the parameters value and then returns it. Always a string since it's form field data.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td>The value of the parameter.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Fhooe\NormForm\Core\AbstractNormForm | NormForm API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Fhooe_NormForm_Core_AbstractNormForm" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">NormForm API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Fhooe.html">Fhooe</a></li><li class="backslash">\</li><li><a href="../../../Fhooe/NormForm.html">NormForm</a></li><li class="backslash">\</li><li><a href="../../../Fhooe/NormForm/Core.html">Core</a></li><li class="backslash">\</li><li>AbstractNormForm</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            AbstractNormForm
+                
+        </h1>
+    </div>
+
+    <p>abstract     class
+    <strong>AbstractNormForm</strong>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>NormFom is a simple template application to gather, validate and process form data in a flexible way.</p>            <p>This abstract class represents a well known process of gathering, validating and processing form data within a single
+PHP structure. To use it, simple extend this class and implement the abstract methods isValid() (for validation) and
+business() for processing/business logic. Then create an object of your subclass, supply an View object and
+start the process by calling normForm.
+The initial call will show the form supplied by the View object. Submitted form data will then be validated
+by your implementation of isValid(). Occurring error messages can be passed on to the View object and
+displayed in the template output. Once validation is passed, the data entered in the form can be processed in
+business() in any suitable way.</p>                    </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_currentView">
+                                        protected                                        <a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a>
+                </td>
+                <td>$currentView</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_errorMessages">
+                                        protected                                        array
+                </td>
+                <td>$errorMessages</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_statusMessage">
+                                        protected                                        string
+                </td>
+                <td>$statusMessage</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isValid">isValid</a>()
+        
+                                            <p>Abstract method used to validate the form input. Must be implemented in the subclass.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_business">business</a>()
+        
+                                            <p>Abstract method for processing the validated form input (a.k.a. business logic). Must be implemented in the
+subclass.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a> $defaultView)
+        
+                                            <p>Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
+initially define how and where output is displayed via the template engine and supply parameters to the template.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_normForm">normForm</a>()
+        
+                                            <p>Main "decision" method for the form processing. This decision tree uses isFormSubmission() to check if the form
+is being initially displayed or shown again after a form submission and either calls show() to display the form
+(using the supplied View object) or validate the received input in isValid(). If validation failed, show() is
+called again. Possible error messages provided as parameters to the View object in isValid() can now be
+displayed. Once the submission was correct, business() is called where the data can be processed as needed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isFormSubmission">isFormSubmission</a>()
+        
+                                            <p>Checks if the current request was an initial one (thus using GET) or a recurring one after a form submission
+(where POST was used).</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_show">show</a>()
+        
+                                            <p>Used to display output. The currently used object of type View is used to display the content by calling
+the display() method. Depending on the type of View object, a certain template engine will be used to
+render the output. The view object will handle passing on the parameters to the template engine.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEmptyPostField">isEmptyPostField</a>(string $index)
+        
+                                            <p>Convenience method to check if a form field is empty, thus contains only an empty string. This is preferred to
+PHP's own empty() method which also defines inputs such as "0" as empty.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_isValid">
+        <div class="location">at         line 48</div>
+        <code>    abstract        protected        bool
+    <strong>isValid</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Abstract method used to validate the form input. Must be implemented in the subclass.</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Returns true if validation was successful, otherwise false.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_business">
+        <div class="location">at         line 54</div>
+        <code>    abstract        protected        
+    <strong>business</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Abstract method for processing the validated form input (a.k.a. business logic). Must be implemented in the
+subclass.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 62</div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a> $defaultView)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Creates a new instance for a norm form object and initializes all necessary fields. A View object is used to
+initially define how and where output is displayed via the template engine and supply parameters to the template.</p>                    <p>The template engine itself is also set up, two optional parameters allow setting the template paths.</p>                            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Fhooe/NormForm/View/View.html"><abbr title="Fhooe\NormForm\View\View">View</abbr></a></td>
+                <td>$defaultView</td>
+                <td>Holds the initial @View object used for displaying the form.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normForm">
+        <div class="location">at         line 76</div>
+        <code>                    
+    <strong>normForm</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Main "decision" method for the form processing. This decision tree uses isFormSubmission() to check if the form
+is being initially displayed or shown again after a form submission and either calls show() to display the form
+(using the supplied View object) or validate the received input in isValid(). If validation failed, show() is
+called again. Possible error messages provided as parameters to the View object in isValid() can now be
+displayed. Once the submission was correct, business() is called where the data can be processed as needed.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isFormSubmission">
+        <div class="location">at         line 95</div>
+        <code>            protected        bool
+    <strong>isFormSubmission</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Checks if the current request was an initial one (thus using GET) or a recurring one after a form submission
+(where POST was used).</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Returns true if a form was submitted or false if it was an initial call.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_show">
+        <div class="location">at         line 105</div>
+        <code>            protected        
+    <strong>show</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Used to display output. The currently used object of type View is used to display the content by calling
+the display() method. Depending on the type of View object, a certain template engine will be used to
+render the output. The view object will handle passing on the parameters to the template engine.</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmptyPostField">
+        <div class="location">at         line 116</div>
+        <code>            protected        bool
+    <strong>isEmptyPostField</strong>(string $index)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Convenience method to check if a form field is empty, thus contains only an empty string. This is preferred to
+PHP's own empty() method which also defines inputs such as "0" as empty.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$index</td>
+                <td>The index in the super global $_POST array.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td>Returns true if the form field is empty, otherwise false.</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
