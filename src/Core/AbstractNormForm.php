@@ -82,13 +82,9 @@ abstract class AbstractNormForm
         if ($this->isFormSubmission()) {
             if ($this->isValid()) {
                 $this->business();
-                $this->show();
-            } else {
-                $this->show();
             }
-        } else {
-            $this->show();
         }
+        $this->show();
     }
 
     /**
