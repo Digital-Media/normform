@@ -98,6 +98,7 @@ class View
             "auto_reload" => true
         ]);
         $this->twig->addGlobal("_server", $_SERVER);
+        isset($_SESSION) ? $this->twig->addGlobal("_session", $_SESSION) : null;
     }
 
     /**
