@@ -74,7 +74,8 @@ class View
     /**
      * Creates a new view with the main template to be displayed, the path to the template and compiled templates
      * directory as well as parameters of the form. Also initializes the Twig template engine with caching and auto
-     * reload enabled.
+     * reload enabled. Two global variables for $_SERVER and (if available) for $_SESSION are passed to the template for
+     * easy access.
      * @param string $templateName The name of the template to be displayed.
      * @param string $templateDirectory The path where the template file is located (default is "templates").
      * @param string $templateCacheDirectory The path where cached template files are to be stored (default is
@@ -98,7 +99,9 @@ class View
             "auto_reload" => true
         ]);
         $this->twig->addGlobal("_server", $_SERVER);
-        isset($_SESSION) ? $this->twig->addGlobal("_session", $_SESSION) : null;
+        if (isset($_SESSION)) {
+            $this->twig->addGlobal("_session", $_SESSION);
+        }
     }
 
     /**
