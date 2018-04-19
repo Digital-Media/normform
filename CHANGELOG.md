@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Unit tests with [PHPUnit](https://phpunit.de/).
+### Fixed
+- Simplified normForm() method to remove redundancies: [11: Update AbstractNormForm.php](https://github.com/Digital-Media/normform/pull/11).
+- Made addition of $_SESSION to template more human readable.
+- Updated .gitignore to make exclusion of directories more strict and only exclude on root level.
 
 ## [1.0.0] - 2018-04-11
 ### Added
