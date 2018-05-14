@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `$_SESSION` is passed to the template engine as `_session`.
 
+### Removed
+- PHPUnit dev-dependency (only necessary for normform-skeleton)
+
 ### Fixed
 - Simplified normForm() method to remove redundancies: [11: Update AbstractNormForm.php](https://github.com/Digital-Media/normform/pull/11).
 - Updated .gitignore to make exclusion of directories more strict and only exclude on root level.
