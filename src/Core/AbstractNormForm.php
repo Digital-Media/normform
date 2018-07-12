@@ -84,7 +84,9 @@ abstract class AbstractNormForm
                 $this->business();
             }
         }
-        $this->show();
+        if ($this->currentView instanceof View) {
+            $this->show();
+        }
     }
 
     /**
