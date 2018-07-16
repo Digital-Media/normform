@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.0] - 2018-07-16
+### Added
+- It is now possible to use normform with AJAX requests. show() is not called if currentView is an invalid View object.
+- The template is not displayed in this case. The HTTP response can be sent with echo.
+
+
 ## [1.1.0] - 2018-05-14
 ### Added
 - `$_SESSION` is passed to the template engine as `_session`.
