@@ -162,13 +162,10 @@ class View
             $this->twig->display($this->templateName, $templateParameters);
         } catch (LoaderError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
-            error_log($e->getMessage());
         } catch (RuntimeError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
-            error_log($e->getMessage());
         } catch (SyntaxError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
-            error_log($e->getMessage());
         }
     }
 
