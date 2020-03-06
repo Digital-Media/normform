@@ -25,7 +25,7 @@ use Twig\Loader\FilesystemLoader;
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 1.0.0
+ * @version 1.2.2
  */
 class View
 {
