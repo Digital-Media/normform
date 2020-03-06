@@ -152,10 +152,8 @@ class View
         foreach ($this->params as $param) {
             if ($param instanceof PostParameter) {
                 $templateParameters[$param->getName()] = $param;
-            } else {
-                if ($param instanceof GenericParameter) {
-                    $templateParameters[$param->getName()] = $param->getValue();
-                }
+            } elseif ($param instanceof GenericParameter) {
+                $templateParameters[$param->getName()] = $param->getValue();
             }
         }
         try {
