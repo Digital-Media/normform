@@ -6,11 +6,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.2] - 2020-03-22
+### Changed
+- Updated dependencies to Twig ^3.0. This is a non-breaking, backwards-compatible change.
+- Made code fully PSR-12 compliant.
+
+### Fixed
+- Removed some unreachable code blocks.
+
+## [1.2.1] - 2018-10-12
+### Fixed
+- Forced LF line breaks on checkout to avoid unpredictable behavior.
+
 ## [1.2.0] - 2018-07-16
 ### Added
 - It is now possible to use normform with AJAX requests. show() is not called if currentView is an invalid View object.
 - The template is not displayed in this case. The HTTP response can be sent with echo.
-
 
 ## [1.1.0] - 2018-05-14
 ### Added
@@ -33,3 +44,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Namespaces "Fhooe/Core", "Fhooe/Parameter" and "Fhooe/View".
 - API Documentation generated using [Sami](https://github.com/FriendsOfPHP/Sami). 
 - Changelog (yes, this one) based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
+
+## [0.1.0] - 2017-09-20
+### Added
+- Added the original 2017 NormForm for reference. This is a pre-Composer release and should not be actively used.
+
+[Unreleased]: https://github.com/Digital-Media/normform/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/Digital-Media/normform/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/Digital-Media/normform/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/Digital-Media/normform/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/Digital-Media/normform/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/Digital-Media/normform/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/Digital-Media/normform/releases/tag/v0.1.0
