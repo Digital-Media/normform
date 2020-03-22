@@ -8,7 +8,7 @@
 
 ## Style Guide
 
-All pull requests must adhere to the [PSR-2 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md).
+All pull requests must adhere to the [PSR-12 standard](https://www.php-fig.org/psr/psr-12/).
 
 ## Report Issues
 
