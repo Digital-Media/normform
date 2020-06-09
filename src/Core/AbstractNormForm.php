@@ -45,6 +45,8 @@ abstract class AbstractNormForm
      */
     protected $statusMessage;
 
+    protected $templateParameters;
+
     /**
      * Abstract method used to validate the form input. Must be implemented in the subclass.
      * @return bool Returns true if validation was successful, otherwise false.
@@ -68,6 +70,7 @@ abstract class AbstractNormForm
         $this->currentView = $defaultView;
         $this->errorMessages = [];
         $this->statusMessage = "";
+        $this->templateParameters = [];
     }
 
     /**
@@ -106,7 +109,7 @@ abstract class AbstractNormForm
      */
     protected function show(): void
     {
-        $this->currentView->display();
+        $this->currentView->display($this->templateParameters);
     }
 
     /**
