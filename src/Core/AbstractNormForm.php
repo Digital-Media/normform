@@ -91,16 +91,6 @@ abstract class AbstractNormForm
     }
 
     /**
-     * Checks if the current request was an initial one (thus using GET) or a recurring one after a form submission
-     * (where POST was used).
-     * @return bool Returns true if a form was submitted or false if it was an initial call.
-     */
-    public static function isFormSubmission(): string
-    {
-        return strip_tags($_SERVER["REQUEST_METHOD"]);
-    }
-
-    /**
      * Used to display output. The currently used object of type View is used to display the content by calling
      * the display() method. Depending on the type of View object, a certain template engine will be used to
      * render the output. The view object will handle passing on the parameters to the template engine.
@@ -108,6 +98,29 @@ abstract class AbstractNormForm
     public function show(): void
     {
         $this->currentView->display($this->templateParameters);
+    }
+
+    /**
+     * Checks if the current request was an initial one (thus using GET) or a recurring one after a form submission
+     * (where POST was used).
+     * @return bool Returns true if a form was submitted or false if it was an initial call.
+     */
+    public static function getRoute(): array
+    {
+
+        $method = strip_tags($_SERVER["REQUEST_METHOD"]);
+        switch ($method) {
+            case "POST";
+                $route['method'] = "POST";
+                $route['route'] = strip_tags($_POST['route']);
+                return $route;
+                break;
+            case "GET";
+                $route['method'] = "GET";
+                isset($_GET['route']) ? $route['route'] = strip_tags($_GET['route']) : $route['route'] = "normform" ;
+                return $route;
+                break;
+        }
     }
 
     /**
@@ -120,4 +133,15 @@ abstract class AbstractNormForm
     {
         return (!isset($_POST[$index]) || strlen(trim($_POST[$index])) === 0);
     }
+
+    /**
+     * Returns the supplied parameters.
+     * @return array The parameters.
+     */
+    protected function getBodyParams(): array
+    {
+        return $this->params=$_POST;
+    }
+
+
 }

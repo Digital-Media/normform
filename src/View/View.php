@@ -80,8 +80,8 @@ class View
      */
     public function __construct(
         string $templateName,
-        string $templateDirectory = "templates",
-        string $templateCacheDirectory = "templates_c"
+        string $templateDirectory = TEMPLATES,
+        string $templateCacheDirectory = TEMPLATES_C
     ) {
         $this->templateName = $templateName;
         $this->templateDirectory = $templateDirectory;
@@ -106,15 +106,6 @@ class View
     public function getTemplateName(): string
     {
         return $this->templateName;
-    }
-
-    /**
-     * Returns the supplied parameters.
-     * @return array The parameters.
-     */
-    public function getBodyParams(): array
-    {
-        return $this->params=$_POST;
     }
 
     /**
