@@ -82,10 +82,8 @@ abstract class AbstractNormForm
      */
     public function normForm(): void
     {
-        if ($this->isFormSubmission()) {
-            if ($this->isValid()) {
-                $this->business();
-            }
+        if ($this->isValid()) {
+            $this->business();
         }
         if ($this->currentView instanceof View) {
             $this->show();
@@ -97,9 +95,9 @@ abstract class AbstractNormForm
      * (where POST was used).
      * @return bool Returns true if a form was submitted or false if it was an initial call.
      */
-    protected function isFormSubmission(): bool
+    public static function isFormSubmission(): string
     {
-        return ($_SERVER["REQUEST_METHOD"] === "POST");
+        return strip_tags($_SERVER["REQUEST_METHOD"]);
     }
 
     /**
@@ -107,7 +105,7 @@ abstract class AbstractNormForm
      * the display() method. Depending on the type of View object, a certain template engine will be used to
      * render the output. The view object will handle passing on the parameters to the template engine.
      */
-    protected function show(): void
+    public function show(): void
     {
         $this->currentView->display($this->templateParameters);
     }
