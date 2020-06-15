@@ -70,9 +70,9 @@ abstract class AbstractNormForm
      * The template engine itself is also set up, two optional parameters allow setting the template paths.
      * @param View $defaultView Holds the initial @View object used for displaying the form.
      */
-    public function __construct(View $defaultView)
+    public function __construct($template)
     {
-        $this->currentView = $defaultView;
+        $this->currentView = new View($template);
         $this->errorMessages = [];
         $this->statusMessage = "";
         $this->templateParameters = [];
