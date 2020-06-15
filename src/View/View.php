@@ -48,13 +48,6 @@ class View
     private $templateCacheDirectory;
 
     /**
-     * An array of parameters used for display.
-     *
-     * @var array
-     */
-    private $params;
-
-    /**
      * The Twig loader instance.
      *
      * @var FilesystemLoader
@@ -124,20 +117,5 @@ class View
         } catch (SyntaxError $e) {
             trigger_error($e->getMessage(), E_USER_ERROR);
         }
-    }
-
-    /**
-     * Performs a generic redirect using header(). GET-Parameters may optionally be supplied as an associative array.
-     * @param string $location The target location for the redirect.
-     * @param array $queryParameters GET-Parameters for HTTP-Request
-     */
-    public static function redirectTo(string $location, array $queryParameters = null): void
-    {
-        if (isset($queryParameters)) {
-            header("Location: $location" . "?" . http_build_query($queryParameters));
-        } else {
-            header("Location: $location");
-        }
-        exit();
     }
 }
