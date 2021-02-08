@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.3] - 2021-02-08
+
+### Fixed
+- Changed PHP version constraint to >=7.1 to support PHP 8.0.
+
 ## [1.2.2] - 2020-03-22
 ### Changed
 - Updated dependencies to Twig ^3.0. This is a non-breaking, backwards-compatible change.
@@ -49,7 +54,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added the original 2017 NormForm for reference. This is a pre-Composer release and should not be actively used.
 
-[Unreleased]: https://github.com/Digital-Media/normform/compare/v1.2.2...HEAD
+[Unreleased]: https://github.com/Digital-Media/normform/compare/v1.2.3...HEAD
+[1.2.3]: https://github.com/Digital-Media/normform/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/Digital-Media/normform/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/Digital-Media/normform/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/Digital-Media/normform/compare/v1.1.0...v1.2.0

@@ -11,7 +11,7 @@ namespace Fhooe\NormForm\Parameter;
  * @author Wolfgang Hochleitner <wolfgang.hochleitner@fh-hagenberg.at>
  * @author Martin Harrer <martin.harrer@fh-hagenberg.at>
  * @author Rimbert Rudisch-Sommer <rimbert.rudisch-sommer@fh-hagenberg.at>
- * @version 1.2.2
+ * @version 1.2.3
  */
 final class GenericParameter implements ParameterInterface
 {
